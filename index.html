@@ -1,0 +1,217 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Gridiron Lab | NFL DFS</title><style>:root{font-family:Inter,system-ui,Arial;background:#0b1220;color:#e8eef9}*{box-sizing:border-box}body{margin:0}header{padding:25px max(24px,calc((100vw - 1200px)/2));background:#121e31;border-bottom:1px solid #293a52}h1{margin:0;font-size:27px}header p,.muted{color:#99abc3}main{max-width:1200px;margin:auto;padding:25px}section{background:#142137;border:1px solid #293b56;border-radius:13px;padding:20px;margin-bottom:20px}h2{font-size:18px;margin:0 0 14px}label{display:block;font-size:12px;color:#a7bad2;margin-bottom:6px}input,select,button{background:#0d192c;color:#f2f7ff;border:1px solid #3b526e;border-radius:7px;padding:10px;font:inherit}input[type=file]{max-width:100%}button{cursor:pointer;background:#2176df;border-color:#2176df;font-weight:650}button.secondary{background:#1b2d47;border-color:#3b526e}button:hover{filter:brightness(1.15)}.controls{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:13px}.actions{display:flex;flex-wrap:wrap;gap:9px;margin-top:16px}.notice{background:#3b2c1d;color:#ffe0a7;padding:12px;border-radius:8px;font-size:13px;margin:12px 0}.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}.stat{background:#0d192c;border-radius:9px;padding:15px}.stat strong{display:block;font-size:23px;margin-top:5px}.tablewrap{overflow:auto;max-height:460px}table{border-collapse:collapse;width:100%;font-size:13px}th,td{border-bottom:1px solid #293b56;text-align:left;padding:10px;white-space:nowrap}th{color:#aabbd1;position:sticky;top:0;background:#142137}td input{width:80px;padding:5px}.lineups{display:grid;grid-template-columns:repeat(auto-fit,minmax(310px,1fr));gap:13px}.lineup{background:#0d192c;border:1px solid #314963;border-radius:10px;padding:14px}.lineup h3{margin:0 0 8px;font-size:16px}.lineup p{margin:6px 0;color:#b4c7df;font-size:13px}.slots{font-size:13px;line-height:1.8}.slot{display:flex;justify-content:space-between;gap:8px;border-bottom:1px solid #223650}.tag{color:#65d7ae}.err{color:#ffaaa8}.fine{font-size:12px;color:#9aacc5}a{color:#91c3ff}@media(max-width:650px){.stats{grid-template-columns:1fr}header{padding:20px}main{padding:14px}}</style></head><body><header><h1>🏈 Gridiron Lab</h1><p>DraftKings NFL Classic + Showdown • local browser optimizer • $0 monthly</p></header><main><section><h2>1. Slate setup</h2><div class="controls"><div><label>Contest format</label><select id="mode"><option value="showdown">Showdown (6 players)</option><option value="classic">Classic (9 players)</option></select></div><div><label>Lineups to generate</label><input id="count" type="number" min="1" max="20" value="5"></div><div><label>Simulation iterations</label><input id="iterations" type="number" min="100" max="10000" step="100" value="1200"></div><div><label>Ranking view</label><select id="risk"><option value="both" selected>Compare Cash + GPP</option><option value="cash">Cash-focused</option><option value="gpp">GPP / first-place upside</option></select></div><div><label>Max ownership sum (%) — only if ownership supplied</label><input id="maxown" type="number" min="0" value="600"></div><div><label>Max exposure per player (%)</label><input id="exposure" type="number" min="10" max="100" value="100"></div><div><label>Max Captain exposure (%)</label><input id="captainexposure" type="number" min="10" max="100" value="40"></div><div><label>QB restriction</label><select id="qbrestrict"><option value="same" selected>Max one QB per team</option><option value="none">No QB restriction</option></select></div></div><section style="background:#102b38;border:1px solid #2b6470;border-radius:10px;padding:14px;margin:12px 0"><h2>V6.0.1 · Captain diversity + lineup validation</h2><div class="controls"><div><label>Upcoming NFL game</label><select id="matchup"><option value="">Loading schedule…</option></select></div><div><label>Schedule status</label><p id="matchupstatus" class="fine" style="overflow-wrap:anywhere;margin:4px 0">Checking published schedule…</p></div></div><div class="actions"><button class="secondary" id="refreshmatchups">Refresh matchups</button><button class="secondary" id="filtermatchup">Filter imported player slate to selected game</button></div><p class="fine">Selecting a matchup does not create salaries or projections. Import the correct DraftKings contest CSV first; filtering only removes players from other games. Team abbreviations in the CSV must match the schedule.</p></section><div class="notice" style="background:#163247;color:#c7eaff"><strong>V6.0.1 NFL data:</strong> Import an original DraftKings Showdown salary/template CSV or a simple player CSV, then tap <b>Apply current-season matchup estimates</b>. The model combines recent PPR form with opponent positional points allowed; these are estimates, not verified DraftKings projections. Availability and expected opportunity require manual review; no live injury or ownership feed.</div><div class="actions"><button id="baselines" class="secondary">Apply current-season matchup estimates</button><span id="datafresh" class="fine">2026 data ready to load after CSV import</span></div><div class="actions"><input id="csv" type="file" accept=".csv,text/csv"><button id="demo">Load synthetic demo slate</button><button id="template" class="secondary">Download CSV template</button><button id="run">Generate lineups</button><button id="export" class="secondary">Export lineups CSV</button></div><div class="notice">Demo players and numbers are fictional. Real player projections and ceilings must come from the 2026 model; missing players are excluded until projections are available. This app does not fetch live salaries, injuries, or ownership. Historical stats can be loaded from the repository data file.</div><p class="fine">CSV minimum headers: name,team,position,salary. Original DraftKings Showdown lineup-template CSV is also supported. No projection, ceiling, or ownership columns are required. Salary is FLEX/base salary in both modes. In Showdown, captain costs 1.5× and earns 1.5× points. Classic salary cap $50,000; Showdown cap $50,000.</p><p id="status" class="fine">No slate loaded.</p><p class="fine" id="modelnote">Projection model: 60% last 3 games + 40% last 6 games; ceiling from 2026 player-game upper-tail distribution, with limited-sample shrinkage and opponent adjustment. Offense is PPR-based; K/DST use play-by-play scoring estimates (DST points allowed approximated); manual availability/opportunity adjustments; no live injury or ownership feed.</p></section><section><h2>2. Player pool <span id="poolcount" class="muted"></span></h2><p class="fine">V6.0.1: Status and opportunity are <b>manual inputs, not live verified reports</b>. Choose Out to exclude a player, or set expected opportunity below 100% to reduce projection and ceiling. Unreviewed players remain eligible unless you turn on strict review below. Confirm official inactives before submitting.</p><label style="display:block;margin:10px 0"><input id="strictstatus" type="checkbox"> Strict review: exclude players whose status is not manually confirmed Available</label><div class="tablewrap"><table><thead><tr><th>Player</th><th>Team</th><th>Pos</th><th>Salary</th><th>Projection</th><th>Ceiling</th><th>Own %</th><th>Status (manual)</th><th>Opportunity %</th><th>Active</th></tr></thead><tbody id="players"></tbody></table></div></section><section><h2>3. Optimizer results</h2><p class="fine">Cash ranks projected points with a volatility penalty. GPP emphasizes upper-tail outcomes, correlation, and Captain diversification; ownership leverage is used only when real ownership inputs are provided. These are relative heuristic rankings, not calibrated cash or first-place probabilities.</p><div class="stats"><div class="stat"><span class="muted">Valid lineups</span><strong id="valid">0</strong></div><div class="stat"><span class="muted">Best projected points</span><strong id="best">—</strong></div><div class="stat"><span class="muted">Highest sampled P99</span><strong id="upside">—</strong></div></div><p class="fine">Monte Carlo estimates use shared team/game factors and position-sensitive outcomes; these are illustrative, not calibrated win probabilities. Rankings are heuristic and do not promise profit.</p><div id="results" class="lineups"></div><h3>Best alternative for each Captain</h3><p class="fine">Independent Captain comparisons, ranked by the same GPP score. These alternatives do not use lineup exposure limits.</p><div id="captainresults" class="lineups"></div></section><section><h2>4. Roadmap</h2><p class="muted">This browser app supports separate Cash and GPP rankings, salary and roster validation, CSV input, heuristic simulation, diversification, and CSV export. V6.0.1 adds per-Captain alternatives, adjustable Captain exposure and same-team QB restrictions. Player availability is not verified automatically; V6.0.1 adds manual review controls. Still needed: injury/status feeds, exact DraftKings scoring for every position, calibrated ownership, opponent-field simulations, contest result tracking and backtesting. These are not yet implemented.</p></section></main><script>
+const $=id=>document.getElementById(id);let pool=[],lineups=[],rankedGroups={cash:[],gpp:[]};let mode=$('mode').value;
+function demo(){let teams=['ALP','BET'];let names=['Avery','Blake','Cameron','Drew','Emerson','Finley','Gray','Harper','Indigo','Jordan','Kai','Logan','Morgan','Noel','Oakley','Parker','Quinn','Reese','Sawyer','Taylor','Uma','Val','Winter','Zion'];let pos=['QB','RB','WR','WR','TE','K','DST','RB','WR','WR','TE','WR'];pool=names.map((n,i)=>({name:n+' (DEMO)',team:teams[Math.floor(i/12)],opponent:teams[1-Math.floor(i/12)],position:pos[i%12],salary:[10500,8400,7200,6100,4600,4200,3400,5300,3900,2900,2400,1800][i%12]+(i>=12?200:0),projection:[21,16,13,11,9,8,7,10,8,6,5,4][i%12]+(i>=12?1:0),ceiling:[37,31,28,25,21,15,16,24,20,17,13,12][i%12]+(i>=12?2:0),ownership:[68,52,43,36,27,22,18,30,25,17,13,9][i%12],active:true,game:'ALP@BET'}));render();$('status').textContent='Synthetic demo loaded. Not usable for real contests.'}
+function csvRows(t){const lines=t.replace(/^\uFEFF/,'').split(/\r?\n/);function parse(line){let a=[],v='',q=false;for(let i=0;i<line.length;i++){let c=line[i];if(c==='"'){if(q&&line[i+1]==='"'){v+='"';i++}else q=!q}else if(c===','&&!q){a.push(v);v=''}else v+=c}a.push(v);return a}return lines.filter(x=>x.trim()).map(parse)}
+function parseCSV(t){const rows=csvRows(t);let headerIndex=rows.findIndex(r=>r.map(x=>x.trim().toLowerCase()).includes('salary')&&r.map(x=>x.trim().toLowerCase()).includes('name'));if(headerIndex<0)throw Error('Could not find a player/salary header in this CSV');const hdr=rows[headerIndex].map(x=>x.trim().toLowerCase());const isDK=hdr.includes('roster position')&&hdr.includes('teamabbrev');const required=isDK?['name','roster position','salary','teamabbrev']:['name','team','position','salary'];if(required.some(k=>!hdr.includes(k)))throw Error('Missing columns: '+required.filter(k=>!hdr.includes(k)).join(', '));let result=[],seen=new Set();for(let i=headerIndex+1;i<rows.length;i++){let o={};hdr.forEach((k,j)=>o[k]=(rows[i][j]||'').trim());if(!o.name||!o.salary)continue;let position=(isDK?o.position:o.position||'').toUpperCase();let roster=(o['roster position']||'').toUpperCase();if(isDK&&roster&&!roster.split('/').includes('FLEX'))continue;let team=isDK?o.teamabbrev:o.team;let sal=Number(o.salary);if(!team||!Number.isFinite(sal)||sal<=0)continue;if(position==='DEF'||position==='D/ST')position='DST';if(!['QB','RB','WR','TE','K','DST'].includes(position))continue;let key=normalizePlayerName(o.name)+'|'+team;if(seen.has(key))continue;seen.add(key);let game=o['game info']||o.game||'';let opponent=o.opponent||'';if(!opponent&&game){let m=game.match(/([A-Z]{2,3})@([A-Z]{2,3})/);if(m)opponent=m[1]===team?m[2]:m[2]===team?m[1]:''}result.push({name:o.name,team,opponent,position,salary:sal,projection:null,ceiling:null,ownership:o.ownership!==undefined&&o.ownership!==''&&Number.isFinite(Number(o.ownership))?Number(o.ownership):null,active:!['0','false','out','inactive','no'].includes((o.active||'true').toLowerCase()),status:'unknown',opportunity:100,game,modeled:false})}if(!result.length)throw Error('No eligible players found. For DraftKings Showdown, FLEX salary rows must exist.');return result}
+function render(){let tbody=$('players');tbody.innerHTML='';pool.forEach((p,i)=>{let tr=document.createElement('tr');[p.name,p.team,p.position,p.salary,p.projection,p.ceiling,p.ownership].forEach((v,j)=>{let td=document.createElement('td');if(j>=3){let inp=document.createElement('input');inp.type='number';inp.placeholder=v==null?'—':'';inp.value=v==null?'':v;inp.onchange=()=>{let raw=inp.value.trim();let field=['salary','projection','ceiling','ownership'][j-3];if(raw===''){if(field!=='salary')p[field]=null;return}let n=Number(raw);if(Number.isFinite(n)){p[field]=n;if(field==='projection'||field==='ceiling')p.modeled=true}else inp.value=p[field]??''};td.append(inp)}else td.textContent=v;tr.append(td)});let statusTd=document.createElement('td'),sel=document.createElement('select');[['unknown','Unreviewed'],['available','Available (reviewed)'],['questionable','Questionable'],['out','Out / inactive']].forEach(([v,t])=>sel.add(new Option(t,v)));sel.value=p.status||'unknown';sel.onchange=()=>{p.status=sel.value;lineups=[]};statusTd.append(sel);tr.append(statusTd);let opportunityTd=document.createElement('td'),opp=document.createElement('input');opp.type='number';opp.min='0';opp.max='100';opp.step='5';opp.value=p.opportunity??100;opp.onchange=()=>{p.opportunity=Math.max(0,Math.min(100,Number(opp.value)||0));opp.value=p.opportunity;lineups=[]};opportunityTd.append(opp);tr.append(opportunityTd);let td=document.createElement('td'),c=document.createElement('input');c.type='checkbox';c.checked=p.active;c.onchange=()=>p.active=c.checked;td.append(c);tr.append(td);tbody.append(tr)});$('poolcount').textContent='('+pool.length+' players)'}
+function rnd(){return Math.random()}function normal(){return Math.sqrt(-2*Math.log(Math.max(1e-12,rnd())))*Math.cos(2*Math.PI*rnd())}function choice(a){return a[Math.floor(rnd()*a.length)]}
+function salary(l){return Math.round(l.reduce((s,x)=>s+x.p.salary*(x.slot==='CPT'?1.5:1),0))}function points(l,k){return l.reduce((s,x)=>s+x.p[k]*(x.slot==='CPT'?1.5:1),0)}function ownership(l){return l.every(x=>Number.isFinite(x.p.ownership))?l.reduce((s,x)=>s+x.p.ownership,0):null}
+function valid(l,format){if(l.length!==(format==='showdown'?6:9)||new Set(l.map(x=>x.p.name+'|'+x.p.team)).size!==l.length||salary(l)>50000||(ownership(l)!==null&&ownership(l)>Number($('maxown').value)))return false;if(format==='showdown'){let teams=new Set(l.map(x=>x.p.team));if($('qbrestrict').value==='same'){const qb=l.filter(x=>x.p.position==='QB');if(new Set(qb.map(x=>x.p.team)).size!==qb.length)return false;}return l.filter(x=>x.slot==='CPT').length===1&&teams.size>=2}let need={QB:1,RB:2,WR:3,TE:1,DST:1,FLEX:1};for(let [slot,n]of Object.entries(need))if(l.filter(x=>x.slot===slot).length!==n)return false;return l.filter(x=>x.slot==='FLEX').every(x=>['RB','WR','TE'].includes(x.p.position))}
+function build(format,eligible){let selected=[],used=new Set();function add(slot,choices){let arr=choices.filter(p=>!used.has(p.name+'|'+p.team));if(!arr.length)return false;let rank=arr.map(p=>({p,w:Math.max(.01,(p.projection+0.2*(p.ceiling-p.projection)) / Math.sqrt(p.salary/1000))*(0.6+rnd()*1.5)})).sort((a,b)=>b.w-a.w);let p=rank[Math.floor(Math.pow(rnd(),2.8)*Math.min(rank.length,Math.max(4,Math.ceil(rank.length*.65))))].p;selected.push({slot,p});used.add(p.name+'|'+p.team);return true}
+if(format==='showdown'){let teams=[...new Set(eligible.map(p=>p.team))];if(teams.length<2)return null;let cpt=eligible.filter(p=>p.position!=='DST');if(!add('CPT',cpt))return null;let remaining=eligible.filter(p=>p.team!==selected[0].p.team);if(!add('FLEX',remaining))return null;while(selected.length<6)if(!add('FLEX',eligible))return null}else{for(let slot of ['QB','RB','RB','WR','WR','WR','TE','DST','FLEX']){let elig=slot==='FLEX'?['RB','WR','TE']:[slot];if(!add(slot,eligible.filter(p=>elig.includes(p.position))))return null}}return selected}
+// Correlated game outcomes: one game pace factor, opposing team production factors,
+// QB/receiver passing-game factor, and residual player-specific variation.
+function simulateDistribution(l,iters){
+ const totals=[];
+ for(let k=0;k<iters;k++){
+  const games=new Map(),teams=new Map(),passing=new Map();let total=0;
+  for(const x of l){
+   const p=x.p,g=p.game||[p.team,p.opponent].sort().join('@');
+   if(!games.has(g))games.set(g,normal());
+   if(!teams.has(p.team))teams.set(p.team,normal());
+   if(!passing.has(p.team))passing.set(p.team,normal());
+   const sd=Math.max(2,(p.ceiling-p.projection)/1.3);
+   const isPass=['QB','WR','TE'].includes(p.position);
+   const common=.30*games.get(g)+.30*teams.get(p.team)+(isPass?.38*passing.get(p.team):0);
+   const residual=Math.sqrt(Math.max(.05,1-(.30**2+.30**2+(isPass?.38**2:0))))*normal();
+   const outcome=Math.max(p.position==='DST'? -8:0,p.projection+sd*(common+residual));
+   total+=outcome*(x.slot==='CPT'?1.5:1);
+  }
+  totals.push(total);
+ }
+ const avg=totals.reduce((a,b)=>a+b,0)/totals.length;
+ return {avg,sd:Math.sqrt(totals.reduce((a,b)=>a+(b-avg)**2,0)/totals.length),p10:quantile(totals,.10),p90:quantile(totals,.90),p99:quantile(totals,.99)};
+}
+function quantile(a,q){const z=[...a].sort((x,y)=>x-y);return z[Math.min(z.length-1,Math.max(0,Math.floor((z.length-1)*q)))]}
+function selectRanked(candidates,n,cap,diversifyCaptain=false){
+ const chosen=[],counts=new Map(),captains=new Map(),maxCpt=Math.max(1,Math.floor(n*Number($('captainexposure').value||40)/100));
+ function fits(c,strict){
+  if(chosen.includes(c)||c.l.some(x=>(counts.get(x.p.name+'|'+x.p.team)||0)>=cap))return false;
+  const captain=c.l.find(x=>x.slot==='CPT')?.p;
+  const ckey=captain?captain.name+'|'+captain.team:'';
+  if(diversifyCaptain&&strict&&(captains.get(ckey)||0)>=maxCpt)return false;
+  return true;
+ }
+ for(let pass=0;pass<2&&chosen.length<n;pass++){
+  // First pass respects exposure limits. Second pass relaxes them only to fill remaining slots.
+  for(const c of candidates){if(chosen.length>=n)break;if(!fits(c,pass===0))continue;
+   chosen.push(c);c.l.forEach(x=>{const k=x.p.name+'|'+x.p.team;counts.set(k,(counts.get(k)||0)+1)});
+   const cp=c.l.find(x=>x.slot==='CPT')?.p;if(cp){const k=cp.name+'|'+cp.team;captains.set(k,(captains.get(k)||0)+1)}
+  }
+ }
+ return chosen;
+}
+function lineupKey(l){return l.map(x=>x.slot+':'+x.p.name+'|'+x.p.team).sort().join(';')}
+// Deterministic bounded search over top candidates by modeled ceiling/point-per-dollar,
+// with all viable Captain choices. For larger slates, a deterministic bounded search.
+function generateShowdown(eligible,found){
+ const byScore=[...eligible].sort((a,b)=>(b.ceiling/Math.sqrt(b.salary))-(a.ceiling/Math.sqrt(a.salary)));
+ const byProj=[...eligible].sort((a,b)=>b.projection-a.projection);
+ const candidateMap=new Map([...byScore.slice(0,32),...byProj.slice(0,20)].map(p=>[p.name+'|'+p.team,p]));
+ const a=[...candidateMap.values()];let examined=0;const perCaptainLimit=12000;
+ function save(l){if(!valid(l,'showdown'))return;const key=lineupKey(l);if(found.has(key))return;
+  const own=ownership(l);const leverage=own===null?0:l.reduce((sum,x)=>sum+Math.log(101/(Math.max(0,x.p.ownership)+1))*(x.slot==='CPT'?1.5:1),0);
+  found.set(key,{l,proj:points(l,'projection'),ceil:points(l,'ceiling'),own,leverage});}
+ for(const cpt of a){let captainExamined=0;const rest=a.filter(p=>p!==cpt);
+  const choose=(start,picked,cost,otherTeam)=>{
+   if(captainExamined>=perCaptainLimit)return;
+   if(picked.length===5){examined++;captainExamined++;if(otherTeam)save([{slot:'CPT',p:cpt},...picked.map(p=>({slot:'FLEX',p}))]);return;}
+   if(cost>50000)return;
+   for(let i=start;i<rest.length&&captainExamined<perCaptainLimit;i++){
+    const p=rest[i],next=cost+p.salary;if(next>50000)continue;
+    choose(i+1,[...picked,p],next,otherTeam||p.team!==cpt.team);
+   }
+  };
+  choose(0,[],cpt.salary*1.5,false);
+  // Apply the same bounded search budget to every Captain to avoid early-Captain bias.
+ }
+ return examined;
+}
+function optimize(){
+ const format=$('mode').value;mode=format;
+ const available=pool.filter(p=>p.active&&p.status!=='out'&&(!$('strictstatus').checked||p.status==='available')&&Number(p.opportunity??100)>0&&p.salary>0&&p.modeled&&Number.isFinite(p.projection)&&Number.isFinite(p.ceiling));
+ if(!available.length){$('status').textContent='No eligible reviewed/modelled players available. Import the DraftKings CSV, then tap Apply current-season matchup estimates.';return}
+ const eligible=available.map(p=>({...p,projection:p.projection*(Number(p.opportunity??100)/100),ceiling:p.ceiling*(Number(p.opportunity??100)/100)}));
+ const n=Math.max(1,Math.min(20,Number($('count').value)||5)),iters=Math.max(100,Math.min(10000,Number($('iterations').value)||1200));
+ const found=new Map();let examined=0;
+ if(format==='showdown')examined=generateShowdown(eligible,found);
+ else for(let i=0;i<60000;i++){const l=build(format,eligible);if(!l||!valid(l,format))continue;const key=lineupKey(l);if(found.has(key))continue;const own=ownership(l);const leverage=own===null?0:l.reduce((sum,x)=>sum+Math.log(101/(Math.max(0,x.p.ownership)+1)),0);found.set(key,{l,proj:points(l,'projection'),ceil:points(l,'ceiling'),own,leverage});if(found.size>=7000)break}
+ if(!found.size){$('status').textContent='No salary- and roster-valid lineups with currently modeled players.';return}
+ const all=[...found.values()];
+ // Shortlist from multiple objectives and explicitly retain top lineups per Captain.
+ const union=new Map();function add(items){items.forEach(x=>union.set(lineupKey(x.l),x))}
+ add([...all].sort((a,b)=>b.proj-a.proj).slice(0,140));
+ add([...all].sort((a,b)=>b.ceil-a.ceil).slice(0,140));
+ add([...all].sort((a,b)=>(b.ceil+2*b.leverage)-(a.ceil+2*a.leverage)).slice(0,140));
+ if(format==='showdown'){
+  const groups=new Map();for(const x of all){const c=x.l.find(y=>y.slot==='CPT');if(!c)continue;const key=c.p.name+'|'+c.p.team;if(!groups.has(key))groups.set(key,[]);groups.get(key).push(x)}
+  for(const g of groups.values())add(g.sort((a,b)=>b.ceil-a.ceil).slice(0,8));
+ }
+ const scored=[...union.values()].map(x=>{const sim=simulateDistribution(x.l,iters);
+  // P99 is noisy at low iteration counts, so combine with P90 and model ceiling.
+  const cashScore=sim.avg-.35*sim.sd;
+  const gppScore=.45*sim.p90+.40*sim.p99+.15*x.ceil+1.2*x.leverage;
+  return {...x,sim,cashScore,gppScore};});
+ const cap=Math.max(1,Math.ceil(n*Number($('exposure').value)/100));
+ rankedGroups.cash=selectRanked([...scored].sort((a,b)=>b.cashScore-a.cashScore),n,cap);
+ rankedGroups.gpp=selectRanked([...scored].sort((a,b)=>b.gppScore-a.gppScore),n,cap,format==='showdown');
+ const bestByCaptain=new Map();if(format==='showdown')for(const x of [...scored].sort((a,b)=>b.gppScore-a.gppScore)){const c=x.l.find(v=>v.slot==='CPT')?.p;if(c){const k=c.name+'|'+c.team;if(!bestByCaptain.has(k))bestByCaptain.set(k,x)}}
+ const view=$('risk').value;lineups=view==='cash'?rankedGroups.cash:view==='gpp'?rankedGroups.gpp:rankedGroups.cash.concat(rankedGroups.gpp);
+ $('valid').textContent=found.size.toLocaleString();$('best').textContent=Math.max(...scored.map(x=>x.proj)).toFixed(1);
+ $('upside').textContent=Math.max(...scored.map(x=>x.sim.p99)).toFixed(1);
+ $('results').innerHTML='';
+ const sections=view==='both'?['cash','gpp']:[view];
+ for(const type of sections){const h=document.createElement('h3');h.textContent=type==='cash'?'Cash-focused rankings':'GPP / tournament-upside rankings';$('results').append(h);
+ const group=rankedGroups[type];if(!group.length){const p=document.createElement('p');p.textContent='No valid lineups under current constraints.';$('results').append(p)}
+ group.forEach((x,i)=>{const card=document.createElement('div');card.className='lineup';const title=document.createElement('h3');title.textContent='#'+(i+1)+' · $'+salary(x.l).toLocaleString()+' / $50,000';card.append(title);
+ const stats=document.createElement('p');stats.textContent='Projection '+x.proj.toFixed(1)+' · Ceiling sum '+x.ceil.toFixed(1)+' · Own sum '+(x.own===null?'unknown':x.own.toFixed(0)+'%');card.append(stats);
+ const sim=document.createElement('p');sim.textContent='Sim mean '+x.sim.avg.toFixed(1)+' · P10 '+x.sim.p10.toFixed(1)+' · P90 '+x.sim.p90.toFixed(1)+' · P99 '+x.sim.p99.toFixed(1)+' · '+(type==='cash'?'Cash score ':'GPP score ')+(type==='cash'?x.cashScore:x.gppScore).toFixed(1);card.append(sim);
+ const slots=document.createElement('div');slots.className='slots';x.l.forEach(v=>{const row=document.createElement('div');row.className='slot';const left=document.createElement('span');left.textContent=v.slot+' · '+v.p.name+' ('+v.p.team+')';const right=document.createElement('span');right.textContent='$'+Math.round(v.p.salary*(v.slot==='CPT'?1.5:1)).toLocaleString();row.append(left,right);slots.append(row)});card.append(slots);$('results').append(card)})}
+ $('captainresults').innerHTML='';for(const [key,x] of [...bestByCaptain].sort((a,b)=>b[1].gppScore-a[1].gppScore).slice(0,12)){const card=document.createElement('div');card.className='lineup';const title=document.createElement('h3');title.textContent=key.replace('|',' · ')+' — $'+salary(x.l).toLocaleString();card.append(title);const info=document.createElement('p');info.textContent='GPP score '+x.gppScore.toFixed(1)+' · Projection '+x.proj.toFixed(1)+' · P90 '+x.sim.p90.toFixed(1)+' · P99 '+x.sim.p99.toFixed(1);card.append(info);const names=document.createElement('p');names.textContent=x.l.filter(v=>v.slot!=='CPT').map(v=>v.p.name).join(' · ');card.append(names);$('captainresults').append(card)}
+ $('status').textContent=found.size.toLocaleString()+' salary/roster-valid candidates; '+scored.length+' simulated. '+(format==='showdown'?'Deterministic bounded search; ':'Random Classic search; ')+'Model-based, not calibrated win probabilities.';
+}
+function download(name,text){let a=document.createElement('a');a.href=URL.createObjectURL(new Blob([text],{type:'text/csv;charset=utf-8'}));a.download=name;document.body.append(a);a.click();setTimeout(()=>{URL.revokeObjectURL(a.href);a.remove()},500)}function csvVal(v){return '"'+String(v).replace(/"/g,'""')+'"'}
+
+function normalizePlayerName(s){return String(s||'').toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'').replace(/\b(jr|sr|ii|iii|iv)\b/g,'').replace(/[^a-z0-9]/g,'')}
+function normalizeTeam(s){const t=String(s||'').toUpperCase().trim();return ({JAC:'JAX',WSH:'WAS',LA:'LAR',STL:'LAR',SD:'LAC',OAK:'LV'})[t]||t}
+function playerMatchKey(p){return normalizePlayerName(p.name)+'|'+normalizeTeam(p.team)}
+function playerNameParts(name){
+ const cleaned=String(name||'').toLowerCase().replace(/\b(jr|sr|ii|iii|iv)\.?\b/g,'').trim();
+ // PBP frequently uses N.Folk or C.Santos instead of full first names.
+ const dotted=cleaned.match(/^([a-z])\.\s*([a-z][a-z'\-]+)$/);
+ if(dotted)return {initial:dotted[1],last:normalizePlayerName(dotted[2])};
+ const parts=cleaned.replace(/[^a-z .'-]/g,' ').split(/\s+/).filter(Boolean);
+ if(parts.length<2)return null;
+ return {initial:normalizePlayerName(parts[0]).slice(0,1),last:normalizePlayerName(parts[parts.length-1])};
+}
+function matchPlayer(p,records,exact){
+ if(p.position==='DST'){
+  const matches=records.filter(b=>b.position==='DST'&&normalizeTeam(b.team)===normalizeTeam(p.team));
+  return matches.length===1?matches[0]:null;
+ }
+ const found=exact.get(playerMatchKey(p));
+ if(found&&(!found.position||found.position===p.position))return found;
+ const target=playerNameParts(p.name);if(!target)return null;
+ const candidates=records.filter(b=>{
+  if(normalizeTeam(b.team)!==normalizeTeam(p.team)||b.position!==p.position)return false;
+  const parts=playerNameParts(b.name);
+  return parts&&parts.last===target.last&&parts.initial===target.initial;
+ });
+ // Do not guess if multiple same-team players share the same initial and surname.
+ return candidates.length===1?candidates[0]:null;
+}
+$('baselines').onclick=async()=>{
+ if(!pool.length){$('status').textContent='First import the correct DraftKings contest CSV with exact salaries. The model cannot supply salaries.';return}
+ $('datafresh').textContent='Loading current-season NFL data…';
+ try{
+  const res=await fetch('./data/nfl_baselines.json?ts='+Date.now(),{cache:'no-store'});
+  if(!res.ok)throw Error('No published player data (HTTP '+res.status+'). Run GitHub Actions first.');
+  const data=await res.json();if(!Array.isArray(data.players))throw Error('Unexpected player data format');
+  const currentYear=new Date().getUTCFullYear();
+  if(Number(data.season)!==currentYear)throw Error('Stats source only provides '+data.season+' data; refusing to label it current '+currentYear+' season. Check updater logs or source availability.');
+  const map=new Map(data.players.map(p=>[playerMatchKey(p),p]));for(const p of pool){p.projection=null;p.ceiling=null;p.modeled=false;}
+  let matched=0,unmatched=0;let missingExamples=[];
+  for(const p of pool){
+   const b=matchPlayer(p,data.players,map);
+   if(!b){unmatched++;if(missingExamples.length<5)missingExamples.push(p.name+' ('+p.team+')');continue}
+   const recent=Number(b.recent_ppr_avg ?? b.historical_ppr_avg);
+   const baseline=Number(b.historical_ppr_avg);
+   if(!Number.isFinite(recent)||!Number.isFinite(baseline)){unmatched++;continue;}
+   const opp=String(p.opponent||'').toUpperCase().replace(/^@/,'').trim();
+   const allowed=data.defense_allowed_by_position?.[p.position]?.[opp];
+   const league=data.league_allowed_by_position?.[p.position];
+   const ratio=p.position==='K'||p.position==='DST'?1:(Number(allowed)>0&&Number(league)>0 ? Number(allowed)/Number(league):1);
+   const factor=Math.max(.82,Math.min(1.18,1+.45*(ratio-1)));
+   p.projection=Math.round((.6*recent+.4*baseline)*factor*100)/100;
+   const q=Number(b.ppr_p90);const spread=Number(b.ppr_stddev);const empirical=Number.isFinite(q)&&q>=0?q:NaN;const volatility=Number.isFinite(spread)&&spread>=0?spread:NaN;if(!Number.isFinite(empirical)||!Number.isFinite(volatility)){unmatched++;continue}const n=Number(b.games)||0;const shrink=n/(n+4);const tail=Math.max(0,empirical-baseline);const conservativeTail=Math.max(0,1.282*volatility);const uplift=shrink*tail+(1-shrink)*conservativeTail;p.ceiling=Math.round(Math.max(p.projection,p.projection+uplift*factor)*100)/100;p.modeled=true;
+   matched++;
+  }
+  lineups=[];rankedGroups={cash:[],gpp:[]};render();
+  $('datafresh').textContent='NFL '+data.season+' through Week '+data.through_week+' · '+matched+' matched · '+pool.filter(p=>p.modeled&&p.position==='K').length+' K · '+pool.filter(p=>p.modeled&&p.position==='DST').length+' DST';
+  $('status').textContent='Applied 2026 projections and empirical ceilings to '+matched+' of '+pool.length+' players ('+unmatched+' unmatched). '+(missingExamples.length?'Examples: '+missingExamples.join(', ')+'. ':'')+'Offense is estimated PPR; kicker/defense scores use play-by-play approximations (not exact DraftKings scoring); manual status/opportunity controls are not live injury verification. Check official inactives, salary, opponents and ownership.';
+ }catch(e){$('datafresh').textContent='Current-season player data unavailable';$('status').textContent=e.message}
+};
+$('demo').onclick=demo;$('run').onclick=()=>{try{optimize()}catch(e){$('status').textContent='Optimizer error: '+e.message;console.error(e)}};$('csv').onchange=async e=>{let f=e.target.files[0];if(!f)return;try{pool=parseCSV(await f.text());lineups=[];render();$('status').textContent='Loaded '+pool.length+' players from '+f.name+'. Now tap Apply current-season matchup estimates. Only modeled players will be eligible.'}catch(err){$('status').textContent='CSV error: '+err.message}};$('template').onclick=()=>download('dfs_player_template.csv','name,team,opponent,position,salary,active,game\n');$('export').onclick=()=>{if(!lineups.length){$('status').textContent='Generate lineups before exporting.';return}let rows=['strategy,lineup,slot,name,team,position,base_salary,roster_salary,projection,ownership'];let groups=$('risk').value==='both'?['cash','gpp']:[$('risk').value];groups.forEach(type=>rankedGroups[type].forEach((x,i)=>x.l.forEach(v=>rows.push([type,i+1,v.slot,v.p.name,v.p.team,v.p.position,v.p.salary,Math.round(v.p.salary*(v.slot==='CPT'?1.5:1)),v.p.projection,v.p.ownership??''].map(csvVal).join(',')))));download('dfs_lineups.csv',rows.join('\n'))};
+
+let nflMatchups=[];
+async function loadMatchups(){
+ const select=$('matchup');$('matchupstatus').textContent='Loading schedule…';
+ try{
+  const response=await fetch('./data/nfl_matchups.json?ts='+Date.now(),{cache:'no-store'});
+  if(!response.ok)throw Error('Schedule not published yet (HTTP '+response.status+')');
+  const data=await response.json();
+  if(!Array.isArray(data.games))throw Error('Unexpected schedule data');
+  nflMatchups=data.games;
+  select.innerHTML='';
+  if(!nflMatchups.length){select.add(new Option('No upcoming games found',''));$('matchupstatus').textContent='No upcoming games in published feed';return}
+  select.add(new Option('Choose a matchup…',''));
+  for(const g of nflMatchups){
+    const date=new Date(g.kickoff_utc);
+    select.add(new Option(`${g.away} @ ${g.home} · ${date.toLocaleString([], {month:'short',day:'numeric',hour:'numeric',minute:'2-digit'})}`,g.id));
+  }
+  $('matchupstatus').textContent=`${nflMatchups.length} games · updated ${new Date(data.updated_utc).toLocaleString()}`;
+ }catch(e){select.innerHTML='<option value="">Schedule unavailable</option>';$('matchupstatus').textContent=e.message+'; run the GitHub updater.'}
+}
+$('refreshmatchups').onclick=loadMatchups;
+$('filtermatchup').onclick=()=>{
+ const game=nflMatchups.find(g=>g.id===$('matchup').value);
+ if(!game){$('status').textContent='Select a matchup first.';return}
+ if(!pool.length){$('status').textContent='Import the exact DraftKings slate CSV before filtering. NFL schedule data does not contain DraftKings salaries.';return}
+ const before=pool.length;
+ const keep=pool.filter(p=>[game.home,game.away].includes(p.team.toUpperCase()));
+ if(!keep.length){$('status').textContent=`No player teams matched ${game.away} @ ${game.home}. Check team codes in your CSV. Nothing was changed.`;return}
+ pool=keep;lineups=[];rankedGroups={cash:[],gpp:[]};render();
+ $('status').textContent=`Selected ${game.away} @ ${game.home}. Retained ${pool.length}/${before} players. Verify salary, inactive status and eligibility before entering.`;
+};
+loadMatchups();
+</script></body></html>
