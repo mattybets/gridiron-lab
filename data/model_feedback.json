@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "generated_utc": "2026-10-19T21:03:09.390442+00:00",
+  "generated_utc": "2026-10-19T21:03:30.221932+00:00",
   "contest_count": 4,
   "known_winner_count": 3,
   "mean_lineup_points": 109.94,
@@ -168,9 +168,9 @@
       "player_count": 31,
       "lineup_count": 10,
       "status": "partial_actuals",
-      "matched_player_count": 4,
-      "mean_absolute_player_error": 9.305,
-      "mean_signed_player_error": 4.115,
+      "matched_player_count": 8,
+      "mean_absolute_player_error": 8.578,
+      "mean_signed_player_error": -0.242,
       "evaluated_lineups": [],
       "gpp_candidate_count": 5
     },
