@@ -1,0 +1,65 @@
+{
+  "schema_version": 1,
+  "generated_utc": "2026-10-19T00:00:00Z",
+  "contest_count": 4,
+  "known_winner_count": 3,
+  "mean_lineup_points": 109.94,
+  "mean_gap_to_winner": 29,
+  "roi_complete_records": 1,
+  "roi_percent_complete_records": 66.67,
+  "pregame_snapshot_count": 0,
+  "full_field_count": 0,
+  "records": [
+    {
+      "id": "2026-10-05-mnf",
+      "date": "2026-10-05",
+      "lineup_points": 119.69,
+      "finish_rank": 6540,
+      "winner_points": 143.9,
+      "gap_to_winner": 24.21,
+      "has_player_scores": false,
+      "has_pregame_snapshot": false,
+      "has_verified_full_field": false
+    },
+    {
+      "id": "2026-10-09-mnf",
+      "date": "2026-10-09",
+      "lineup_points": 99,
+      "finish_rank": 17111,
+      "winner_points": 136.59,
+      "gap_to_winner": 37.59,
+      "has_player_scores": false,
+      "has_pregame_snapshot": false,
+      "has_verified_full_field": false
+    },
+    {
+      "id": "2026-10-12-snf",
+      "date": "2026-10-12",
+      "lineup_points": 79.7,
+      "finish_rank": 20757,
+      "winner_points": null,
+      "gap_to_winner": null,
+      "has_player_scores": false,
+      "has_pregame_snapshot": false,
+      "has_verified_full_field": false
+    },
+    {
+      "id": "2026-10-12-bills-rams",
+      "date": "2026-10-12",
+      "lineup_points": 141.37,
+      "finish_rank": 21459,
+      "winner_points": 166.57,
+      "gap_to_winner": 25.2,
+      "has_player_scores": true,
+      "has_pregame_snapshot": false,
+      "has_verified_full_field": false
+    }
+  ],
+  "training_status": "not_trained",
+  "ranking_parameters_updated": false,
+  "limitations": [
+    "Historical outcomes are descriptive until matched with saved pre-kickoff projections and slate salaries.",
+    "Winning-score gaps do not identify the best alternative lineup or optimal ranking weights.",
+    "No model weights are changed from incomplete records."
+  ]
+}
