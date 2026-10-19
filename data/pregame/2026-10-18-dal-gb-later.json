@@ -1,0 +1,1135 @@
+{
+  "schema": "gridiron-lab-v6.6-snapshot",
+  "saved_at_utc": "2026-10-17T17:54:22.492Z",
+  "format": "showdown",
+  "matchup": "DAL @ GB · Oct 18 at 7:20 PM",
+  "model_note": "Projection model: 60% last 3 games + 40% last 6 games; ceiling from 2026 player-game upper-tail distribution, with limited-sample shrinkage and opponent adjustment. Offense is PPR-based; K/DST use play-by-play scoring estimates (DST points allowed approximated); manual availability/opportunity adjustments; no live injury or ownership feed.",
+  "excluded_players": [
+    {
+      "name": "Josh Jacobs",
+      "team": "GB",
+      "reason": "No unambiguous player match in published stats"
+    },
+    {
+      "name": "Joe Milton III",
+      "team": "DAL",
+      "reason": "No unambiguous player match in published stats"
+    },
+    {
+      "name": "Kedon Slovis",
+      "team": "GB",
+      "reason": "No unambiguous player match in published stats"
+    },
+    {
+      "name": "Sam Howell",
+      "team": "DAL",
+      "reason": "No unambiguous player match in published stats"
+    },
+    {
+      "name": "Tyrod Taylor",
+      "team": "GB",
+      "reason": "No unambiguous player match in published stats"
+    },
+    {
+      "name": "Lenny Krieg",
+      "team": "GB",
+      "reason": "No unambiguous player match in published stats"
+    },
+    {
+      "name": "Pierre Strong Jr.",
+      "team": "GB",
+      "reason": "No unambiguous player match in published stats"
+    },
+    {
+      "name": "Chris Brooks",
+      "team": "GB",
+      "reason": "out"
+    },
+    {
+      "name": "Malik Davis",
+      "team": "DAL",
+      "reason": "No unambiguous player match in published stats"
+    },
+    {
+      "name": "Damon Bankston",
+      "team": "GB",
+      "reason": "No unambiguous player match in published stats"
+    },
+    {
+      "name": "Israel Abanikanda",
+      "team": "DAL",
+      "reason": "No unambiguous player match in published stats"
+    },
+    {
+      "name": "Jayden Reed",
+      "team": "GB",
+      "reason": "out"
+    },
+    {
+      "name": "Savion Williams",
+      "team": "GB",
+      "reason": "No unambiguous player match in published stats"
+    },
+    {
+      "name": "Isaiah Neyor",
+      "team": "GB",
+      "reason": "No unambiguous player match in published stats"
+    },
+    {
+      "name": "Coleman Owen",
+      "team": "GB",
+      "reason": "No unambiguous player match in published stats"
+    },
+    {
+      "name": "Quincy Skinner Jr.",
+      "team": "GB",
+      "reason": "No unambiguous player match in published stats"
+    },
+    {
+      "name": "Jordan Hudson",
+      "team": "DAL",
+      "reason": "No unambiguous player match in published stats"
+    },
+    {
+      "name": "Anthony Smith",
+      "team": "DAL",
+      "reason": "No unambiguous player match in published stats"
+    },
+    {
+      "name": "Camden Brown",
+      "team": "DAL",
+      "reason": "No unambiguous player match in published stats"
+    },
+    {
+      "name": "Josh Whyle",
+      "team": "GB",
+      "reason": "No unambiguous player match in published stats"
+    },
+    {
+      "name": "Thomas Yassmin",
+      "team": "GB",
+      "reason": "No unambiguous player match in published stats"
+    },
+    {
+      "name": "Mark Redman",
+      "team": "GB",
+      "reason": "No unambiguous player match in published stats"
+    },
+    {
+      "name": "Princeton Fant",
+      "team": "DAL",
+      "reason": "No unambiguous player match in published stats"
+    },
+    {
+      "name": "Michael Trigg",
+      "team": "DAL",
+      "reason": "No unambiguous player match in published stats"
+    },
+    {
+      "name": "Drake Dabney",
+      "team": "GB",
+      "reason": "No unambiguous player match in published stats"
+    },
+    {
+      "name": "James Mitchell",
+      "team": "DAL",
+      "reason": "No unambiguous player match in published stats"
+    },
+    {
+      "name": "DJ Rogers",
+      "team": "DAL",
+      "reason": "No unambiguous player match in published stats"
+    },
+    {
+      "name": "Luke Musgrave",
+      "team": "GB",
+      "reason": "No unambiguous player match in published stats"
+    }
+  ],
+  "settings": {
+    "iterations": 1200,
+    "simulation_limit": 3000,
+    "captain_exposure": 40,
+    "qb_restriction": "same"
+  },
+  "players": [
+    {
+      "name": "CeeDee Lamb",
+      "team": "DAL",
+      "position": "WR",
+      "salary": 10800,
+      "projection": 21.46,
+      "ceiling": 38.98,
+      "model_games": 5,
+      "source": "2026 published baseline",
+      "confidence": "Moderate",
+      "role_review": "unreviewed",
+      "status": "unknown",
+      "key": "ceedeelamb|DAL"
+    },
+    {
+      "name": "Dak Prescott",
+      "team": "DAL",
+      "position": "QB",
+      "salary": 10400,
+      "projection": 15.33,
+      "ceiling": 23.68,
+      "model_games": 5,
+      "source": "2026 published baseline",
+      "confidence": "Moderate",
+      "role_review": "unreviewed",
+      "status": "unknown",
+      "key": "dakprescott|DAL"
+    },
+    {
+      "name": "Javonte Williams",
+      "team": "DAL",
+      "position": "RB",
+      "salary": 9600,
+      "projection": 23.39,
+      "ceiling": 36.32,
+      "model_games": 5,
+      "source": "2026 published baseline",
+      "confidence": "Moderate",
+      "role_review": "unreviewed",
+      "status": "unknown",
+      "key": "javontewilliams|DAL"
+    },
+    {
+      "name": "Jordan Love",
+      "team": "GB",
+      "position": "QB",
+      "salary": 9400,
+      "projection": 20.83,
+      "ceiling": 28.17,
+      "model_games": 5,
+      "source": "2026 published baseline",
+      "confidence": "Moderate",
+      "role_review": "unreviewed",
+      "status": "unknown",
+      "key": "jordanlove|GB"
+    },
+    {
+      "name": "Christian Watson",
+      "team": "GB",
+      "position": "WR",
+      "salary": 9000,
+      "projection": 22.19,
+      "ceiling": 34.33,
+      "model_games": 5,
+      "source": "2026 published baseline",
+      "confidence": "Moderate",
+      "role_review": "unreviewed",
+      "status": "unknown",
+      "key": "christianwatson|GB"
+    },
+    {
+      "name": "George Pickens",
+      "team": "DAL",
+      "position": "WR",
+      "salary": 8800,
+      "projection": 15.56,
+      "ceiling": 27.57,
+      "model_games": 5,
+      "source": "2026 published baseline",
+      "confidence": "Moderate",
+      "role_review": "unreviewed",
+      "status": "unknown",
+      "key": "georgepickens|DAL"
+    },
+    {
+      "name": "Matthew Golden",
+      "team": "GB",
+      "position": "WR",
+      "salary": 8000,
+      "projection": 17.59,
+      "ceiling": 23.34,
+      "model_games": 5,
+      "source": "2026 published baseline",
+      "confidence": "Moderate",
+      "role_review": "unreviewed",
+      "status": "unknown",
+      "key": "matthewgolden|GB"
+    },
+    {
+      "name": "MarShawn Lloyd",
+      "team": "GB",
+      "position": "RB",
+      "salary": 7400,
+      "projection": 10.25,
+      "ceiling": 18.08,
+      "model_games": 5,
+      "source": "2026 published baseline",
+      "confidence": "Moderate",
+      "role_review": "unreviewed",
+      "status": "unknown",
+      "key": "marshawnlloyd|GB"
+    },
+    {
+      "name": "Tucker Kraft",
+      "team": "GB",
+      "position": "TE",
+      "salary": 6800,
+      "projection": 10.73,
+      "ceiling": 17.1,
+      "model_games": 5,
+      "source": "2026 published baseline",
+      "confidence": "Moderate",
+      "role_review": "unreviewed",
+      "status": "unknown",
+      "key": "tuckerkraft|GB"
+    },
+    {
+      "name": "Jake Ferguson",
+      "team": "DAL",
+      "position": "TE",
+      "salary": 5600,
+      "projection": 6.02,
+      "ceiling": 14.99,
+      "model_games": 5,
+      "source": "2026 published baseline",
+      "confidence": "Moderate",
+      "role_review": "unreviewed",
+      "status": "unknown",
+      "key": "jakeferguson|DAL"
+    },
+    {
+      "name": "Brandon Aubrey",
+      "team": "DAL",
+      "position": "K",
+      "salary": 5200,
+      "projection": 9.28,
+      "ceiling": 15.93,
+      "model_games": 5,
+      "source": "2026 published baseline",
+      "confidence": "Moderate",
+      "role_review": "unreviewed",
+      "status": "unknown",
+      "key": "brandonaubrey|DAL"
+    },
+    {
+      "name": "Trey Smack",
+      "team": "GB",
+      "position": "K",
+      "salary": 4800,
+      "projection": 5.6,
+      "ceiling": 11,
+      "model_games": 5,
+      "source": "2026 published baseline",
+      "confidence": "Moderate",
+      "role_review": "unreviewed",
+      "status": "unknown",
+      "key": "treysmack|GB"
+    },
+    {
+      "name": "Ryan Flournoy",
+      "team": "DAL",
+      "position": "WR",
+      "salary": 4400,
+      "projection": 7.4,
+      "ceiling": 11.64,
+      "model_games": 5,
+      "source": "2026 published baseline",
+      "confidence": "Moderate",
+      "role_review": "unreviewed",
+      "status": "unknown",
+      "key": "ryanflournoy|DAL"
+    },
+    {
+      "name": "Packers",
+      "team": "GB",
+      "position": "DST",
+      "salary": 4000,
+      "projection": 7.2,
+      "ceiling": 17.8,
+      "model_games": 5,
+      "source": "2026 published baseline",
+      "confidence": "Moderate",
+      "role_review": "unreviewed",
+      "status": "unknown",
+      "key": "packers|GB"
+    },
+    {
+      "name": "Cowboys",
+      "team": "DAL",
+      "position": "DST",
+      "salary": 3600,
+      "projection": 0.76,
+      "ceiling": 2.5,
+      "model_games": 5,
+      "source": "2026 published baseline",
+      "confidence": "Moderate",
+      "role_review": "unreviewed",
+      "status": "unknown",
+      "key": "cowboys|DAL"
+    },
+    {
+      "name": "Kaleb Johnson",
+      "team": "GB",
+      "position": "RB",
+      "salary": 3400,
+      "projection": 2.52,
+      "ceiling": 3.85,
+      "model_games": 5,
+      "source": "2026 published baseline",
+      "confidence": "Moderate",
+      "role_review": "unreviewed",
+      "status": "unknown",
+      "key": "kalebjohnson|GB"
+    },
+    {
+      "name": "Bo Melton",
+      "team": "GB",
+      "position": "WR",
+      "salary": 2800,
+      "projection": 1.63,
+      "ceiling": 4.88,
+      "model_games": 5,
+      "source": "2026 published baseline",
+      "confidence": "Moderate",
+      "role_review": "unreviewed",
+      "status": "unknown",
+      "key": "bomelton|GB"
+    },
+    {
+      "name": "Skyy Moore",
+      "team": "GB",
+      "position": "WR",
+      "salary": 2400,
+      "projection": 2.52,
+      "ceiling": 6.13,
+      "model_games": 5,
+      "source": "2026 published baseline",
+      "confidence": "Moderate",
+      "role_review": "unreviewed",
+      "status": "unknown",
+      "key": "skyymoore|GB"
+    },
+    {
+      "name": "KaVontae Turpin",
+      "team": "DAL",
+      "position": "WR",
+      "salary": 2000,
+      "projection": 3.68,
+      "ceiling": 8.64,
+      "model_games": 5,
+      "source": "2026 published baseline",
+      "confidence": "Moderate",
+      "role_review": "unreviewed",
+      "status": "unknown",
+      "key": "kavontaeturpin|DAL"
+    },
+    {
+      "name": "Jonnu Smith",
+      "team": "GB",
+      "position": "TE",
+      "salary": 1600,
+      "projection": 4.49,
+      "ceiling": 6.87,
+      "model_games": 3,
+      "source": "2026 published baseline (SMALL SAMPLE: 3 games)",
+      "confidence": "Limited",
+      "role_review": "unreviewed",
+      "status": "unknown",
+      "key": "jonnusmith|GB"
+    },
+    {
+      "name": "Tyler Goodson",
+      "team": "DAL",
+      "position": "RB",
+      "salary": 1400,
+      "projection": 2.23,
+      "ceiling": 3.25,
+      "model_games": 2,
+      "source": "2026 published baseline (SMALL SAMPLE: 2 games)",
+      "confidence": "Limited",
+      "role_review": "unreviewed",
+      "status": "unknown",
+      "key": "tylergoodson|DAL"
+    },
+    {
+      "name": "Luke Schoonmaker",
+      "team": "DAL",
+      "position": "TE",
+      "salary": 1200,
+      "projection": 1.73,
+      "ceiling": 1.89,
+      "model_games": 3,
+      "source": "2026 published baseline (SMALL SAMPLE: 3 games)",
+      "confidence": "Limited",
+      "role_review": "unreviewed",
+      "status": "unknown",
+      "key": "lukeschoonmaker|DAL"
+    },
+    {
+      "name": "J. Michael Sturdivant",
+      "team": "GB",
+      "position": "WR",
+      "salary": 1000,
+      "projection": 1.63,
+      "ceiling": 5.17,
+      "model_games": 4,
+      "source": "2026 published baseline",
+      "confidence": "Moderate",
+      "role_review": "unreviewed",
+      "status": "unknown",
+      "key": "jmichaelsturdivant|GB"
+    },
+    {
+      "name": "Jonathan Mingo",
+      "team": "DAL",
+      "position": "WR",
+      "salary": 800,
+      "projection": 1.94,
+      "ceiling": 3.93,
+      "model_games": 3,
+      "source": "2026 published baseline (SMALL SAMPLE: 3 games)",
+      "confidence": "Limited",
+      "role_review": "unreviewed",
+      "status": "unknown",
+      "key": "jonathanmingo|DAL"
+    },
+    {
+      "name": "Brevyn Spann-Ford",
+      "team": "DAL",
+      "position": "TE",
+      "salary": 600,
+      "projection": 0.94,
+      "ceiling": 2.73,
+      "model_games": 5,
+      "source": "2026 published baseline",
+      "confidence": "Moderate",
+      "role_review": "unreviewed",
+      "status": "unknown",
+      "key": "brevynspannford|DAL"
+    },
+    {
+      "name": "Hunter Luepke",
+      "team": "DAL",
+      "position": "RB",
+      "salary": 400,
+      "projection": 0.7,
+      "ceiling": 1.33,
+      "model_games": 4,
+      "source": "2026 published baseline",
+      "confidence": "Moderate",
+      "role_review": "unreviewed",
+      "status": "unknown",
+      "key": "hunterluepke|DAL"
+    },
+    {
+      "name": "Chris Brooks",
+      "team": "GB",
+      "position": "RB",
+      "salary": 200,
+      "projection": 3.39,
+      "ceiling": 4.93,
+      "model_games": 4,
+      "source": "2026 published baseline",
+      "confidence": "Moderate",
+      "role_review": "unreviewed",
+      "status": "out",
+      "key": "chrisbrooks|GB"
+    },
+    {
+      "name": "Emari Demercado",
+      "team": "DAL",
+      "position": "RB",
+      "salary": 200,
+      "projection": 0.86,
+      "ceiling": 0.93,
+      "model_games": 2,
+      "source": "2026 published baseline (SMALL SAMPLE: 2 games)",
+      "confidence": "Limited",
+      "role_review": "unreviewed",
+      "status": "unknown",
+      "key": "emaridemercado|DAL"
+    },
+    {
+      "name": "Jayden Reed",
+      "team": "GB",
+      "position": "WR",
+      "salary": 200,
+      "projection": 3.34,
+      "ceiling": 5.57,
+      "model_games": 2,
+      "source": "2026 published baseline (SMALL SAMPLE: 2 games)",
+      "confidence": "Limited",
+      "role_review": "unreviewed",
+      "status": "out",
+      "key": "jaydenreed|GB"
+    }
+  ],
+  "lineups": [
+    {
+      "strategy": "cash",
+      "index": 1,
+      "projected": 112.19500000000001,
+      "modeled_p90": 146.36774382034983,
+      "modeled_p99": 174.80662930687078,
+      "players": [
+        {
+          "slot": "CPT",
+          "name": "Jonnu Smith",
+          "team": "GB",
+          "position": "TE",
+          "salary": 1600,
+          "key": "jonnusmith|GB"
+        },
+        {
+          "slot": "FLEX",
+          "name": "CeeDee Lamb",
+          "team": "DAL",
+          "position": "WR",
+          "salary": 10800,
+          "key": "ceedeelamb|DAL"
+        },
+        {
+          "slot": "FLEX",
+          "name": "Javonte Williams",
+          "team": "DAL",
+          "position": "RB",
+          "salary": 9600,
+          "key": "javontewilliams|DAL"
+        },
+        {
+          "slot": "FLEX",
+          "name": "Christian Watson",
+          "team": "GB",
+          "position": "WR",
+          "salary": 9000,
+          "key": "christianwatson|GB"
+        },
+        {
+          "slot": "FLEX",
+          "name": "Jordan Love",
+          "team": "GB",
+          "position": "QB",
+          "salary": 9400,
+          "key": "jordanlove|GB"
+        },
+        {
+          "slot": "FLEX",
+          "name": "Matthew Golden",
+          "team": "GB",
+          "position": "WR",
+          "salary": 8000,
+          "key": "matthewgolden|GB"
+        }
+      ]
+    },
+    {
+      "strategy": "cash",
+      "index": 2,
+      "projected": 112.11500000000001,
+      "modeled_p90": 143.56537903639187,
+      "modeled_p99": 169.25806635849204,
+      "players": [
+        {
+          "slot": "CPT",
+          "name": "Javonte Williams",
+          "team": "DAL",
+          "position": "RB",
+          "salary": 9600,
+          "key": "javontewilliams|DAL"
+        },
+        {
+          "slot": "FLEX",
+          "name": "Christian Watson",
+          "team": "GB",
+          "position": "WR",
+          "salary": 9000,
+          "key": "christianwatson|GB"
+        },
+        {
+          "slot": "FLEX",
+          "name": "George Pickens",
+          "team": "DAL",
+          "position": "WR",
+          "salary": 8800,
+          "key": "georgepickens|DAL"
+        },
+        {
+          "slot": "FLEX",
+          "name": "Jordan Love",
+          "team": "GB",
+          "position": "QB",
+          "salary": 9400,
+          "key": "jordanlove|GB"
+        },
+        {
+          "slot": "FLEX",
+          "name": "Matthew Golden",
+          "team": "GB",
+          "position": "WR",
+          "salary": 8000,
+          "key": "matthewgolden|GB"
+        },
+        {
+          "slot": "FLEX",
+          "name": "Emari Demercado",
+          "team": "DAL",
+          "position": "RB",
+          "salary": 200,
+          "key": "emaridemercado|DAL"
+        }
+      ]
+    },
+    {
+      "strategy": "cash",
+      "index": 3,
+      "projected": 111.95500000000001,
+      "modeled_p90": 145.4782680640845,
+      "modeled_p99": 173.42333104296313,
+      "players": [
+        {
+          "slot": "CPT",
+          "name": "Javonte Williams",
+          "team": "DAL",
+          "position": "RB",
+          "salary": 9600,
+          "key": "javontewilliams|DAL"
+        },
+        {
+          "slot": "FLEX",
+          "name": "Christian Watson",
+          "team": "GB",
+          "position": "WR",
+          "salary": 9000,
+          "key": "christianwatson|GB"
+        },
+        {
+          "slot": "FLEX",
+          "name": "George Pickens",
+          "team": "DAL",
+          "position": "WR",
+          "salary": 8800,
+          "key": "georgepickens|DAL"
+        },
+        {
+          "slot": "FLEX",
+          "name": "Jordan Love",
+          "team": "GB",
+          "position": "QB",
+          "salary": 9400,
+          "key": "jordanlove|GB"
+        },
+        {
+          "slot": "FLEX",
+          "name": "Matthew Golden",
+          "team": "GB",
+          "position": "WR",
+          "salary": 8000,
+          "key": "matthewgolden|GB"
+        },
+        {
+          "slot": "FLEX",
+          "name": "Hunter Luepke",
+          "team": "DAL",
+          "position": "RB",
+          "salary": 400,
+          "key": "hunterluepke|DAL"
+        }
+      ]
+    },
+    {
+      "strategy": "cash",
+      "index": 4,
+      "projected": 110.67500000000001,
+      "modeled_p90": 143.0817257440217,
+      "modeled_p99": 165.04887453306597,
+      "players": [
+        {
+          "slot": "CPT",
+          "name": "Jordan Love",
+          "team": "GB",
+          "position": "QB",
+          "salary": 9400,
+          "key": "jordanlove|GB"
+        },
+        {
+          "slot": "FLEX",
+          "name": "Javonte Williams",
+          "team": "DAL",
+          "position": "RB",
+          "salary": 9600,
+          "key": "javontewilliams|DAL"
+        },
+        {
+          "slot": "FLEX",
+          "name": "Christian Watson",
+          "team": "GB",
+          "position": "WR",
+          "salary": 9000,
+          "key": "christianwatson|GB"
+        },
+        {
+          "slot": "FLEX",
+          "name": "George Pickens",
+          "team": "DAL",
+          "position": "WR",
+          "salary": 8800,
+          "key": "georgepickens|DAL"
+        },
+        {
+          "slot": "FLEX",
+          "name": "Matthew Golden",
+          "team": "GB",
+          "position": "WR",
+          "salary": 8000,
+          "key": "matthewgolden|GB"
+        },
+        {
+          "slot": "FLEX",
+          "name": "Hunter Luepke",
+          "team": "DAL",
+          "position": "RB",
+          "salary": 400,
+          "key": "hunterluepke|DAL"
+        }
+      ]
+    },
+    {
+      "strategy": "cash",
+      "index": 5,
+      "projected": 111.595,
+      "modeled_p90": 144.33865872110013,
+      "modeled_p99": 173.9853663872848,
+      "players": [
+        {
+          "slot": "CPT",
+          "name": "Christian Watson",
+          "team": "GB",
+          "position": "WR",
+          "salary": 9000,
+          "key": "christianwatson|GB"
+        },
+        {
+          "slot": "FLEX",
+          "name": "Javonte Williams",
+          "team": "DAL",
+          "position": "RB",
+          "salary": 9600,
+          "key": "javontewilliams|DAL"
+        },
+        {
+          "slot": "FLEX",
+          "name": "George Pickens",
+          "team": "DAL",
+          "position": "WR",
+          "salary": 8800,
+          "key": "georgepickens|DAL"
+        },
+        {
+          "slot": "FLEX",
+          "name": "Jordan Love",
+          "team": "GB",
+          "position": "QB",
+          "salary": 9400,
+          "key": "jordanlove|GB"
+        },
+        {
+          "slot": "FLEX",
+          "name": "Matthew Golden",
+          "team": "GB",
+          "position": "WR",
+          "salary": 8000,
+          "key": "matthewgolden|GB"
+        },
+        {
+          "slot": "FLEX",
+          "name": "Brevyn Spann-Ford",
+          "team": "DAL",
+          "position": "TE",
+          "salary": 600,
+          "key": "brevynspannford|DAL"
+        }
+      ]
+    },
+    {
+      "strategy": "gpp",
+      "index": 1,
+      "projected": 104.21000000000001,
+      "modeled_p90": 151.81267796363898,
+      "modeled_p99": 192.80819945432512,
+      "players": [
+        {
+          "slot": "CPT",
+          "name": "CeeDee Lamb",
+          "team": "DAL",
+          "position": "WR",
+          "salary": 10800,
+          "key": "ceedeelamb|DAL"
+        },
+        {
+          "slot": "FLEX",
+          "name": "Javonte Williams",
+          "team": "DAL",
+          "position": "RB",
+          "salary": 9600,
+          "key": "javontewilliams|DAL"
+        },
+        {
+          "slot": "FLEX",
+          "name": "Christian Watson",
+          "team": "GB",
+          "position": "WR",
+          "salary": 9000,
+          "key": "christianwatson|GB"
+        },
+        {
+          "slot": "FLEX",
+          "name": "George Pickens",
+          "team": "DAL",
+          "position": "WR",
+          "salary": 8800,
+          "key": "georgepickens|DAL"
+        },
+        {
+          "slot": "FLEX",
+          "name": "Packers",
+          "team": "GB",
+          "position": "DST",
+          "salary": 4000,
+          "key": "packers|GB"
+        },
+        {
+          "slot": "FLEX",
+          "name": "KaVontae Turpin",
+          "team": "DAL",
+          "position": "WR",
+          "salary": 2000,
+          "key": "kavontaeturpin|DAL"
+        }
+      ]
+    },
+    {
+      "strategy": "gpp",
+      "index": 2,
+      "projected": 110.28999999999999,
+      "modeled_p90": 152.0629692777715,
+      "modeled_p99": 184.15896643363743,
+      "players": [
+        {
+          "slot": "CPT",
+          "name": "CeeDee Lamb",
+          "team": "DAL",
+          "position": "WR",
+          "salary": 10800,
+          "key": "ceedeelamb|DAL"
+        },
+        {
+          "slot": "FLEX",
+          "name": "Javonte Williams",
+          "team": "DAL",
+          "position": "RB",
+          "salary": 9600,
+          "key": "javontewilliams|DAL"
+        },
+        {
+          "slot": "FLEX",
+          "name": "Christian Watson",
+          "team": "GB",
+          "position": "WR",
+          "salary": 9000,
+          "key": "christianwatson|GB"
+        },
+        {
+          "slot": "FLEX",
+          "name": "Jordan Love",
+          "team": "GB",
+          "position": "QB",
+          "salary": 9400,
+          "key": "jordanlove|GB"
+        },
+        {
+          "slot": "FLEX",
+          "name": "Packers",
+          "team": "GB",
+          "position": "DST",
+          "salary": 4000,
+          "key": "packers|GB"
+        },
+        {
+          "slot": "FLEX",
+          "name": "Jonnu Smith",
+          "team": "GB",
+          "position": "TE",
+          "salary": 1600,
+          "key": "jonnusmith|GB"
+        }
+      ]
+    },
+    {
+      "strategy": "gpp",
+      "index": 3,
+      "projected": 105.17500000000001,
+      "modeled_p90": 148.96345616187656,
+      "modeled_p99": 184.12640071636164,
+      "players": [
+        {
+          "slot": "CPT",
+          "name": "Javonte Williams",
+          "team": "DAL",
+          "position": "RB",
+          "salary": 9600,
+          "key": "javontewilliams|DAL"
+        },
+        {
+          "slot": "FLEX",
+          "name": "CeeDee Lamb",
+          "team": "DAL",
+          "position": "WR",
+          "salary": 10800,
+          "key": "ceedeelamb|DAL"
+        },
+        {
+          "slot": "FLEX",
+          "name": "Christian Watson",
+          "team": "GB",
+          "position": "WR",
+          "salary": 9000,
+          "key": "christianwatson|GB"
+        },
+        {
+          "slot": "FLEX",
+          "name": "George Pickens",
+          "team": "DAL",
+          "position": "WR",
+          "salary": 8800,
+          "key": "georgepickens|DAL"
+        },
+        {
+          "slot": "FLEX",
+          "name": "Packers",
+          "team": "GB",
+          "position": "DST",
+          "salary": 4000,
+          "key": "packers|GB"
+        },
+        {
+          "slot": "FLEX",
+          "name": "KaVontae Turpin",
+          "team": "DAL",
+          "position": "WR",
+          "salary": 2000,
+          "key": "kavontaeturpin|DAL"
+        }
+      ]
+    },
+    {
+      "strategy": "gpp",
+      "index": 4,
+      "projected": 104.57500000000002,
+      "modeled_p90": 148.26511139013263,
+      "modeled_p99": 183.66362057069242,
+      "players": [
+        {
+          "slot": "CPT",
+          "name": "Christian Watson",
+          "team": "GB",
+          "position": "WR",
+          "salary": 9000,
+          "key": "christianwatson|GB"
+        },
+        {
+          "slot": "FLEX",
+          "name": "CeeDee Lamb",
+          "team": "DAL",
+          "position": "WR",
+          "salary": 10800,
+          "key": "ceedeelamb|DAL"
+        },
+        {
+          "slot": "FLEX",
+          "name": "Javonte Williams",
+          "team": "DAL",
+          "position": "RB",
+          "salary": 9600,
+          "key": "javontewilliams|DAL"
+        },
+        {
+          "slot": "FLEX",
+          "name": "George Pickens",
+          "team": "DAL",
+          "position": "WR",
+          "salary": 8800,
+          "key": "georgepickens|DAL"
+        },
+        {
+          "slot": "FLEX",
+          "name": "Packers",
+          "team": "GB",
+          "position": "DST",
+          "salary": 4000,
+          "key": "packers|GB"
+        },
+        {
+          "slot": "FLEX",
+          "name": "KaVontae Turpin",
+          "team": "DAL",
+          "position": "WR",
+          "salary": 2000,
+          "key": "kavontaeturpin|DAL"
+        }
+      ]
+    },
+    {
+      "strategy": "gpp",
+      "index": 5,
+      "projected": 106.65500000000002,
+      "modeled_p90": 144.75074173039107,
+      "modeled_p99": 187.49883611528898,
+      "players": [
+        {
+          "slot": "CPT",
+          "name": "Christian Watson",
+          "team": "GB",
+          "position": "WR",
+          "salary": 9000,
+          "key": "christianwatson|GB"
+        },
+        {
+          "slot": "FLEX",
+          "name": "CeeDee Lamb",
+          "team": "DAL",
+          "position": "WR",
+          "salary": 10800,
+          "key": "ceedeelamb|DAL"
+        },
+        {
+          "slot": "FLEX",
+          "name": "Javonte Williams",
+          "team": "DAL",
+          "position": "RB",
+          "salary": 9600,
+          "key": "javontewilliams|DAL"
+        },
+        {
+          "slot": "FLEX",
+          "name": "George Pickens",
+          "team": "DAL",
+          "position": "WR",
+          "salary": 8800,
+          "key": "georgepickens|DAL"
+        },
+        {
+          "slot": "FLEX",
+          "name": "Brandon Aubrey",
+          "team": "DAL",
+          "position": "K",
+          "salary": 5200,
+          "key": "brandonaubrey|DAL"
+        },
+        {
+          "slot": "FLEX",
+          "name": "KaVontae Turpin",
+          "team": "DAL",
+          "position": "WR",
+          "salary": 2000,
+          "key": "kavontaeturpin|DAL"
+        }
+      ]
+    }
+  ]
+}
