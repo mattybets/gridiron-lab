@@ -1,0 +1,13 @@
+{
+  "schema_version": 1,
+  "enabled": false,
+  "weights": {
+    "p90": 0.45,
+    "mean": 0.25,
+    "projection": 0.2,
+    "ceiling": 0.1
+  },
+  "validated_games": 0,
+  "method": "leave-one-game-out",
+  "reason": "Awaiting complete verified slate actuals for at least four independent games"
+}
