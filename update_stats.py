@@ -107,7 +107,6 @@ def main():
                         key=(week,defense)
                         if flag('sack'): defense_games_pbp[key]+=1
                         if flag('interception'): defense_games_pbp[key]+=2
-                        if flag('fumble_lost'): defense_games_pbp[key]+=2
                         # PBP defensive touchdowns and special teams returns need
                         # separate attribution; don't invent them here.
                     kicker_id=(play.get('kicker_player_id') or '').strip()
