@@ -1,0 +1,102 @@
+{
+  "schema_version": 1,
+  "source_filename": "MNF PreKick.json",
+  "source_saved_at_utc": "2026-10-19T20:29:36.750Z",
+  "matchup": "WSH @ SF · Oct 19 at 7:15 PM",
+  "source_schema": "gridiron-lab-v8-research-snapshot",
+  "source_player_count": 31,
+  "source_lineup_count": 10,
+  "settings": {
+    "iterations": 1200,
+    "simulation_limit": 3000,
+    "captain_exposure": 40,
+    "qb_restriction": "same"
+  },
+  "selected_gpp_lineup": {
+    "index": 1,
+    "projected": 104.12110657142858,
+    "modeled_p90": 135.7937932358375,
+    "modeled_p99": 164.51284150034388,
+    "players": [
+      {
+        "slot": "CPT",
+        "name": "Brock Purdy",
+        "team": "SF",
+        "salary_base": 10800
+      },
+      {
+        "slot": "FLEX",
+        "name": "George Kittle",
+        "team": "SF",
+        "salary_base": 8200
+      },
+      {
+        "slot": "FLEX",
+        "name": "Jayden Daniels",
+        "team": "WAS",
+        "salary_base": 10000
+      },
+      {
+        "slot": "FLEX",
+        "name": "Mike Evans",
+        "team": "SF",
+        "salary_base": 9600
+      },
+      {
+        "slot": "FLEX",
+        "name": "Treylon Burks",
+        "team": "WAS",
+        "salary_base": 3200
+      },
+      {
+        "slot": "FLEX",
+        "name": "Dyami Brown",
+        "team": "WAS",
+        "salary_base": 2600
+      }
+    ]
+  },
+  "gpp_candidates": [
+    {
+      "index": 1,
+      "captain": "Brock Purdy",
+      "projected": 104.12110657142858,
+      "p90": 135.7937932358375,
+      "p99": 164.51284150034388
+    },
+    {
+      "index": 2,
+      "captain": "Brock Purdy",
+      "projected": 100.254898,
+      "p90": 135.5254161603405,
+      "p99": 159.70000415236015
+    },
+    {
+      "index": 3,
+      "captain": "Brock Purdy",
+      "projected": 102.76661942857143,
+      "p90": 133.48413702095513,
+      "p99": 157.85566396571448
+    },
+    {
+      "index": 4,
+      "captain": "Brock Purdy",
+      "projected": 98.99305085714286,
+      "p90": 132.98674817285936,
+      "p99": 154.61219453696992
+    },
+    {
+      "index": 5,
+      "captain": "Brock Purdy",
+      "projected": 100.15450942857143,
+      "p90": 131.9806447654169,
+      "p99": 160.09509626283818
+    }
+  ],
+  "model_status": "pregame snapshot; outcome unknown",
+  "limitations": [
+    "Compact GitHub record; original full snapshot retained in conversation upload, not copied into repository.",
+    "No live injury or ownership feed.",
+    "Unreviewed role and unknown statuses for multiple players."
+  ]
+}
