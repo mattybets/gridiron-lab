@@ -9,5 +9,5 @@
   },
   "validated_games": 0,
   "method": "leave-one-game-out",
-  "reason": "Awaiting complete verified slate actuals for at least four independent games"
+  "reason": "At least four independent games with complete candidate scores are required"
 }
