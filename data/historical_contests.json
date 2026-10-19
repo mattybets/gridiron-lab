@@ -1,0 +1,79 @@
+{
+  "schema_version": 1,
+  "description": "User-reported historical DraftKings Showdown outcomes. Contest results alone do not identify optimal player-level projections or prove model improvements.",
+  "contests": [
+    {
+      "id": "2026-10-05-mnf",
+      "reported_date": "2026-10-05",
+      "lineup_points": 119.69,
+      "finish_rank": 6540,
+      "payout_usd": 35,
+      "winner_points": 143.9,
+      "entry_fee_usd": null,
+      "players": [],
+      "notes": "Opponent/game and full lineup not verified."
+    },
+    {
+      "id": "2026-10-09-mnf",
+      "reported_date": "2026-10-09",
+      "lineup_points": 99,
+      "finish_rank": 17111,
+      "payout_usd": 5,
+      "winner_points": 136.59,
+      "entry_fee_usd": 3,
+      "players": []
+    },
+    {
+      "id": "2026-10-12-snf",
+      "reported_date": "2026-10-12",
+      "lineup_points": 79.7,
+      "finish_rank": 20757,
+      "payout_usd": null,
+      "winner_points": null,
+      "entry_fee_usd": null,
+      "players": []
+    },
+    {
+      "id": "2026-10-12-bills-rams",
+      "reported_date": "2026-10-12",
+      "lineup_points": 141.37,
+      "finish_rank": 21459,
+      "payout_usd": 5,
+      "winner_points": 166.57,
+      "entry_fee_usd": null,
+      "players": [
+        {
+          "slot": "CPT",
+          "name": "Josh Allen",
+          "points": 51.75
+        },
+        {
+          "slot": "FLEX",
+          "name": "Davante Adams",
+          "points": 22.1
+        },
+        {
+          "slot": "FLEX",
+          "name": "Matthew Stafford",
+          "points": 30.32
+        },
+        {
+          "slot": "FLEX",
+          "name": "Keon Coleman",
+          "points": 7.7
+        },
+        {
+          "slot": "FLEX",
+          "name": "Tyler Higbee",
+          "points": 13.3
+        },
+        {
+          "slot": "FLEX",
+          "name": "Blake Corum",
+          "points": 16.2
+        }
+      ],
+      "notes": "Reported winner 166.57; contest date and exact winner lineup should be independently confirmed."
+    }
+  ]
+}
