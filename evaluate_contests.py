@@ -44,18 +44,22 @@ def evaluate_snapshots():
                     errors=[p['projection']-score for p,score in matched]
                     row['mean_absolute_player_error']=round(sum(abs(x) for x in errors)/len(errors),3)
                     row['mean_signed_player_error']=round(sum(errors)/len(errors),3)
+                player_inputs={(p['name'].strip().casefold(),p['team'].strip().upper()):p
+                               for p in snapshot.get('players',[])}
                 lineups=[]
                 for l in snapshot.get('lineups',[]):
                     scores=[lookup.get((p['name'].strip().casefold(),p['team'].strip().upper()))
                             for p in l.get('players',[])]
+                    expected=[player_inputs.get((p['name'].strip().casefold(),p['team'].strip().upper()))
+                              for p in l.get('players',[])]
                     if len(scores)==6 and all(x is not None for x in scores):
                         total=sum(score*(1.5 if p['slot']=='CPT' else 1)
                                   for score,p in zip(scores,l['players']))
                         lineups.append({'strategy':l.get('strategy'),'index':l.get('index'),
                                         'projected':l.get('projected'),
                                         'modeled_p90':l.get('modeled_p90'),
-                                        'modeled_mean':l.get('modeled_mean'),
-                                        'modeled_ceiling':l.get('modeled_ceiling'),
+                                        'modeled_mean':l.get('modeled_mean',sum(float(p['projection'])*(1.5 if v['slot']=='CPT' else 1) for p,v in zip(expected,l['players'])) if all(p is not None for p in expected) else None),
+                                        'modeled_ceiling':l.get('modeled_ceiling',sum(float(p['ceiling'])*(1.5 if v['slot']=='CPT' else 1) for p,v in zip(expected,l['players'])) if all(p is not None for p in expected) else None),
                                         'actual_points':round(total,2)})
                 row['evaluated_lineups']=lineups
                 row['gpp_candidate_count']=sum(l.get('strategy')=='gpp' for l in snapshot.get('lineups',[]))
