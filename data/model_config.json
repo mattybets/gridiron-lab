@@ -7,7 +7,7 @@
     "projection": 0.2,
     "ceiling": 0.1
   },
-  "validated_games": 0,
+  "validated_games": 1,
   "method": "leave-one-game-out",
   "reason": "At least four independent games with complete candidate scores are required"
 }

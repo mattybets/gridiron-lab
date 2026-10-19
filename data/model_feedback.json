@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "generated_utc": "2026-10-19T20:52:36.782732+00:00",
+  "generated_utc": "2026-10-19T20:58:10.265275+00:00",
   "contest_count": 4,
   "known_winner_count": 3,
   "mean_lineup_points": 109.94,
@@ -63,7 +63,103 @@
       "saved_at_utc": "2026-10-18T13:46:54.331Z",
       "player_count": 30,
       "lineup_count": 10,
-      "status": "awaiting_verified_actuals"
+      "status": "evaluated",
+      "matched_player_count": 29,
+      "mean_absolute_player_error": 4.027,
+      "mean_signed_player_error": 0.416,
+      "evaluated_lineups": [
+        {
+          "strategy": "cash",
+          "index": 1,
+          "projected": 114.60499999999999,
+          "modeled_p90": 143.8821729943697,
+          "modeled_mean": 114.605,
+          "modeled_ceiling": 162.05,
+          "actual_points": 89.97
+        },
+        {
+          "strategy": "cash",
+          "index": 2,
+          "projected": 113.565,
+          "modeled_p90": 142.66282772875394,
+          "modeled_mean": 113.565,
+          "modeled_ceiling": 161.985,
+          "actual_points": 92.62
+        },
+        {
+          "strategy": "cash",
+          "index": 3,
+          "projected": 113.05000000000001,
+          "modeled_p90": 138.74890836016726,
+          "modeled_mean": 113.05,
+          "modeled_ceiling": 155.08,
+          "actual_points": 87.38
+        },
+        {
+          "strategy": "cash",
+          "index": 4,
+          "projected": 114.775,
+          "modeled_p90": 144.22250275821463,
+          "modeled_mean": 114.775,
+          "modeled_ceiling": 164.91,
+          "actual_points": 89.47
+        },
+        {
+          "strategy": "cash",
+          "index": 5,
+          "projected": 113.85499999999999,
+          "modeled_p90": 140.2142832501855,
+          "modeled_mean": 113.855,
+          "modeled_ceiling": 161.065,
+          "actual_points": 100.87
+        },
+        {
+          "strategy": "gpp",
+          "index": 1,
+          "projected": 109.115,
+          "modeled_p90": 149.90833069174366,
+          "modeled_mean": 109.11500000000001,
+          "modeled_ceiling": 178.02,
+          "actual_points": 98.17
+        },
+        {
+          "strategy": "gpp",
+          "index": 2,
+          "projected": 109.635,
+          "modeled_p90": 147.35349984797986,
+          "modeled_mean": 109.635,
+          "modeled_ceiling": 177.45,
+          "actual_points": 97.45
+        },
+        {
+          "strategy": "gpp",
+          "index": 3,
+          "projected": 105.805,
+          "modeled_p90": 147.372823304046,
+          "modeled_mean": 105.805,
+          "modeled_ceiling": 173.965,
+          "actual_points": 92.42
+        },
+        {
+          "strategy": "gpp",
+          "index": 4,
+          "projected": 102.105,
+          "modeled_p90": 141.96143995210033,
+          "modeled_mean": 102.105,
+          "modeled_ceiling": 176.2,
+          "actual_points": 112.57
+        },
+        {
+          "strategy": "gpp",
+          "index": 5,
+          "projected": 101.115,
+          "modeled_p90": 144.93776246503484,
+          "modeled_mean": 101.11500000000001,
+          "modeled_ceiling": 173.605,
+          "actual_points": 99.22
+        }
+      ],
+      "gpp_candidate_count": 5
     },
     {
       "snapshot": "2026-10-18-chi-atl.json",
@@ -107,7 +203,7 @@
       "projection": 0.2,
       "ceiling": 0.1
     },
-    "validated_games": 0,
+    "validated_games": 1,
     "method": "leave-one-game-out",
     "reason": "At least four independent games with complete candidate scores are required"
   },
