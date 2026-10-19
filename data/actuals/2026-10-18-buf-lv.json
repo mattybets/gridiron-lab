@@ -1,0 +1,153 @@
+{
+  "matchup": "BUF @ LV · Oct 18 at 3:25 PM",
+  "source": "User-uploaded DraftKings contest-standings-196743711.csv; FLEX FPTS, not CPT-multiplied",
+  "source_contest_id": "196743711",
+  "winning_score": 136.17,
+  "players": [
+    {
+      "name": "Josh Allen",
+      "team": "BUF",
+      "actual_points": 18.3
+    },
+    {
+      "name": "Brock Bowers",
+      "team": "LV",
+      "actual_points": 11
+    },
+    {
+      "name": "James Cook III",
+      "team": "BUF",
+      "actual_points": 24.3
+    },
+    {
+      "name": "Kirk Cousins",
+      "team": "LV",
+      "actual_points": 22.52
+    },
+    {
+      "name": "Ashton Jeanty",
+      "team": "LV",
+      "actual_points": 15.8
+    },
+    {
+      "name": "DJ Moore",
+      "team": "BUF",
+      "actual_points": 0
+    },
+    {
+      "name": "Khalil Shakir",
+      "team": "BUF",
+      "actual_points": 13.4
+    },
+    {
+      "name": "Dalton Kincaid",
+      "team": "BUF",
+      "actual_points": 10.8
+    },
+    {
+      "name": "Keon Coleman",
+      "team": "BUF",
+      "actual_points": 15.9
+    },
+    {
+      "name": "Tre Tucker",
+      "team": "LV",
+      "actual_points": 26.7
+    },
+    {
+      "name": "Tyler Bass",
+      "team": "BUF",
+      "actual_points": 17
+    },
+    {
+      "name": "Matt Gay",
+      "team": "LV",
+      "actual_points": 12
+    },
+    {
+      "name": "Ty Johnson",
+      "team": "BUF",
+      "actual_points": 4.7
+    },
+    {
+      "name": "Mike Washington Jr.",
+      "team": "LV",
+      "actual_points": 6
+    },
+    {
+      "name": "Bills",
+      "team": "BUF",
+      "actual_points": 1
+    },
+    {
+      "name": "Michael Mayer",
+      "team": "LV",
+      "actual_points": 16.5
+    },
+    {
+      "name": "Raiders",
+      "team": "LV",
+      "actual_points": 1
+    },
+    {
+      "name": "Jalen Nailor",
+      "team": "LV",
+      "actual_points": 1.9
+    },
+    {
+      "name": "Joshua Palmer",
+      "team": "BUF",
+      "actual_points": 4.7
+    },
+    {
+      "name": "Dylan Laube",
+      "team": "LV",
+      "actual_points": 0.9
+    },
+    {
+      "name": "Cody White",
+      "team": "LV",
+      "actual_points": 0
+    },
+    {
+      "name": "Dawson Knox",
+      "team": "BUF",
+      "actual_points": 1
+    },
+    {
+      "name": "Ian Thomas",
+      "team": "LV",
+      "actual_points": 0
+    },
+    {
+      "name": "Ray Davis",
+      "team": "BUF",
+      "actual_points": 1.9
+    },
+    {
+      "name": "Malik Benson",
+      "team": "LV",
+      "actual_points": 0
+    },
+    {
+      "name": "Jackson Hawes",
+      "team": "BUF",
+      "actual_points": 0
+    },
+    {
+      "name": "Dareke Young",
+      "team": "LV",
+      "actual_points": 0
+    },
+    {
+      "name": "Greg Dortch",
+      "team": "BUF",
+      "actual_points": 0
+    },
+    {
+      "name": "Keleki Latu",
+      "team": "BUF",
+      "actual_points": 0
+    }
+  ]
+}
