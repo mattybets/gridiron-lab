@@ -1,0 +1,928 @@
+{
+  "schema": "gridiron-lab-v6.6-snapshot",
+  "saved_at_utc": "2026-10-16T19:38:41.132Z",
+  "format": "showdown",
+  "matchup": "CHI @ ATL · Oct 18 at 12:00 PM",
+  "model_note": "Projection model: 60% last 3 games + 40% last 6 games; ceiling from 2026 player-game upper-tail distribution, with limited-sample shrinkage and opponent adjustment. Offense is PPR-based; K/DST use play-by-play scoring estimates (DST points allowed approximated); manual availability/opportunity adjustments; no live injury or ownership feed.",
+  "settings": {
+    "iterations": 1200,
+    "simulation_limit": 3000,
+    "captain_exposure": 40,
+    "qb_restriction": "same"
+  },
+  "players": [
+    {
+      "name": "Bijan Robinson",
+      "team": "ATL",
+      "position": "RB",
+      "salary": 11800,
+      "projection": 23.78,
+      "ceiling": 34.44,
+      "model_games": 5,
+      "source": "2026 published baseline",
+      "key": "bijanrobinson|ATL"
+    },
+    {
+      "name": "Caleb Williams",
+      "team": "CHI",
+      "position": "QB",
+      "salary": 10600,
+      "projection": 23.69,
+      "ceiling": 42.18,
+      "model_games": 2,
+      "source": "2026 published baseline (SMALL SAMPLE: 2 games)",
+      "key": "calebwilliams|CHI"
+    },
+    {
+      "name": "Drake London",
+      "team": "ATL",
+      "position": "WR",
+      "salary": 10000,
+      "projection": 18.37,
+      "ceiling": 30.19,
+      "model_games": 5,
+      "source": "2026 published baseline",
+      "key": "drakelondon|ATL"
+    },
+    {
+      "name": "D'Andre Swift",
+      "team": "CHI",
+      "position": "RB",
+      "salary": 9800,
+      "projection": 13.03,
+      "ceiling": 26.48,
+      "model_games": 5,
+      "source": "2026 published baseline",
+      "key": "dandreswift|CHI"
+    },
+    {
+      "name": "Michael Penix Jr.",
+      "team": "ATL",
+      "position": "QB",
+      "salary": 9000,
+      "projection": 13.72,
+      "ceiling": 14.54,
+      "model_games": 3,
+      "source": "2026 published baseline (SMALL SAMPLE: 3 games)",
+      "key": "michaelpenix|ATL"
+    },
+    {
+      "name": "Tyson Bagent",
+      "team": "CHI",
+      "position": "QB",
+      "salary": 8600,
+      "projection": 4.27,
+      "ceiling": 9.04,
+      "model_games": 3,
+      "source": "2026 published baseline (SMALL SAMPLE: 3 games)",
+      "key": "tysonbagent|CHI"
+    },
+    {
+      "name": "Luther Burden III",
+      "team": "CHI",
+      "position": "WR",
+      "salary": 8400,
+      "projection": 13.41,
+      "ceiling": 21.4,
+      "model_games": 5,
+      "source": "2026 published baseline",
+      "key": "lutherburden|CHI"
+    },
+    {
+      "name": "Case Keenum",
+      "team": "CHI",
+      "position": "QB",
+      "salary": 8200,
+      "projection": 13.27,
+      "ceiling": 28.14,
+      "model_games": 2,
+      "source": "2026 published baseline (SMALL SAMPLE: 2 games)",
+      "key": "casekeenum|CHI"
+    },
+    {
+      "name": "Rome Odunze",
+      "team": "CHI",
+      "position": "WR",
+      "salary": 7400,
+      "projection": 9.61,
+      "ceiling": 15.94,
+      "model_games": 5,
+      "source": "2026 published baseline",
+      "key": "romeodunze|CHI"
+    },
+    {
+      "name": "Kyle Monangai",
+      "team": "CHI",
+      "position": "RB",
+      "salary": 6800,
+      "projection": 13.17,
+      "ceiling": 25.59,
+      "model_games": 4,
+      "source": "2026 published baseline",
+      "key": "kylemonangai|CHI"
+    },
+    {
+      "name": "Colston Loveland",
+      "team": "CHI",
+      "position": "TE",
+      "salary": 6400,
+      "projection": 6.65,
+      "ceiling": 13.07,
+      "model_games": 5,
+      "source": "2026 published baseline",
+      "key": "colstonloveland|CHI"
+    },
+    {
+      "name": "Cooper Rush",
+      "team": "ATL",
+      "position": "QB",
+      "salary": 6000,
+      "projection": 2.58,
+      "ceiling": 6.31,
+      "model_games": 2,
+      "source": "2026 published baseline (SMALL SAMPLE: 2 games)",
+      "key": "cooperrush|ATL"
+    },
+    {
+      "name": "Kyle Pitts Sr.",
+      "team": "ATL",
+      "position": "TE",
+      "salary": 5800,
+      "projection": 5.76,
+      "ceiling": 12.83,
+      "model_games": 5,
+      "source": "2026 published baseline",
+      "key": "kylepitts|ATL"
+    },
+    {
+      "name": "Nick Folk",
+      "team": "ATL",
+      "position": "K",
+      "salary": 5200,
+      "projection": 9.8,
+      "ceiling": 12.99,
+      "model_games": 5,
+      "source": "2026 published baseline",
+      "key": "nickfolk|ATL"
+    },
+    {
+      "name": "Cairo Santos",
+      "team": "CHI",
+      "position": "K",
+      "salary": 5000,
+      "projection": 7.52,
+      "ceiling": 12.23,
+      "model_games": 5,
+      "source": "2026 published baseline",
+      "key": "cairosantos|CHI"
+    },
+    {
+      "name": "Brian Robinson Jr.",
+      "team": "ATL",
+      "position": "RB",
+      "salary": 4800,
+      "projection": 10.9,
+      "ceiling": 23.6,
+      "model_games": 5,
+      "source": "2026 published baseline",
+      "key": "brianrobinson|ATL"
+    },
+    {
+      "name": "Kalif Raymond",
+      "team": "CHI",
+      "position": "WR",
+      "salary": 4400,
+      "projection": 10.3,
+      "ceiling": 20.99,
+      "model_games": 5,
+      "source": "2026 published baseline",
+      "key": "kalifraymond|CHI"
+    },
+    {
+      "name": "Falcons",
+      "team": "ATL",
+      "position": "DST",
+      "salary": 4000,
+      "projection": 5.8,
+      "ceiling": 11.01,
+      "model_games": 5,
+      "source": "2026 published baseline",
+      "key": "falcons|ATL"
+    },
+    {
+      "name": "Bears",
+      "team": "CHI",
+      "position": "DST",
+      "salary": 3600,
+      "projection": 6.32,
+      "ceiling": 12.03,
+      "model_games": 5,
+      "source": "2026 published baseline",
+      "key": "bears|CHI"
+    },
+    {
+      "name": "Roschon Johnson",
+      "team": "CHI",
+      "position": "RB",
+      "salary": 3400,
+      "projection": 3.94,
+      "ceiling": 8.58,
+      "model_games": 3,
+      "source": "2026 published baseline (SMALL SAMPLE: 3 games)",
+      "key": "roschonjohnson|CHI"
+    },
+    {
+      "name": "Jahan Dotson",
+      "team": "ATL",
+      "position": "WR",
+      "salary": 3000,
+      "projection": 6.86,
+      "ceiling": 13.48,
+      "model_games": 5,
+      "source": "2026 published baseline",
+      "key": "jahandotson|ATL"
+    },
+    {
+      "name": "Cole Kmet",
+      "team": "CHI",
+      "position": "TE",
+      "salary": 2400,
+      "projection": 2.42,
+      "ceiling": 9.6,
+      "model_games": 5,
+      "source": "2026 published baseline",
+      "key": "colekmet|CHI"
+    },
+    {
+      "name": "Zachariah Branch",
+      "team": "ATL",
+      "position": "WR",
+      "salary": 2000,
+      "projection": 2.55,
+      "ceiling": 3.96,
+      "model_games": 5,
+      "source": "2026 published baseline",
+      "key": "zachariahbranch|ATL"
+    },
+    {
+      "name": "Olamide Zaccheaus",
+      "team": "ATL",
+      "position": "WR",
+      "salary": 1800,
+      "projection": 1.03,
+      "ceiling": 2.62,
+      "model_games": 5,
+      "source": "2026 published baseline",
+      "key": "olamidezaccheaus|ATL"
+    },
+    {
+      "name": "Austin Hooper",
+      "team": "ATL",
+      "position": "TE",
+      "salary": 1600,
+      "projection": 4.1,
+      "ceiling": 7.35,
+      "model_games": 3,
+      "source": "2026 published baseline (SMALL SAMPLE: 3 games)",
+      "key": "austinhooper|ATL"
+    },
+    {
+      "name": "Charlie Woerner",
+      "team": "ATL",
+      "position": "TE",
+      "salary": 1400,
+      "projection": 0.63,
+      "ceiling": 1.82,
+      "model_games": 3,
+      "source": "2026 published baseline (SMALL SAMPLE: 3 games)",
+      "key": "charliewoerner|ATL"
+    },
+    {
+      "name": "Zavion Thomas",
+      "team": "CHI",
+      "position": "WR",
+      "salary": 1200,
+      "projection": 1.39,
+      "ceiling": 3.43,
+      "model_games": 4,
+      "source": "2026 published baseline",
+      "key": "zavionthomas|CHI"
+    },
+    {
+      "name": "Jahdae Walker",
+      "team": "CHI",
+      "position": "WR",
+      "salary": 1000,
+      "projection": 3.81,
+      "ceiling": 8.34,
+      "model_games": 2,
+      "source": "2026 published baseline (SMALL SAMPLE: 2 games)",
+      "key": "jahdaewalker|CHI"
+    },
+    {
+      "name": "Chris Blair",
+      "team": "ATL",
+      "position": "WR",
+      "salary": 800,
+      "projection": 1.07,
+      "ceiling": 2.2,
+      "model_games": 4,
+      "source": "2026 published baseline",
+      "key": "chrisblair|ATL"
+    },
+    {
+      "name": "Sam Roush",
+      "team": "CHI",
+      "position": "TE",
+      "salary": 600,
+      "projection": 1.55,
+      "ceiling": 2.71,
+      "model_games": 4,
+      "source": "2026 published baseline",
+      "key": "samroush|CHI"
+    },
+    {
+      "name": "Nick Muse",
+      "team": "ATL",
+      "position": "TE",
+      "salary": 200,
+      "projection": 0,
+      "ceiling": 0,
+      "model_games": 3,
+      "source": "2026 published baseline (SMALL SAMPLE: 3 games)",
+      "key": "nickmuse|ATL"
+    }
+  ],
+  "lineups": [
+    {
+      "strategy": "cash",
+      "index": 1,
+      "projected": 102.53,
+      "modeled_p90": 138.61112890778517,
+      "modeled_p99": 168.88087649502816,
+      "players": [
+        {
+          "slot": "CPT",
+          "name": "Bijan Robinson",
+          "team": "ATL",
+          "position": "RB",
+          "salary": 11800,
+          "key": "bijanrobinson|ATL"
+        },
+        {
+          "slot": "FLEX",
+          "name": "Caleb Williams",
+          "team": "CHI",
+          "position": "QB",
+          "salary": 10600,
+          "key": "calebwilliams|CHI"
+        },
+        {
+          "slot": "FLEX",
+          "name": "Brian Robinson Jr.",
+          "team": "ATL",
+          "position": "RB",
+          "salary": 4800,
+          "key": "brianrobinson|ATL"
+        },
+        {
+          "slot": "FLEX",
+          "name": "Drake London",
+          "team": "ATL",
+          "position": "WR",
+          "salary": 10000,
+          "key": "drakelondon|ATL"
+        },
+        {
+          "slot": "FLEX",
+          "name": "Austin Hooper",
+          "team": "ATL",
+          "position": "TE",
+          "salary": 1600,
+          "key": "austinhooper|ATL"
+        },
+        {
+          "slot": "FLEX",
+          "name": "Nick Folk",
+          "team": "ATL",
+          "position": "K",
+          "salary": 5200,
+          "key": "nickfolk|ATL"
+        }
+      ]
+    },
+    {
+      "strategy": "cash",
+      "index": 2,
+      "projected": 102.24000000000001,
+      "modeled_p90": 141.1005487655398,
+      "modeled_p99": 173.01751200785375,
+      "players": [
+        {
+          "slot": "CPT",
+          "name": "Bijan Robinson",
+          "team": "ATL",
+          "position": "RB",
+          "salary": 11800,
+          "key": "bijanrobinson|ATL"
+        },
+        {
+          "slot": "FLEX",
+          "name": "Caleb Williams",
+          "team": "CHI",
+          "position": "QB",
+          "salary": 10600,
+          "key": "calebwilliams|CHI"
+        },
+        {
+          "slot": "FLEX",
+          "name": "Brian Robinson Jr.",
+          "team": "ATL",
+          "position": "RB",
+          "salary": 4800,
+          "key": "brianrobinson|ATL"
+        },
+        {
+          "slot": "FLEX",
+          "name": "Drake London",
+          "team": "ATL",
+          "position": "WR",
+          "salary": 10000,
+          "key": "drakelondon|ATL"
+        },
+        {
+          "slot": "FLEX",
+          "name": "Jahdae Walker",
+          "team": "CHI",
+          "position": "WR",
+          "salary": 1000,
+          "key": "jahdaewalker|CHI"
+        },
+        {
+          "slot": "FLEX",
+          "name": "Nick Folk",
+          "team": "ATL",
+          "position": "K",
+          "salary": 5200,
+          "key": "nickfolk|ATL"
+        }
+      ]
+    },
+    {
+      "strategy": "cash",
+      "index": 3,
+      "projected": 101.74,
+      "modeled_p90": 140.5226905173774,
+      "modeled_p99": 171.20408956057713,
+      "players": [
+        {
+          "slot": "CPT",
+          "name": "Nick Folk",
+          "team": "ATL",
+          "position": "K",
+          "salary": 5200,
+          "key": "nickfolk|ATL"
+        },
+        {
+          "slot": "FLEX",
+          "name": "Caleb Williams",
+          "team": "CHI",
+          "position": "QB",
+          "salary": 10600,
+          "key": "calebwilliams|CHI"
+        },
+        {
+          "slot": "FLEX",
+          "name": "Brian Robinson Jr.",
+          "team": "ATL",
+          "position": "RB",
+          "salary": 4800,
+          "key": "brianrobinson|ATL"
+        },
+        {
+          "slot": "FLEX",
+          "name": "Bijan Robinson",
+          "team": "ATL",
+          "position": "RB",
+          "salary": 11800,
+          "key": "bijanrobinson|ATL"
+        },
+        {
+          "slot": "FLEX",
+          "name": "Kalif Raymond",
+          "team": "CHI",
+          "position": "WR",
+          "salary": 4400,
+          "key": "kalifraymond|CHI"
+        },
+        {
+          "slot": "FLEX",
+          "name": "Drake London",
+          "team": "ATL",
+          "position": "WR",
+          "salary": 10000,
+          "key": "drakelondon|ATL"
+        }
+      ]
+    },
+    {
+      "strategy": "cash",
+      "index": 4,
+      "projected": 102.90500000000002,
+      "modeled_p90": 143.75674905314614,
+      "modeled_p99": 174.80126564532202,
+      "players": [
+        {
+          "slot": "CPT",
+          "name": "Drake London",
+          "team": "ATL",
+          "position": "WR",
+          "salary": 10000,
+          "key": "drakelondon|ATL"
+        },
+        {
+          "slot": "FLEX",
+          "name": "Caleb Williams",
+          "team": "CHI",
+          "position": "QB",
+          "salary": 10600,
+          "key": "calebwilliams|CHI"
+        },
+        {
+          "slot": "FLEX",
+          "name": "Brian Robinson Jr.",
+          "team": "ATL",
+          "position": "RB",
+          "salary": 4800,
+          "key": "brianrobinson|ATL"
+        },
+        {
+          "slot": "FLEX",
+          "name": "Bijan Robinson",
+          "team": "ATL",
+          "position": "RB",
+          "salary": 11800,
+          "key": "bijanrobinson|ATL"
+        },
+        {
+          "slot": "FLEX",
+          "name": "Kyle Monangai",
+          "team": "CHI",
+          "position": "RB",
+          "salary": 6800,
+          "key": "kylemonangai|CHI"
+        },
+        {
+          "slot": "FLEX",
+          "name": "Jahdae Walker",
+          "team": "CHI",
+          "position": "WR",
+          "salary": 1000,
+          "key": "jahdaewalker|CHI"
+        }
+      ]
+    },
+    {
+      "strategy": "cash",
+      "index": 5,
+      "projected": 103.305,
+      "modeled_p90": 144.25054606954993,
+      "modeled_p99": 180.90044986454836,
+      "players": [
+        {
+          "slot": "CPT",
+          "name": "Caleb Williams",
+          "team": "CHI",
+          "position": "QB",
+          "salary": 10600,
+          "key": "calebwilliams|CHI"
+        },
+        {
+          "slot": "FLEX",
+          "name": "Brian Robinson Jr.",
+          "team": "ATL",
+          "position": "RB",
+          "salary": 4800,
+          "key": "brianrobinson|ATL"
+        },
+        {
+          "slot": "FLEX",
+          "name": "Bijan Robinson",
+          "team": "ATL",
+          "position": "RB",
+          "salary": 11800,
+          "key": "bijanrobinson|ATL"
+        },
+        {
+          "slot": "FLEX",
+          "name": "Kyle Monangai",
+          "team": "CHI",
+          "position": "RB",
+          "salary": 6800,
+          "key": "kylemonangai|CHI"
+        },
+        {
+          "slot": "FLEX",
+          "name": "Drake London",
+          "team": "ATL",
+          "position": "WR",
+          "salary": 10000,
+          "key": "drakelondon|ATL"
+        },
+        {
+          "slot": "FLEX",
+          "name": "Sam Roush",
+          "team": "CHI",
+          "position": "TE",
+          "salary": 600,
+          "key": "samroush|CHI"
+        }
+      ]
+    },
+    {
+      "strategy": "gpp",
+      "index": 1,
+      "projected": 101.305,
+      "modeled_p90": 150.40867978011934,
+      "modeled_p99": 188.77057975745163,
+      "players": [
+        {
+          "slot": "CPT",
+          "name": "Caleb Williams",
+          "team": "CHI",
+          "position": "QB",
+          "salary": 10600,
+          "key": "calebwilliams|CHI"
+        },
+        {
+          "slot": "FLEX",
+          "name": "Brian Robinson Jr.",
+          "team": "ATL",
+          "position": "RB",
+          "salary": 4800,
+          "key": "brianrobinson|ATL"
+        },
+        {
+          "slot": "FLEX",
+          "name": "Bijan Robinson",
+          "team": "ATL",
+          "position": "RB",
+          "salary": 11800,
+          "key": "bijanrobinson|ATL"
+        },
+        {
+          "slot": "FLEX",
+          "name": "Kalif Raymond",
+          "team": "CHI",
+          "position": "WR",
+          "salary": 4400,
+          "key": "kalifraymond|CHI"
+        },
+        {
+          "slot": "FLEX",
+          "name": "Drake London",
+          "team": "ATL",
+          "position": "WR",
+          "salary": 10000,
+          "key": "drakelondon|ATL"
+        },
+        {
+          "slot": "FLEX",
+          "name": "Cole Kmet",
+          "team": "CHI",
+          "position": "TE",
+          "salary": 2400,
+          "key": "colekmet|CHI"
+        }
+      ]
+    },
+    {
+      "strategy": "gpp",
+      "index": 2,
+      "projected": 103.485,
+      "modeled_p90": 148.4298030663759,
+      "modeled_p99": 187.63200194118326,
+      "players": [
+        {
+          "slot": "CPT",
+          "name": "Caleb Williams",
+          "team": "CHI",
+          "position": "QB",
+          "salary": 10600,
+          "key": "calebwilliams|CHI"
+        },
+        {
+          "slot": "FLEX",
+          "name": "Brian Robinson Jr.",
+          "team": "ATL",
+          "position": "RB",
+          "salary": 4800,
+          "key": "brianrobinson|ATL"
+        },
+        {
+          "slot": "FLEX",
+          "name": "Bijan Robinson",
+          "team": "ATL",
+          "position": "RB",
+          "salary": 11800,
+          "key": "bijanrobinson|ATL"
+        },
+        {
+          "slot": "FLEX",
+          "name": "Kalif Raymond",
+          "team": "CHI",
+          "position": "WR",
+          "salary": 4400,
+          "key": "kalifraymond|CHI"
+        },
+        {
+          "slot": "FLEX",
+          "name": "Kyle Monangai",
+          "team": "CHI",
+          "position": "RB",
+          "salary": 6800,
+          "key": "kylemonangai|CHI"
+        },
+        {
+          "slot": "FLEX",
+          "name": "Nick Folk",
+          "team": "ATL",
+          "position": "K",
+          "salary": 5200,
+          "key": "nickfolk|ATL"
+        }
+      ]
+    },
+    {
+      "strategy": "gpp",
+      "index": 3,
+      "projected": 102.755,
+      "modeled_p90": 146.65801757363568,
+      "modeled_p99": 177.9613846565696,
+      "players": [
+        {
+          "slot": "CPT",
+          "name": "Kyle Monangai",
+          "team": "CHI",
+          "position": "RB",
+          "salary": 6800,
+          "key": "kylemonangai|CHI"
+        },
+        {
+          "slot": "FLEX",
+          "name": "Caleb Williams",
+          "team": "CHI",
+          "position": "QB",
+          "salary": 10600,
+          "key": "calebwilliams|CHI"
+        },
+        {
+          "slot": "FLEX",
+          "name": "Bijan Robinson",
+          "team": "ATL",
+          "position": "RB",
+          "salary": 11800,
+          "key": "bijanrobinson|ATL"
+        },
+        {
+          "slot": "FLEX",
+          "name": "Kalif Raymond",
+          "team": "CHI",
+          "position": "WR",
+          "salary": 4400,
+          "key": "kalifraymond|CHI"
+        },
+        {
+          "slot": "FLEX",
+          "name": "Drake London",
+          "team": "ATL",
+          "position": "WR",
+          "salary": 10000,
+          "key": "drakelondon|ATL"
+        },
+        {
+          "slot": "FLEX",
+          "name": "Jahan Dotson",
+          "team": "ATL",
+          "position": "WR",
+          "salary": 3000,
+          "key": "jahandotson|ATL"
+        }
+      ]
+    },
+    {
+      "strategy": "gpp",
+      "index": 4,
+      "projected": 100.7,
+      "modeled_p90": 144.58392337555546,
+      "modeled_p99": 179.25439974447576,
+      "players": [
+        {
+          "slot": "CPT",
+          "name": "Brian Robinson Jr.",
+          "team": "ATL",
+          "position": "RB",
+          "salary": 4800,
+          "key": "brianrobinson|ATL"
+        },
+        {
+          "slot": "FLEX",
+          "name": "Caleb Williams",
+          "team": "CHI",
+          "position": "QB",
+          "salary": 10600,
+          "key": "calebwilliams|CHI"
+        },
+        {
+          "slot": "FLEX",
+          "name": "Bijan Robinson",
+          "team": "ATL",
+          "position": "RB",
+          "salary": 11800,
+          "key": "bijanrobinson|ATL"
+        },
+        {
+          "slot": "FLEX",
+          "name": "Kalif Raymond",
+          "team": "CHI",
+          "position": "WR",
+          "salary": 4400,
+          "key": "kalifraymond|CHI"
+        },
+        {
+          "slot": "FLEX",
+          "name": "Kyle Monangai",
+          "team": "CHI",
+          "position": "RB",
+          "salary": 6800,
+          "key": "kylemonangai|CHI"
+        },
+        {
+          "slot": "FLEX",
+          "name": "Luther Burden III",
+          "team": "CHI",
+          "position": "WR",
+          "salary": 8400,
+          "key": "lutherburden|CHI"
+        }
+      ]
+    },
+    {
+      "strategy": "gpp",
+      "index": 5,
+      "projected": 101.35000000000001,
+      "modeled_p90": 144.25316745938423,
+      "modeled_p99": 179.32495611053724,
+      "players": [
+        {
+          "slot": "CPT",
+          "name": "Bijan Robinson",
+          "team": "ATL",
+          "position": "RB",
+          "salary": 11800,
+          "key": "bijanrobinson|ATL"
+        },
+        {
+          "slot": "FLEX",
+          "name": "Caleb Williams",
+          "team": "CHI",
+          "position": "QB",
+          "salary": 10600,
+          "key": "calebwilliams|CHI"
+        },
+        {
+          "slot": "FLEX",
+          "name": "Brian Robinson Jr.",
+          "team": "ATL",
+          "position": "RB",
+          "salary": 4800,
+          "key": "brianrobinson|ATL"
+        },
+        {
+          "slot": "FLEX",
+          "name": "Kalif Raymond",
+          "team": "CHI",
+          "position": "WR",
+          "salary": 4400,
+          "key": "kalifraymond|CHI"
+        },
+        {
+          "slot": "FLEX",
+          "name": "Drake London",
+          "team": "ATL",
+          "position": "WR",
+          "salary": 10000,
+          "key": "drakelondon|ATL"
+        },
+        {
+          "slot": "FLEX",
+          "name": "Cole Kmet",
+          "team": "CHI",
+          "position": "TE",
+          "salary": 2400,
+          "key": "colekmet|CHI"
+        }
+      ]
+    }
+  ]
+}
