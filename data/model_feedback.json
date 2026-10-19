@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "generated_utc": "2026-10-19T20:58:10.265275+00:00",
+  "generated_utc": "2026-10-19T21:02:35.124509+00:00",
   "contest_count": 4,
   "known_winner_count": 3,
   "mean_lineup_points": 109.94,
@@ -167,7 +167,12 @@
       "saved_at_utc": "2026-10-16T19:38:41.132Z",
       "player_count": 31,
       "lineup_count": 10,
-      "status": "awaiting_verified_actuals"
+      "status": "partial_actuals",
+      "matched_player_count": 1,
+      "mean_absolute_player_error": 4.19,
+      "mean_signed_player_error": 4.19,
+      "evaluated_lineups": [],
+      "gpp_candidate_count": 5
     },
     {
       "snapshot": "2026-10-18-dal-gb-early.json",
