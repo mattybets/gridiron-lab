@@ -3,6 +3,7 @@ name: Update NFL historical stats
 
 on:
   workflow_dispatch:
+      # Enable manual testing
   schedule:
     - cron: '17 13 * * 2,4,6'
 
