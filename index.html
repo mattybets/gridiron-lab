@@ -113,7 +113,30 @@ function optimize(){
  gate.textContent=`${available.length} modeled eligible players · ${unreviewed.length} without confirmed Available + starter/rotation review · ${lowSample.length} with fewer than 4 modeled games · ${missingOwn.length} without ownership. ${unreviewed.length?'NOT VERIFIED FOR PAID ENTRIES.':'Manual reviews completed; live status still must be confirmed independently.'}`;
  gate.style.color=unreviewed.length?'#ffb4a8':'#65d7ae';
  if(unreviewed.length&&!$('researchoverride').checked){$('status').textContent='Quality gate: review availability and roles or enable research-only mode. No paid-entry recommendation can be made from unreviewed player roles.';return}
- const eligible=available.map(p=>({...p,projection:p.projection*(Number(p.opportunity??100)/100),ceiling:p.ceiling*(Number(p.opportunity??100)/100)}));
+ const eligible=available.map(p=>{
+  // Usage adjustments require independently supplied counts and a declared games sample.
+  // Do not manufacture targets, red-zone touches or injury-driven workload changes.
+  const u=p.usage||{}, games=Number(u.games);
+  const validUsage=p.usageReviewed&&Number.isInteger(games)&&games>0;
+  let multiplier=1;
+  if(validUsage&&['RB','WR','TE'].includes(p.position)){
+    const targets=Number(u.targets),carries=Number(u.carries),rz=Number(u.redzone);
+    const hasTargets=u.targets!==null&&u.targets!==undefined&&Number.isFinite(targets);
+    const hasCarries=u.carries!==null&&u.carries!==undefined&&Number.isFinite(carries);
+    const touches=(hasTargets?targets:0)+(hasCarries?carries:0);
+    if(hasTargets||hasCarries){
+      const perGame=touches/games;
+      // Modest workload factor; capped to avoid overconfidence in a small sample.
+      const benchmark=p.position==='RB'?14:p.position==='WR'?7:5;
+      multiplier=Math.max(.7,Math.min(1.2,1+.18*(perGame/benchmark-1)));
+      if(touches===0)multiplier=.5;
+    }
+    if(u.redzone!==null&&u.redzone!==undefined&&Number.isFinite(rz)&&rz>=0)
+      multiplier=Math.min(1.25,multiplier*(1+Math.min(.08,rz/games*.025)));
+  }
+  const opportunity=Number(p.opportunity??100)/100;
+  return {...p,projection:p.projection*opportunity*multiplier,ceiling:p.ceiling*opportunity*multiplier,usageMultiplier:multiplier};
+ });
  const n=Math.max(1,Math.min(20,Number($('count').value)||5)),iters=Math.max(100,Math.min(10000,Number($('iterations').value)||1200));
  const found=new Map();let examined=0;
  if(format==='showdown')examined=generateShowdown(eligible,found);
@@ -248,7 +271,7 @@ $('projectioncsv').onchange=async e=>{
   $('projectionstatus').textContent='Imported '+changes.length+' projection overrides from '+file.name+'. '+unmatched.length+' unmatched/ambiguous. '+(unmatched.length?'Examples: '+unmatched.slice(0,5).join(', '):'')+' Check the source and date before entry.';
  }catch(err){$('projectionstatus').textContent='Projection import error: '+err.message}
 };
-$('usagetemplate').onclick=()=>download('gridiron_usage_template.csv','name,team,snaps,routes,targets,carries,opportunity\n');
+$('usagetemplate').onclick=()=>download('gridiron_usage_template.csv','name,team,snaps,routes,targets,carries,opportunity,games,redzone\n');
 $('usageaudit').onclick=()=>{
  const lines=['name,team,snaps,routes,targets,carries,opportunity,usage_reviewed,model_games,recent_weight'];
  for(const p of pool){const u=p.usage||{};lines.push([p.name,p.team,u.snaps??'',u.routes??'',u.targets??'',u.carries??'',p.opportunity??100,p.usageReviewed?'yes':'no',p.modelGames??'',p.recentWeight??''].map(csvVal).join(','))}
@@ -260,7 +283,7 @@ $('usagecsv').onchange=async e=>{
   if(!pool.length)throw Error('Import DraftKings salaries first.');
   const rows=csvRows(await file.text());if(!rows.length)throw Error('Empty file.');
   const h=rows[0].map(x=>x.trim().toLowerCase());
-  if(['name','team','snaps','routes','targets','carries','opportunity'].some(k=>!h.includes(k)))throw Error('Required headers: name,team,snaps,routes,targets,carries,opportunity');
+  if(['name','team','snaps','routes','targets','carries','opportunity'].some(k=>!h.includes(k)))throw Error('Required headers: name,team,snaps,routes,targets,carries,opportunity. Optional: games,redzone.');
   const idx=k=>h.indexOf(k),changes=[],invalid=[],unmatched=[],seen=new Set();
   for(const r of rows.slice(1)){
    const name=(r[idx('name')]||'').trim(),team=(r[idx('team')]||'').trim();if(!name&&!team)continue;
@@ -272,6 +295,11 @@ $('usagecsv').onchange=async e=>{
     const raw=(r[idx(k)]||'').trim();if(raw===''){usage[k]=null;continue}
     const v=Number(raw);if(!Number.isInteger(v)||v<0){invalid.push(name+' invalid '+k);break}usage[k]=v;
    }
+   for(const k of ['games','redzone']){
+    const raw=h.includes(k)?(r[idx(k)]||'').trim():'';
+    if(raw===''){usage[k]=null;continue}
+    const v=Number(raw);if(!Number.isInteger(v)||(k==='games'?v<=0:v<0)){invalid.push(name+' invalid '+k);break}usage[k]=v;
+   }
    const rawOpp=(r[idx('opportunity')]||'').trim();let opportunity=null;
    if(rawOpp!==''){opportunity=Number(rawOpp);if(!Number.isFinite(opportunity)||opportunity<0||opportunity>100)invalid.push(name+' invalid opportunity')}
    changes.push({p:matches[0],usage,opportunity});
@@ -279,7 +307,7 @@ $('usagecsv').onchange=async e=>{
   if(invalid.length)throw Error('No changes applied: '+invalid.slice(0,5).join('; '));
   for(const c of changes){c.p.usage=c.usage;c.p.usageReviewed=true;if(c.opportunity!==null)c.p.opportunity=c.opportunity}
   clearResults();render();
-  $('usagestatus').textContent='Imported '+changes.length+' usage reviews from '+file.name+'; '+unmatched.length+' unmatched. Counts are audit metadata; only explicitly supplied opportunity percentages change projections. Verify source and time window.';
+  $('usagestatus').textContent='Imported '+changes.length+' usage reviews from '+file.name+'; '+unmatched.length+' unmatched. When games is provided, targets/carries and optional redzone counts conservatively adjust modeled projections. Verify source, sample window and injury-driven role changes.';
  }catch(err){$('usagestatus').textContent='Usage import error: '+err.message}
 };
 $('availabilitytemplate').onclick=()=>download('gridiron_availability_template.csv','name,team,status,opportunity\n');
