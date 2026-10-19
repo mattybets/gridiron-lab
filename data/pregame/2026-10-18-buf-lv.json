@@ -1,0 +1,1134 @@
+{
+  "schema": "gridiron-lab-v6.6-snapshot",
+  "saved_at_utc": "2026-10-18T13:46:54.331Z",
+  "format": "showdown",
+  "matchup": "BUF @ LV · Oct 18 at 3:25 PM",
+  "model_note": "Projection model: 60% last 3 games + 40% last 6 games; ceiling from 2026 player-game upper-tail distribution, with limited-sample shrinkage and opponent adjustment. Offense is PPR-based; K/DST use play-by-play scoring estimates (DST points allowed approximated); manual availability/opportunity adjustments; no live injury or ownership feed.",
+  "excluded_players": [
+    {
+      "name": "Kyle Allen",
+      "team": "BUF",
+      "reason": "No unambiguous player match in published stats"
+    },
+    {
+      "name": "Fernando Mendoza",
+      "team": "LV",
+      "reason": "No unambiguous player match in published stats"
+    },
+    {
+      "name": "Shane Buechele",
+      "team": "BUF",
+      "reason": "No unambiguous player match in published stats"
+    },
+    {
+      "name": "Aidan O'Connell",
+      "team": "LV",
+      "reason": "No unambiguous player match in published stats"
+    },
+    {
+      "name": "Kansei Matsuzawa",
+      "team": "LV",
+      "reason": "No unambiguous player match in published stats"
+    },
+    {
+      "name": "Skyler Bell",
+      "team": "BUF",
+      "reason": "No unambiguous player match in published stats"
+    },
+    {
+      "name": "Deven Thompkins",
+      "team": "LV",
+      "reason": "No unambiguous player match in published stats"
+    },
+    {
+      "name": "Connor Heyward",
+      "team": "LV",
+      "reason": "No unambiguous player match in published stats"
+    },
+    {
+      "name": "Roman Hemby",
+      "team": "LV",
+      "reason": "No unambiguous player match in published stats"
+    },
+    {
+      "name": "Frank Gore Jr.",
+      "team": "BUF",
+      "reason": "No unambiguous player match in published stats"
+    },
+    {
+      "name": "Brock Lampe",
+      "team": "BUF",
+      "reason": "No unambiguous player match in published stats"
+    },
+    {
+      "name": "Owen Wright",
+      "team": "LV",
+      "reason": "No unambiguous player match in published stats"
+    },
+    {
+      "name": "Chris Collier",
+      "team": "LV",
+      "reason": "No unambiguous player match in published stats"
+    },
+    {
+      "name": "Dont'e Thornton Jr.",
+      "team": "LV",
+      "reason": "No unambiguous player match in published stats"
+    },
+    {
+      "name": "Jack Bech",
+      "team": "LV",
+      "reason": "out"
+    },
+    {
+      "name": "Jamari Thrash",
+      "team": "LV",
+      "reason": "No unambiguous player match in published stats"
+    },
+    {
+      "name": "Ja'Mori Maclin",
+      "team": "BUF",
+      "reason": "No unambiguous player match in published stats"
+    },
+    {
+      "name": "Stephen Gosnell",
+      "team": "BUF",
+      "reason": "No unambiguous player match in published stats"
+    },
+    {
+      "name": "Trent Sherfield Sr.",
+      "team": "BUF",
+      "reason": "No unambiguous player match in published stats"
+    },
+    {
+      "name": "Phillip Dorsett II",
+      "team": "LV",
+      "reason": "No unambiguous player match in published stats"
+    },
+    {
+      "name": "Corey Rucker",
+      "team": "LV",
+      "reason": "No unambiguous player match in published stats"
+    },
+    {
+      "name": "Carter Runyon",
+      "team": "LV",
+      "reason": "No unambiguous player match in published stats"
+    },
+    {
+      "name": "Patrick Gurd",
+      "team": "LV",
+      "reason": "No unambiguous player match in published stats"
+    },
+    {
+      "name": "Chris Myarick",
+      "team": "LV",
+      "reason": "No unambiguous player match in published stats"
+    },
+    {
+      "name": "Tyrell Shavers",
+      "team": "BUF",
+      "reason": "No unambiguous player match in published stats"
+    }
+  ],
+  "settings": {
+    "iterations": 1200,
+    "simulation_limit": 3000,
+    "captain_exposure": 40,
+    "qb_restriction": "same"
+  },
+  "players": [
+    {
+      "name": "Josh Allen",
+      "team": "BUF",
+      "position": "QB",
+      "salary": 11600,
+      "projection": 27.39,
+      "ceiling": 40.76,
+      "model_games": 5,
+      "source": "2026 published baseline",
+      "confidence": "Moderate",
+      "role_review": "unreviewed",
+      "status": "unknown",
+      "key": "joshallen|BUF"
+    },
+    {
+      "name": "Brock Bowers",
+      "team": "LV",
+      "position": "TE",
+      "salary": 10600,
+      "projection": 23.03,
+      "ceiling": 26.7,
+      "model_games": 3,
+      "source": "2026 published baseline (SMALL SAMPLE: 3 games)",
+      "confidence": "Limited",
+      "role_review": "unreviewed",
+      "status": "unknown",
+      "key": "brockbowers|LV"
+    },
+    {
+      "name": "James Cook III",
+      "team": "BUF",
+      "position": "RB",
+      "salary": 10400,
+      "projection": 19.15,
+      "ceiling": 24.55,
+      "model_games": 5,
+      "source": "2026 published baseline",
+      "confidence": "Moderate",
+      "role_review": "unreviewed",
+      "status": "unknown",
+      "key": "jamescook|BUF"
+    },
+    {
+      "name": "Kirk Cousins",
+      "team": "LV",
+      "position": "QB",
+      "salary": 9800,
+      "projection": 21.94,
+      "ceiling": 27.14,
+      "model_games": 5,
+      "source": "2026 published baseline",
+      "confidence": "Moderate",
+      "role_review": "unreviewed",
+      "status": "unknown",
+      "key": "kirkcousins|LV"
+    },
+    {
+      "name": "Ashton Jeanty",
+      "team": "LV",
+      "position": "RB",
+      "salary": 9600,
+      "projection": 17.19,
+      "ceiling": 32.65,
+      "model_games": 5,
+      "source": "2026 published baseline",
+      "confidence": "Moderate",
+      "role_review": "unreviewed",
+      "status": "unknown",
+      "key": "ashtonjeanty|LV"
+    },
+    {
+      "name": "DJ Moore",
+      "team": "BUF",
+      "position": "WR",
+      "salary": 8600,
+      "projection": 6.68,
+      "ceiling": 18,
+      "model_games": 4,
+      "source": "2026 published baseline",
+      "confidence": "Moderate",
+      "role_review": "unreviewed",
+      "status": "questionable",
+      "key": "djmoore|BUF"
+    },
+    {
+      "name": "Khalil Shakir",
+      "team": "BUF",
+      "position": "WR",
+      "salary": 7600,
+      "projection": 8.48,
+      "ceiling": 13.45,
+      "model_games": 5,
+      "source": "2026 published baseline",
+      "confidence": "Moderate",
+      "role_review": "unreviewed",
+      "status": "unknown",
+      "key": "khalilshakir|BUF"
+    },
+    {
+      "name": "Dalton Kincaid",
+      "team": "BUF",
+      "position": "TE",
+      "salary": 7000,
+      "projection": 6.81,
+      "ceiling": 20.7,
+      "model_games": 5,
+      "source": "2026 published baseline",
+      "confidence": "Moderate",
+      "role_review": "unreviewed",
+      "status": "unknown",
+      "key": "daltonkincaid|BUF"
+    },
+    {
+      "name": "Keon Coleman",
+      "team": "BUF",
+      "position": "WR",
+      "salary": 6800,
+      "projection": 11.14,
+      "ceiling": 23.19,
+      "model_games": 5,
+      "source": "2026 published baseline",
+      "confidence": "Moderate",
+      "role_review": "unreviewed",
+      "status": "unknown",
+      "key": "keoncoleman|BUF"
+    },
+    {
+      "name": "Tre Tucker",
+      "team": "LV",
+      "position": "WR",
+      "salary": 6600,
+      "projection": 10.57,
+      "ceiling": 23.06,
+      "model_games": 5,
+      "source": "2026 published baseline",
+      "confidence": "Moderate",
+      "role_review": "unreviewed",
+      "status": "unknown",
+      "key": "tretucker|LV"
+    },
+    {
+      "name": "Tyler Bass",
+      "team": "BUF",
+      "position": "K",
+      "salary": 5200,
+      "projection": 9,
+      "ceiling": 13.17,
+      "model_games": 5,
+      "source": "2026 published baseline",
+      "confidence": "Moderate",
+      "role_review": "unreviewed",
+      "status": "unknown",
+      "key": "tylerbass|BUF"
+    },
+    {
+      "name": "Matt Gay",
+      "team": "LV",
+      "position": "K",
+      "salary": 4800,
+      "projection": 10.96,
+      "ceiling": 16.03,
+      "model_games": 5,
+      "source": "2026 published baseline",
+      "confidence": "Moderate",
+      "role_review": "unreviewed",
+      "status": "unknown",
+      "key": "mattgay|LV"
+    },
+    {
+      "name": "Ty Johnson",
+      "team": "BUF",
+      "position": "RB",
+      "salary": 4400,
+      "projection": 7.93,
+      "ceiling": 11.92,
+      "model_games": 3,
+      "source": "2026 published baseline (SMALL SAMPLE: 3 games)",
+      "confidence": "Limited",
+      "role_review": "unreviewed",
+      "status": "unknown",
+      "key": "tyjohnson|BUF"
+    },
+    {
+      "name": "Mike Washington Jr.",
+      "team": "LV",
+      "position": "RB",
+      "salary": 4200,
+      "projection": 5.58,
+      "ceiling": 12.6,
+      "model_games": 5,
+      "source": "2026 published baseline",
+      "confidence": "Moderate",
+      "role_review": "unreviewed",
+      "status": "unknown",
+      "key": "mikewashington|LV"
+    },
+    {
+      "name": "Bills",
+      "team": "BUF",
+      "position": "DST",
+      "salary": 4000,
+      "projection": 3.24,
+      "ceiling": 5.75,
+      "model_games": 5,
+      "source": "2026 published baseline",
+      "confidence": "Moderate",
+      "role_review": "unreviewed",
+      "status": "unknown",
+      "key": "bills|BUF"
+    },
+    {
+      "name": "Michael Mayer",
+      "team": "LV",
+      "position": "TE",
+      "salary": 3600,
+      "projection": 9.17,
+      "ceiling": 16.03,
+      "model_games": 5,
+      "source": "2026 published baseline",
+      "confidence": "Moderate",
+      "role_review": "unreviewed",
+      "status": "unknown",
+      "key": "michaelmayer|LV"
+    },
+    {
+      "name": "Raiders",
+      "team": "LV",
+      "position": "DST",
+      "salary": 3400,
+      "projection": 4.8,
+      "ceiling": 11.46,
+      "model_games": 5,
+      "source": "2026 published baseline",
+      "confidence": "Moderate",
+      "role_review": "unreviewed",
+      "status": "unknown",
+      "key": "raiders|LV"
+    },
+    {
+      "name": "Jalen Nailor",
+      "team": "LV",
+      "position": "WR",
+      "salary": 3000,
+      "projection": 4,
+      "ceiling": 6.58,
+      "model_games": 3,
+      "source": "2026 published baseline (SMALL SAMPLE: 3 games)",
+      "confidence": "Limited",
+      "role_review": "unreviewed",
+      "status": "unknown",
+      "key": "jalennailor|LV"
+    },
+    {
+      "name": "Joshua Palmer",
+      "team": "BUF",
+      "position": "WR",
+      "salary": 2800,
+      "projection": 7.66,
+      "ceiling": 12.52,
+      "model_games": 3,
+      "source": "2026 published baseline (SMALL SAMPLE: 3 games)",
+      "confidence": "Limited",
+      "role_review": "unreviewed",
+      "status": "questionable",
+      "key": "joshuapalmer|BUF"
+    },
+    {
+      "name": "Dylan Laube",
+      "team": "LV",
+      "position": "RB",
+      "salary": 2400,
+      "projection": 3.67,
+      "ceiling": 12.48,
+      "model_games": 5,
+      "source": "2026 published baseline",
+      "confidence": "Moderate",
+      "role_review": "unreviewed",
+      "status": "unknown",
+      "key": "dylanlaube|LV"
+    },
+    {
+      "name": "Cody White",
+      "team": "LV",
+      "position": "WR",
+      "salary": 2200,
+      "projection": 8.59,
+      "ceiling": 17.87,
+      "model_games": 5,
+      "source": "2026 published baseline",
+      "confidence": "Moderate",
+      "role_review": "unreviewed",
+      "status": "unknown",
+      "key": "codywhite|LV"
+    },
+    {
+      "name": "Dawson Knox",
+      "team": "BUF",
+      "position": "TE",
+      "salary": 2000,
+      "projection": 3.05,
+      "ceiling": 8.2,
+      "model_games": 5,
+      "source": "2026 published baseline",
+      "confidence": "Moderate",
+      "role_review": "unreviewed",
+      "status": "unknown",
+      "key": "dawsonknox|BUF"
+    },
+    {
+      "name": "Ian Thomas",
+      "team": "LV",
+      "position": "TE",
+      "salary": 1600,
+      "projection": 4.92,
+      "ceiling": 10.55,
+      "model_games": 3,
+      "source": "2026 published baseline (SMALL SAMPLE: 3 games)",
+      "confidence": "Limited",
+      "role_review": "unreviewed",
+      "status": "unknown",
+      "key": "ianthomas|LV"
+    },
+    {
+      "name": "Ray Davis",
+      "team": "BUF",
+      "position": "RB",
+      "salary": 1400,
+      "projection": 1.86,
+      "ceiling": 4.35,
+      "model_games": 4,
+      "source": "2026 published baseline",
+      "confidence": "Moderate",
+      "role_review": "unreviewed",
+      "status": "unknown",
+      "key": "raydavis|BUF"
+    },
+    {
+      "name": "Malik Benson",
+      "team": "LV",
+      "position": "WR",
+      "salary": 1200,
+      "projection": 0.6,
+      "ceiling": 1.76,
+      "model_games": 5,
+      "source": "2026 published baseline",
+      "confidence": "Moderate",
+      "role_review": "unreviewed",
+      "status": "unknown",
+      "key": "malikbenson|LV"
+    },
+    {
+      "name": "Jackson Hawes",
+      "team": "BUF",
+      "position": "TE",
+      "salary": 600,
+      "projection": 0,
+      "ceiling": 0,
+      "model_games": 2,
+      "source": "2026 published baseline (SMALL SAMPLE: 2 games)",
+      "confidence": "Limited",
+      "role_review": "unreviewed",
+      "status": "unknown",
+      "key": "jacksonhawes|BUF"
+    },
+    {
+      "name": "Dareke Young",
+      "team": "LV",
+      "position": "WR",
+      "salary": 200,
+      "projection": 1.98,
+      "ceiling": 4.49,
+      "model_games": 4,
+      "source": "2026 published baseline",
+      "confidence": "Moderate",
+      "role_review": "unreviewed",
+      "status": "unknown",
+      "key": "darekeyoung|LV"
+    },
+    {
+      "name": "Jack Bech",
+      "team": "LV",
+      "position": "WR",
+      "salary": 200,
+      "projection": 9.3,
+      "ceiling": 14.05,
+      "model_games": 2,
+      "source": "2026 published baseline (SMALL SAMPLE: 2 games)",
+      "confidence": "Limited",
+      "role_review": "unreviewed",
+      "status": "out",
+      "key": "jackbech|LV"
+    },
+    {
+      "name": "Greg Dortch",
+      "team": "BUF",
+      "position": "WR",
+      "salary": 200,
+      "projection": 0,
+      "ceiling": 0,
+      "model_games": 5,
+      "source": "2026 published baseline",
+      "confidence": "Moderate",
+      "role_review": "unreviewed",
+      "status": "unknown",
+      "key": "gregdortch|BUF"
+    },
+    {
+      "name": "Keleki Latu",
+      "team": "BUF",
+      "position": "TE",
+      "salary": 200,
+      "projection": 0,
+      "ceiling": 0,
+      "model_games": 4,
+      "source": "2026 published baseline",
+      "confidence": "Moderate",
+      "role_review": "unreviewed",
+      "status": "unknown",
+      "key": "kelekilatu|BUF"
+    }
+  ],
+  "lineups": [
+    {
+      "strategy": "cash",
+      "index": 1,
+      "projected": 114.60499999999999,
+      "modeled_p90": 143.8821729943697,
+      "modeled_p99": 167.02355788430165,
+      "players": [
+        {
+          "slot": "CPT",
+          "name": "Josh Allen",
+          "team": "BUF",
+          "position": "QB",
+          "salary": 11600,
+          "key": "joshallen|BUF"
+        },
+        {
+          "slot": "FLEX",
+          "name": "Cody White",
+          "team": "LV",
+          "position": "WR",
+          "salary": 2200,
+          "key": "codywhite|LV"
+        },
+        {
+          "slot": "FLEX",
+          "name": "Kirk Cousins",
+          "team": "LV",
+          "position": "QB",
+          "salary": 9800,
+          "key": "kirkcousins|LV"
+        },
+        {
+          "slot": "FLEX",
+          "name": "Brock Bowers",
+          "team": "LV",
+          "position": "TE",
+          "salary": 10600,
+          "key": "brockbowers|LV"
+        },
+        {
+          "slot": "FLEX",
+          "name": "Matt Gay",
+          "team": "LV",
+          "position": "K",
+          "salary": 4800,
+          "key": "mattgay|LV"
+        },
+        {
+          "slot": "FLEX",
+          "name": "Tyler Bass",
+          "team": "BUF",
+          "position": "K",
+          "salary": 5200,
+          "key": "tylerbass|BUF"
+        }
+      ]
+    },
+    {
+      "strategy": "cash",
+      "index": 2,
+      "projected": 113.565,
+      "modeled_p90": 142.66282772875394,
+      "modeled_p99": 167.0805433154607,
+      "players": [
+        {
+          "slot": "CPT",
+          "name": "Cody White",
+          "team": "LV",
+          "position": "WR",
+          "salary": 2200,
+          "key": "codywhite|LV"
+        },
+        {
+          "slot": "FLEX",
+          "name": "Josh Allen",
+          "team": "BUF",
+          "position": "QB",
+          "salary": 11600,
+          "key": "joshallen|BUF"
+        },
+        {
+          "slot": "FLEX",
+          "name": "Kirk Cousins",
+          "team": "LV",
+          "position": "QB",
+          "salary": 9800,
+          "key": "kirkcousins|LV"
+        },
+        {
+          "slot": "FLEX",
+          "name": "Michael Mayer",
+          "team": "LV",
+          "position": "TE",
+          "salary": 3600,
+          "key": "michaelmayer|LV"
+        },
+        {
+          "slot": "FLEX",
+          "name": "Brock Bowers",
+          "team": "LV",
+          "position": "TE",
+          "salary": 10600,
+          "key": "brockbowers|LV"
+        },
+        {
+          "slot": "FLEX",
+          "name": "James Cook III",
+          "team": "BUF",
+          "position": "RB",
+          "salary": 10400,
+          "key": "jamescook|BUF"
+        }
+      ]
+    },
+    {
+      "strategy": "cash",
+      "index": 3,
+      "projected": 113.05000000000001,
+      "modeled_p90": 138.74890836016726,
+      "modeled_p99": 158.26932691242115,
+      "players": [
+        {
+          "slot": "CPT",
+          "name": "Kirk Cousins",
+          "team": "LV",
+          "position": "QB",
+          "salary": 9800,
+          "key": "kirkcousins|LV"
+        },
+        {
+          "slot": "FLEX",
+          "name": "Cody White",
+          "team": "LV",
+          "position": "WR",
+          "salary": 2200,
+          "key": "codywhite|LV"
+        },
+        {
+          "slot": "FLEX",
+          "name": "Josh Allen",
+          "team": "BUF",
+          "position": "QB",
+          "salary": 11600,
+          "key": "joshallen|BUF"
+        },
+        {
+          "slot": "FLEX",
+          "name": "Dareke Young",
+          "team": "LV",
+          "position": "WR",
+          "salary": 200,
+          "key": "darekeyoung|LV"
+        },
+        {
+          "slot": "FLEX",
+          "name": "Brock Bowers",
+          "team": "LV",
+          "position": "TE",
+          "salary": 10600,
+          "key": "brockbowers|LV"
+        },
+        {
+          "slot": "FLEX",
+          "name": "James Cook III",
+          "team": "BUF",
+          "position": "RB",
+          "salary": 10400,
+          "key": "jamescook|BUF"
+        }
+      ]
+    },
+    {
+      "strategy": "cash",
+      "index": 4,
+      "projected": 114.775,
+      "modeled_p90": 144.22250275821463,
+      "modeled_p99": 165.8825419198756,
+      "players": [
+        {
+          "slot": "CPT",
+          "name": "Josh Allen",
+          "team": "BUF",
+          "position": "QB",
+          "salary": 11600,
+          "key": "joshallen|BUF"
+        },
+        {
+          "slot": "FLEX",
+          "name": "Cody White",
+          "team": "LV",
+          "position": "WR",
+          "salary": 2200,
+          "key": "codywhite|LV"
+        },
+        {
+          "slot": "FLEX",
+          "name": "Kirk Cousins",
+          "team": "LV",
+          "position": "QB",
+          "salary": 9800,
+          "key": "kirkcousins|LV"
+        },
+        {
+          "slot": "FLEX",
+          "name": "Michael Mayer",
+          "team": "LV",
+          "position": "TE",
+          "salary": 3600,
+          "key": "michaelmayer|LV"
+        },
+        {
+          "slot": "FLEX",
+          "name": "Brock Bowers",
+          "team": "LV",
+          "position": "TE",
+          "salary": 10600,
+          "key": "brockbowers|LV"
+        },
+        {
+          "slot": "FLEX",
+          "name": "Matt Gay",
+          "team": "LV",
+          "position": "K",
+          "salary": 4800,
+          "key": "mattgay|LV"
+        }
+      ]
+    },
+    {
+      "strategy": "cash",
+      "index": 5,
+      "projected": 113.85499999999999,
+      "modeled_p90": 140.2142832501855,
+      "modeled_p99": 161.72832339273276,
+      "players": [
+        {
+          "slot": "CPT",
+          "name": "Michael Mayer",
+          "team": "LV",
+          "position": "TE",
+          "salary": 3600,
+          "key": "michaelmayer|LV"
+        },
+        {
+          "slot": "FLEX",
+          "name": "Cody White",
+          "team": "LV",
+          "position": "WR",
+          "salary": 2200,
+          "key": "codywhite|LV"
+        },
+        {
+          "slot": "FLEX",
+          "name": "Josh Allen",
+          "team": "BUF",
+          "position": "QB",
+          "salary": 11600,
+          "key": "joshallen|BUF"
+        },
+        {
+          "slot": "FLEX",
+          "name": "Kirk Cousins",
+          "team": "LV",
+          "position": "QB",
+          "salary": 9800,
+          "key": "kirkcousins|LV"
+        },
+        {
+          "slot": "FLEX",
+          "name": "Brock Bowers",
+          "team": "LV",
+          "position": "TE",
+          "salary": 10600,
+          "key": "brockbowers|LV"
+        },
+        {
+          "slot": "FLEX",
+          "name": "James Cook III",
+          "team": "BUF",
+          "position": "RB",
+          "salary": 10400,
+          "key": "jamescook|BUF"
+        }
+      ]
+    },
+    {
+      "strategy": "gpp",
+      "index": 1,
+      "projected": 109.115,
+      "modeled_p90": 149.90833069174366,
+      "modeled_p99": 181.4462512355045,
+      "players": [
+        {
+          "slot": "CPT",
+          "name": "Josh Allen",
+          "team": "BUF",
+          "position": "QB",
+          "salary": 11600,
+          "key": "joshallen|BUF"
+        },
+        {
+          "slot": "FLEX",
+          "name": "Cody White",
+          "team": "LV",
+          "position": "WR",
+          "salary": 2200,
+          "key": "codywhite|LV"
+        },
+        {
+          "slot": "FLEX",
+          "name": "Ashton Jeanty",
+          "team": "LV",
+          "position": "RB",
+          "salary": 9600,
+          "key": "ashtonjeanty|LV"
+        },
+        {
+          "slot": "FLEX",
+          "name": "Keon Coleman",
+          "team": "BUF",
+          "position": "WR",
+          "salary": 6800,
+          "key": "keoncoleman|BUF"
+        },
+        {
+          "slot": "FLEX",
+          "name": "Kirk Cousins",
+          "team": "LV",
+          "position": "QB",
+          "salary": 9800,
+          "key": "kirkcousins|LV"
+        },
+        {
+          "slot": "FLEX",
+          "name": "Michael Mayer",
+          "team": "LV",
+          "position": "TE",
+          "salary": 3600,
+          "key": "michaelmayer|LV"
+        }
+      ]
+    },
+    {
+      "strategy": "gpp",
+      "index": 2,
+      "projected": 109.635,
+      "modeled_p90": 147.35349984797986,
+      "modeled_p99": 183.66642111811902,
+      "players": [
+        {
+          "slot": "CPT",
+          "name": "Josh Allen",
+          "team": "BUF",
+          "position": "QB",
+          "salary": 11600,
+          "key": "joshallen|BUF"
+        },
+        {
+          "slot": "FLEX",
+          "name": "Cody White",
+          "team": "LV",
+          "position": "WR",
+          "salary": 2200,
+          "key": "codywhite|LV"
+        },
+        {
+          "slot": "FLEX",
+          "name": "Ashton Jeanty",
+          "team": "LV",
+          "position": "RB",
+          "salary": 9600,
+          "key": "ashtonjeanty|LV"
+        },
+        {
+          "slot": "FLEX",
+          "name": "Tre Tucker",
+          "team": "LV",
+          "position": "WR",
+          "salary": 6600,
+          "key": "tretucker|LV"
+        },
+        {
+          "slot": "FLEX",
+          "name": "Michael Mayer",
+          "team": "LV",
+          "position": "TE",
+          "salary": 3600,
+          "key": "michaelmayer|LV"
+        },
+        {
+          "slot": "FLEX",
+          "name": "Brock Bowers",
+          "team": "LV",
+          "position": "TE",
+          "salary": 10600,
+          "key": "brockbowers|LV"
+        }
+      ]
+    },
+    {
+      "strategy": "gpp",
+      "index": 3,
+      "projected": 105.805,
+      "modeled_p90": 147.372823304046,
+      "modeled_p99": 182.464691983941,
+      "players": [
+        {
+          "slot": "CPT",
+          "name": "Ashton Jeanty",
+          "team": "LV",
+          "position": "RB",
+          "salary": 9600,
+          "key": "ashtonjeanty|LV"
+        },
+        {
+          "slot": "FLEX",
+          "name": "Cody White",
+          "team": "LV",
+          "position": "WR",
+          "salary": 2200,
+          "key": "codywhite|LV"
+        },
+        {
+          "slot": "FLEX",
+          "name": "Josh Allen",
+          "team": "BUF",
+          "position": "QB",
+          "salary": 11600,
+          "key": "joshallen|BUF"
+        },
+        {
+          "slot": "FLEX",
+          "name": "Keon Coleman",
+          "team": "BUF",
+          "position": "WR",
+          "salary": 6800,
+          "key": "keoncoleman|BUF"
+        },
+        {
+          "slot": "FLEX",
+          "name": "Kirk Cousins",
+          "team": "LV",
+          "position": "QB",
+          "salary": 9800,
+          "key": "kirkcousins|LV"
+        },
+        {
+          "slot": "FLEX",
+          "name": "Matt Gay",
+          "team": "LV",
+          "position": "K",
+          "salary": 4800,
+          "key": "mattgay|LV"
+        }
+      ]
+    },
+    {
+      "strategy": "gpp",
+      "index": 4,
+      "projected": 102.105,
+      "modeled_p90": 141.96143995210033,
+      "modeled_p99": 180.99566204164591,
+      "players": [
+        {
+          "slot": "CPT",
+          "name": "Tre Tucker",
+          "team": "LV",
+          "position": "WR",
+          "salary": 6600,
+          "key": "tretucker|LV"
+        },
+        {
+          "slot": "FLEX",
+          "name": "Cody White",
+          "team": "LV",
+          "position": "WR",
+          "salary": 2200,
+          "key": "codywhite|LV"
+        },
+        {
+          "slot": "FLEX",
+          "name": "Josh Allen",
+          "team": "BUF",
+          "position": "QB",
+          "salary": 11600,
+          "key": "joshallen|BUF"
+        },
+        {
+          "slot": "FLEX",
+          "name": "Ashton Jeanty",
+          "team": "LV",
+          "position": "RB",
+          "salary": 9600,
+          "key": "ashtonjeanty|LV"
+        },
+        {
+          "slot": "FLEX",
+          "name": "Keon Coleman",
+          "team": "BUF",
+          "position": "WR",
+          "salary": 6800,
+          "key": "keoncoleman|BUF"
+        },
+        {
+          "slot": "FLEX",
+          "name": "Kirk Cousins",
+          "team": "LV",
+          "position": "QB",
+          "salary": 9800,
+          "key": "kirkcousins|LV"
+        }
+      ]
+    },
+    {
+      "strategy": "gpp",
+      "index": 5,
+      "projected": 101.115,
+      "modeled_p90": 144.93776246503484,
+      "modeled_p99": 177.9746778361242,
+      "players": [
+        {
+          "slot": "CPT",
+          "name": "Cody White",
+          "team": "LV",
+          "position": "WR",
+          "salary": 2200,
+          "key": "codywhite|LV"
+        },
+        {
+          "slot": "FLEX",
+          "name": "Josh Allen",
+          "team": "BUF",
+          "position": "QB",
+          "salary": 11600,
+          "key": "joshallen|BUF"
+        },
+        {
+          "slot": "FLEX",
+          "name": "Ashton Jeanty",
+          "team": "LV",
+          "position": "RB",
+          "salary": 9600,
+          "key": "ashtonjeanty|LV"
+        },
+        {
+          "slot": "FLEX",
+          "name": "Tre Tucker",
+          "team": "LV",
+          "position": "WR",
+          "salary": 6600,
+          "key": "tretucker|LV"
+        },
+        {
+          "slot": "FLEX",
+          "name": "Keon Coleman",
+          "team": "BUF",
+          "position": "WR",
+          "salary": 6800,
+          "key": "keoncoleman|BUF"
+        },
+        {
+          "slot": "FLEX",
+          "name": "Kirk Cousins",
+          "team": "LV",
+          "position": "QB",
+          "salary": 9800,
+          "key": "kirkcousins|LV"
+        }
+      ]
+    }
+  ]
+}
