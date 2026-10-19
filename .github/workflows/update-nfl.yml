@@ -20,6 +20,7 @@ jobs:
           python-version: '3.12'
 
       - run: python update_stats.py
+      - run: python -m unittest test_feedback.py
       - run: python evaluate_contests.py
 
       - name: Commit updated NFL data
