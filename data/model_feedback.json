@@ -1,13 +1,13 @@
 {
   "schema_version": 1,
-  "generated_utc": "2026-10-19T00:00:00Z",
+  "generated_utc": "2026-10-19T20:47:38.287Z",
   "contest_count": 4,
   "known_winner_count": 3,
   "mean_lineup_points": 109.94,
   "mean_gap_to_winner": 29,
   "roi_complete_records": 1,
   "roi_percent_complete_records": 66.67,
-  "pregame_snapshot_count": 0,
+  "pregame_snapshot_count": 4,
   "full_field_count": 0,
   "records": [
     {
@@ -55,11 +55,67 @@
       "has_verified_full_field": false
     }
   ],
-  "training_status": "not_trained",
+  "training_status": "insufficient_evidence",
   "ranking_parameters_updated": false,
   "limitations": [
     "Historical outcomes are descriptive until matched with saved pre-kickoff projections and slate salaries.",
     "Winning-score gaps do not identify the best alternative lineup or optimal ranking weights.",
     "No model weights are changed from incomplete records."
-  ]
+  ],
+  "snapshot_evaluations": [
+    {
+      "snapshot": "2026-10-18-chi-atl.json",
+      "matchup": "CHI @ ATL · Oct 18 at 12:00 PM",
+      "saved_at_utc": "2026-10-16T19:38:41.132Z",
+      "player_count": 31,
+      "lineup_count": 10,
+      "status": "awaiting_verified_actuals"
+    },
+    {
+      "snapshot": "2026-10-18-buf-lv.json",
+      "matchup": "BUF @ LV · Oct 18 at 3:25 PM",
+      "saved_at_utc": "2026-10-18T13:46:54.331Z",
+      "player_count": 30,
+      "lineup_count": 10,
+      "status": "awaiting_verified_actuals"
+    },
+    {
+      "snapshot": "2026-10-18-dal-gb-early.json",
+      "matchup": "DAL @ GB · Oct 18 at 7:20 PM",
+      "saved_at_utc": "2026-10-17T17:46:41.855Z",
+      "player_count": 29,
+      "lineup_count": 10,
+      "status": "awaiting_verified_actuals"
+    },
+    {
+      "snapshot": "2026-10-18-dal-gb-later.json",
+      "matchup": "DAL @ GB · Oct 18 at 7:20 PM",
+      "saved_at_utc": "2026-10-17T17:54:22.492Z",
+      "player_count": 29,
+      "lineup_count": 10,
+      "status": "awaiting_verified_actuals"
+    },
+    {
+      "snapshot": "2026-10-19-wsh-sf.json",
+      "matchup": "WSH @ SF · Oct 19 at 7:15 PM",
+      "saved_at_utc": "2026-10-19T20:29:36.750Z",
+      "player_count": 31,
+      "lineup_count": 10,
+      "status": "awaiting_verified_actuals"
+    }
+  ],
+  "saved_snapshot_file_count": 5,
+  "unique_matchups": 4,
+  "calibration": {
+    "enabled": false,
+    "weights": {
+      "p90": 0.45,
+      "mean": 0.25,
+      "projection": 0.2,
+      "ceiling": 0.1
+    },
+    "validated_games": 0,
+    "method": "leave-one-game-out",
+    "reason": "No complete verified actual player score sets linked to these pregame snapshots"
+  }
 }
