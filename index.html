@@ -147,7 +147,14 @@ function optimize(){
   const cashScore=sim.avg-.35*sim.sd;
   // V8.1 experimental ranking: reduce reliance on highly noisy P99, retain projection floor.
   // This is a heuristic, NOT a calibrated tournament-win probability.
-  const gppScore=.45*sim.p90+.25*sim.avg+.20*x.proj+.10*x.ceil+0.8*x.leverage;
+  // V8.6 experimental: modest stacking preference for pass-catcher/QB pairings.
+  // Heuristic only; not fitted to the three retrospective contest files.
+  const qb=x.l.filter(v=>v.p.position==='QB');
+  const passCatchers=x.l.filter(v=>v.p.position==='WR'||v.p.position==='TE');
+  const sameTeamPairs=qb.reduce((sum,q)=>sum+passCatchers.filter(v=>v.p.team===q.p.team).length,0);
+  const opposingBringbacks=qb.reduce((sum,q)=>sum+passCatchers.filter(v=>v.p.team!==q.p.team).length,0);
+  const stackBonus=Math.min(1.5,0.75*sameTeamPairs)+Math.min(0.5,0.25*opposingBringbacks);
+  const gppScore=.45*sim.p90+.25*sim.avg+.20*x.proj+.10*x.ceil+0.8*x.leverage+stackBonus;
   return {...x,sim,cashScore,gppScore};});
  const cap=Math.max(1,Math.ceil(n*Number($('exposure').value)/100));
  rankedGroups.cash=selectRanked([...scored].sort((a,b)=>b.cashScore-a.cashScore),n,cap);
