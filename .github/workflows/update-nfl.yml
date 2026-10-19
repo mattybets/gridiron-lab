@@ -2,6 +2,13 @@
 name: Update NFL historical stats
 
 on:
+  push:
+    branches: [v8-2-testing]
+    paths:
+      - 'evaluate_contests.py'
+      - 'test_feedback.py'
+      - 'data/pregame/**'
+      - '.github/workflows/update-nfl.yml'
   workflow_dispatch:
       # Enable manual testing
   schedule:
