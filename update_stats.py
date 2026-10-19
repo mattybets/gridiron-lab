@@ -57,7 +57,12 @@ def main():
             pts=float(r.get('fantasy_points_ppr') or 0)
         except ValueError: continue
         key=(r.get('player_id') or name,team)
-        by.setdefault(key,[]).append((int(r['week']),pts,name,pos))
+        usage={}
+        for col in ('targets','carries','rushing_first_downs','receiving_tds','rushing_tds'):
+            raw=r.get(col)
+            try: usage[col]=float(raw) if raw not in (None,'') else None
+            except (ValueError,TypeError): usage[col]=None
+        by.setdefault(key,[]).append((int(r['week']),pts,name,pos,usage))
     players=[]
     for (_,team),games in by.items():
         games.sort(); pts=[g[1] for g in games]; name=games[-1][2];pos=games[-1][3]
@@ -67,7 +72,15 @@ def main():
         sorted_pts=sorted(pts)
         p90=sorted_pts[min(len(sorted_pts)-1, int(0.9*(len(sorted_pts)-1)+0.999999))]
         std=statistics.pstdev(pts) if len(pts)>1 else 0.0
-        players.append({'ppr_p90':round(p90,2),'ppr_stddev':round(std,2),'name':name,'team':team,'position':pos,'historical_ppr_avg':avg,'games':len(pts),'last_week':games[-1][0], 'recent_ppr_avg':round(sum(pts[-3:])/len(pts[-3:]),2)})
+        usage_fields=('targets','carries')
+        usage_totals={}
+        for col in usage_fields:
+            values=[g[4].get(col) for g in games]
+            usage_totals[col]=round(sum(values),2) if all(v is not None for v in values) else None
+        usage_totals['games']=len(games)
+        # Red-zone touches are not reliably available in this weekly feed.
+        usage_totals['redzone']=None
+        players.append({'usage':usage_totals,'ppr_p90':round(p90,2),'ppr_stddev':round(std,2),'name':name,'team':team,'position':pos,'historical_ppr_avg':avg,'games':len(pts),'last_week':games[-1][0], 'recent_ppr_avg':round(sum(pts[-3:])/len(pts[-3:]),2)})
     if not players: raise RuntimeError('No usable player records; preserving last published data')
     OUT.parent.mkdir(exist_ok=True)
     OUT.write_text(json.dumps({'season':season,'through_week':maxweek,'updated_utc':datetime.datetime.now(datetime.timezone.utc).isoformat(),'source':url,'metric':'Historical PPR player game points and defense positional points allowed; projections are estimates, not DraftKings scoring','players':players,'defense_allowed_by_position':def_avgs,'league_allowed_by_position':league_avgs,'current_season_available':True},separators=(',',':')))
