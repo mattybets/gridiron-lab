@@ -1,102 +1,1194 @@
 {
-  "schema_version": 1,
-  "source_filename": "MNF PreKick.json",
-  "source_saved_at_utc": "2026-10-19T20:29:36.750Z",
+  "schema": "gridiron-lab-v8-research-snapshot",
+  "quality_gate": {
+    "research_override": true,
+    "ranking": "p90_45_mean_25_projection_20_ceiling_10",
+    "not_calibrated": true
+  },
+  "previous_schema_compatible": "gridiron-lab-v6.6-snapshot",
+  "saved_at_utc": "2026-10-19T20:29:36.750Z",
+  "format": "showdown",
   "matchup": "WSH @ SF · Oct 19 at 7:15 PM",
-  "source_schema": "gridiron-lab-v8-research-snapshot",
-  "source_player_count": 31,
-  "source_lineup_count": 10,
+  "model_note": "Projection model: sample-size-adjusted recent-form blend with historical baseline; ceiling from 2026 player-game upper-tail distribution, with limited-sample shrinkage and opponent adjustment. Offense is PPR-based; K/DST use play-by-play scoring estimates (DST points allowed approximated); manual availability/opportunity adjustments; no live injury or ownership feed.",
+  "excluded_players": [
+    {
+      "name": "Deebo Samuel Sr.",
+      "team": "SF",
+      "reason": "No unambiguous player match in published stats"
+    },
+    {
+      "name": "Jacory Croskey-Merritt",
+      "team": "WAS",
+      "reason": "out"
+    },
+    {
+      "name": "Marcus Mariota",
+      "team": "WAS",
+      "reason": "out"
+    },
+    {
+      "name": "Mac Jones",
+      "team": "SF",
+      "reason": "No unambiguous player match in published stats"
+    },
+    {
+      "name": "Athan Kaliakmanis",
+      "team": "WAS",
+      "reason": "No unambiguous player match in published stats"
+    },
+    {
+      "name": "Sam Hartman",
+      "team": "WAS",
+      "reason": "No unambiguous player match in published stats"
+    },
+    {
+      "name": "Kurtis Rourke",
+      "team": "SF",
+      "reason": "No unambiguous player match in published stats"
+    },
+    {
+      "name": "Christian Kirk",
+      "team": "SF",
+      "reason": "No unambiguous player match in published stats"
+    },
+    {
+      "name": "Jordan Watkins",
+      "team": "SF",
+      "reason": "No unambiguous player match in published stats"
+    },
+    {
+      "name": "Kyle Juszczyk",
+      "team": "SF",
+      "reason": "No unambiguous player match in published stats"
+    },
+    {
+      "name": "Van Jefferson",
+      "team": "WAS",
+      "reason": "No unambiguous player match in published stats"
+    },
+    {
+      "name": "Sincere McCormick",
+      "team": "SF",
+      "reason": "No unambiguous player match in published stats"
+    },
+    {
+      "name": "Jeremy McNichols",
+      "team": "WAS",
+      "reason": "No unambiguous player match in published stats"
+    },
+    {
+      "name": "Craig Reynolds",
+      "team": "WAS",
+      "reason": "No unambiguous player match in published stats"
+    },
+    {
+      "name": "Devin Neal",
+      "team": "WAS",
+      "reason": "No unambiguous player match in published stats"
+    },
+    {
+      "name": "Wesley Grimes",
+      "team": "SF",
+      "reason": "No unambiguous player match in published stats"
+    },
+    {
+      "name": "Jaylin Lane",
+      "team": "WAS",
+      "reason": "out"
+    },
+    {
+      "name": "Demarcus Robinson",
+      "team": "SF",
+      "reason": "out"
+    },
+    {
+      "name": "River Cracraft",
+      "team": "WAS",
+      "reason": "No unambiguous player match in published stats"
+    },
+    {
+      "name": "Ricky Pearsall",
+      "team": "SF",
+      "reason": "No unambiguous player match in published stats"
+    },
+    {
+      "name": "De'Zhaun Stribling",
+      "team": "SF",
+      "reason": "No unambiguous player match in published stats"
+    },
+    {
+      "name": "Nick DeGennaro",
+      "team": "WAS",
+      "reason": "No unambiguous player match in published stats"
+    },
+    {
+      "name": "Xavier Smith",
+      "team": "SF",
+      "reason": "No unambiguous player match in published stats"
+    },
+    {
+      "name": "Jaden Bradley",
+      "team": "WAS",
+      "reason": "No unambiguous player match in published stats"
+    },
+    {
+      "name": "Will Pauling",
+      "team": "SF",
+      "reason": "No unambiguous player match in published stats"
+    },
+    {
+      "name": "Malik Turner",
+      "team": "SF",
+      "reason": "No unambiguous player match in published stats"
+    },
+    {
+      "name": "Jake Tonges",
+      "team": "SF",
+      "reason": "No unambiguous player match in published stats"
+    },
+    {
+      "name": "Tyler Ott",
+      "team": "WAS",
+      "reason": "No unambiguous player match in published stats"
+    },
+    {
+      "name": "Jack Stoll",
+      "team": "SF",
+      "reason": "No unambiguous player match in published stats"
+    },
+    {
+      "name": "Jack Westover",
+      "team": "WAS",
+      "reason": "No unambiguous player match in published stats"
+    },
+    {
+      "name": "Khalil Dinkins",
+      "team": "SF",
+      "reason": "No unambiguous player match in published stats"
+    },
+    {
+      "name": "Isaac Guerendo",
+      "team": "SF",
+      "reason": "No unambiguous player match in published stats"
+    },
+    {
+      "name": "Brandon Aiyuk",
+      "team": "SF",
+      "reason": "No unambiguous player match in published stats"
+    }
+  ],
   "settings": {
     "iterations": 1200,
     "simulation_limit": 3000,
     "captain_exposure": 40,
     "qb_restriction": "same"
   },
-  "selected_gpp_lineup": {
-    "index": 1,
-    "projected": 104.12110657142858,
-    "modeled_p90": 135.7937932358375,
-    "modeled_p99": 164.51284150034388,
-    "players": [
-      {
-        "slot": "CPT",
-        "name": "Brock Purdy",
-        "team": "SF",
-        "salary_base": 10800
-      },
-      {
-        "slot": "FLEX",
-        "name": "George Kittle",
-        "team": "SF",
-        "salary_base": 8200
-      },
-      {
-        "slot": "FLEX",
-        "name": "Jayden Daniels",
-        "team": "WAS",
-        "salary_base": 10000
-      },
-      {
-        "slot": "FLEX",
-        "name": "Mike Evans",
-        "team": "SF",
-        "salary_base": 9600
-      },
-      {
-        "slot": "FLEX",
-        "name": "Treylon Burks",
-        "team": "WAS",
-        "salary_base": 3200
-      },
-      {
-        "slot": "FLEX",
-        "name": "Dyami Brown",
-        "team": "WAS",
-        "salary_base": 2600
-      }
-    ]
-  },
-  "gpp_candidates": [
+  "players": [
     {
-      "index": 1,
-      "captain": "Brock Purdy",
-      "projected": 104.12110657142858,
-      "p90": 135.7937932358375,
-      "p99": 164.51284150034388
+      "name": "Christian McCaffrey",
+      "team": "SF",
+      "position": "RB",
+      "salary": 11800,
+      "projection": 16.16,
+      "ceiling": 19.98,
+      "model_games": 5,
+      "source": "2026 published baseline",
+      "confidence": "Moderate",
+      "role_review": "unreviewed",
+      "status": "unknown",
+      "key": "christianmccaffrey|SF"
     },
     {
-      "index": 2,
-      "captain": "Brock Purdy",
-      "projected": 100.254898,
-      "p90": 135.5254161603405,
-      "p99": 159.70000415236015
+      "name": "Brock Purdy",
+      "team": "SF",
+      "position": "QB",
+      "salary": 10800,
+      "projection": 26.93,
+      "ceiling": 35.87,
+      "model_games": 5,
+      "source": "2026 published baseline",
+      "confidence": "Moderate",
+      "role_review": "unreviewed",
+      "status": "unknown",
+      "key": "brockpurdy|SF"
     },
     {
-      "index": 3,
-      "captain": "Brock Purdy",
-      "projected": 102.76661942857143,
-      "p90": 133.48413702095513,
-      "p99": 157.85566396571448
+      "name": "Jayden Daniels",
+      "team": "WAS",
+      "position": "QB",
+      "salary": 10000,
+      "projection": 19.4,
+      "ceiling": 28.58,
+      "model_games": 3,
+      "source": "2026 published baseline (SMALL SAMPLE: 3 games)",
+      "confidence": "Limited",
+      "role_review": "unreviewed",
+      "status": "unknown",
+      "key": "jaydendaniels|WAS"
     },
     {
-      "index": 4,
-      "captain": "Brock Purdy",
-      "projected": 98.99305085714286,
-      "p90": 132.98674817285936,
-      "p99": 154.61219453696992
+      "name": "Mike Evans",
+      "team": "SF",
+      "position": "WR",
+      "salary": 9600,
+      "projection": 17.52,
+      "ceiling": 28.07,
+      "model_games": 5,
+      "source": "2026 published baseline",
+      "confidence": "Moderate",
+      "role_review": "unreviewed",
+      "status": "questionable",
+      "key": "mikeevans|SF"
     },
     {
-      "index": 5,
-      "captain": "Brock Purdy",
-      "projected": 100.15450942857143,
-      "p90": 131.9806447654169,
-      "p99": 160.09509626283818
+      "name": "Stefon Diggs",
+      "team": "WAS",
+      "position": "WR",
+      "salary": 8400,
+      "projection": 12.26,
+      "ceiling": 19.74,
+      "model_games": 4,
+      "source": "2026 published baseline",
+      "confidence": "Moderate",
+      "role_review": "unreviewed",
+      "status": "questionable",
+      "key": "stefondiggs|WAS"
+    },
+    {
+      "name": "George Kittle",
+      "team": "SF",
+      "position": "TE",
+      "salary": 8200,
+      "projection": 17.93,
+      "ceiling": 31.18,
+      "model_games": 5,
+      "source": "2026 published baseline",
+      "confidence": "Moderate",
+      "role_review": "unreviewed",
+      "status": "unknown",
+      "key": "georgekittle|SF"
+    },
+    {
+      "name": "Terry McLaurin",
+      "team": "WAS",
+      "position": "WR",
+      "salary": 8000,
+      "projection": 10.63,
+      "ceiling": 18.63,
+      "model_games": 4,
+      "source": "2026 published baseline",
+      "confidence": "Moderate",
+      "role_review": "unreviewed",
+      "status": "unknown",
+      "key": "terrymclaurin|WAS"
+    },
+    {
+      "name": "Jacory Croskey-Merritt",
+      "team": "WAS",
+      "position": "RB",
+      "salary": 7000,
+      "projection": 9.48,
+      "ceiling": 14.79,
+      "model_games": 5,
+      "source": "2026 published baseline",
+      "confidence": "Moderate",
+      "role_review": "unreviewed",
+      "status": "out",
+      "key": "jacorycroskeymerritt|WAS"
+    },
+    {
+      "name": "Rachaad White",
+      "team": "WAS",
+      "position": "RB",
+      "salary": 6600,
+      "projection": 9.17,
+      "ceiling": 15.5,
+      "model_games": 4,
+      "source": "2026 published baseline",
+      "confidence": "Moderate",
+      "role_review": "unreviewed",
+      "status": "unknown",
+      "key": "rachaadwhite|WAS"
+    },
+    {
+      "name": "Marcus Mariota",
+      "team": "WAS",
+      "position": "QB",
+      "salary": 6000,
+      "projection": 10.35,
+      "ceiling": 18.05,
+      "model_games": 3,
+      "source": "2026 published baseline (SMALL SAMPLE: 3 games)",
+      "confidence": "Limited",
+      "role_review": "unreviewed",
+      "status": "out",
+      "key": "marcusmariota|WAS"
+    },
+    {
+      "name": "Eddy Pineiro",
+      "team": "SF",
+      "position": "K",
+      "salary": 5200,
+      "projection": 6.89,
+      "ceiling": 9.58,
+      "model_games": 5,
+      "source": "2026 published baseline",
+      "confidence": "Moderate",
+      "role_review": "unreviewed",
+      "status": "unknown",
+      "key": "eddypineiro|SF"
+    },
+    {
+      "name": "Drew Stevens",
+      "team": "WAS",
+      "position": "K",
+      "salary": 5000,
+      "projection": 8.09,
+      "ceiling": 10.97,
+      "model_games": 5,
+      "source": "2026 published baseline",
+      "confidence": "Moderate",
+      "role_review": "unreviewed",
+      "status": "unknown",
+      "key": "drewstevens|WAS"
+    },
+    {
+      "name": "Chig Okonkwo",
+      "team": "WAS",
+      "position": "TE",
+      "salary": 4600,
+      "projection": 4.4,
+      "ceiling": 8.02,
+      "model_games": 3,
+      "source": "2026 published baseline (SMALL SAMPLE: 3 games)",
+      "confidence": "Limited",
+      "role_review": "unreviewed",
+      "status": "unknown",
+      "key": "chigokonkwo|WAS"
+    },
+    {
+      "name": "49ers",
+      "team": "SF",
+      "position": "DST",
+      "salary": 4400,
+      "projection": 4.31,
+      "ceiling": 7.91,
+      "model_games": 5,
+      "source": "2026 published baseline",
+      "confidence": "Moderate",
+      "role_review": "unreviewed",
+      "status": "unknown",
+      "key": "49ers|SF"
+    },
+    {
+      "name": "Antonio Williams",
+      "team": "WAS",
+      "position": "WR",
+      "salary": 4200,
+      "projection": 6.12,
+      "ceiling": 13.36,
+      "model_games": 5,
+      "source": "2026 published baseline",
+      "confidence": "Moderate",
+      "role_review": "unreviewed",
+      "status": "unknown",
+      "key": "antoniowilliams|WAS"
+    },
+    {
+      "name": "Brandin Cooks",
+      "team": "SF",
+      "position": "WR",
+      "salary": 4000,
+      "projection": 4.24,
+      "ceiling": 9.28,
+      "model_games": 2,
+      "source": "2026 published baseline (SMALL SAMPLE: 2 games)",
+      "confidence": "Limited",
+      "role_review": "unreviewed",
+      "status": "unknown",
+      "key": "brandincooks|SF"
+    },
+    {
+      "name": "Kaelon Black",
+      "team": "SF",
+      "position": "RB",
+      "salary": 3800,
+      "projection": 2.23,
+      "ceiling": 5.95,
+      "model_games": 5,
+      "source": "2026 published baseline",
+      "confidence": "Moderate",
+      "role_review": "unreviewed",
+      "status": "unknown",
+      "key": "kaelonblack|SF"
+    },
+    {
+      "name": "Austin Ekeler",
+      "team": "WAS",
+      "position": "RB",
+      "salary": 3600,
+      "projection": 3.93,
+      "ceiling": 5.57,
+      "model_games": 2,
+      "source": "2026 published baseline (SMALL SAMPLE: 2 games)",
+      "confidence": "Limited",
+      "role_review": "unreviewed",
+      "status": "unknown",
+      "key": "austinekeler|WAS"
+    },
+    {
+      "name": "Commanders",
+      "team": "WAS",
+      "position": "DST",
+      "salary": 3400,
+      "projection": 2.09,
+      "ceiling": 3.86,
+      "model_games": 5,
+      "source": "2026 published baseline",
+      "confidence": "Moderate",
+      "role_review": "unreviewed",
+      "status": "unknown",
+      "key": "commanders|WAS"
+    },
+    {
+      "name": "Treylon Burks",
+      "team": "WAS",
+      "position": "WR",
+      "salary": 3200,
+      "projection": 6.63,
+      "ceiling": 11.83,
+      "model_games": 4,
+      "source": "2026 published baseline",
+      "confidence": "Moderate",
+      "role_review": "unreviewed",
+      "status": "unknown",
+      "key": "treylonburks|WAS"
+    },
+    {
+      "name": "Dyami Brown",
+      "team": "WAS",
+      "position": "WR",
+      "salary": 2600,
+      "projection": 2.98,
+      "ceiling": 8.33,
+      "model_games": 5,
+      "source": "2026 published baseline",
+      "confidence": "Moderate",
+      "role_review": "unreviewed",
+      "status": "unknown",
+      "key": "dyamibrown|WAS"
+    },
+    {
+      "name": "Jacob Cowing",
+      "team": "SF",
+      "position": "WR",
+      "salary": 2200,
+      "projection": 0.57,
+      "ceiling": 1.94,
+      "model_games": 5,
+      "source": "2026 published baseline",
+      "confidence": "Moderate",
+      "role_review": "unreviewed",
+      "status": "unknown",
+      "key": "jacobcowing|SF"
+    },
+    {
+      "name": "John Bates",
+      "team": "WAS",
+      "position": "TE",
+      "salary": 1600,
+      "projection": 1.72,
+      "ceiling": 2.69,
+      "model_games": 3,
+      "source": "2026 published baseline (SMALL SAMPLE: 3 games)",
+      "confidence": "Limited",
+      "role_review": "unreviewed",
+      "status": "unknown",
+      "key": "johnbates|WAS"
+    },
+    {
+      "name": "Luke Farrell",
+      "team": "SF",
+      "position": "TE",
+      "salary": 1200,
+      "projection": 0.61,
+      "ceiling": 3.7,
+      "model_games": 5,
+      "source": "2026 published baseline",
+      "confidence": "Moderate",
+      "role_review": "unreviewed",
+      "status": "unknown",
+      "key": "lukefarrell|SF"
+    },
+    {
+      "name": "Luke McCaffrey",
+      "team": "WAS",
+      "position": "WR",
+      "salary": 1000,
+      "projection": 0,
+      "ceiling": 0,
+      "model_games": 2,
+      "source": "2026 published baseline (SMALL SAMPLE: 2 games)",
+      "confidence": "Limited",
+      "role_review": "unreviewed",
+      "status": "unknown",
+      "key": "lukemccaffrey|WAS"
+    },
+    {
+      "name": "Ben Sinnott",
+      "team": "WAS",
+      "position": "TE",
+      "salary": 600,
+      "projection": 0.43,
+      "ceiling": 1.26,
+      "model_games": 3,
+      "source": "2026 published baseline (SMALL SAMPLE: 3 games)",
+      "confidence": "Limited",
+      "role_review": "unreviewed",
+      "status": "unknown",
+      "key": "bensinnott|WAS"
+    },
+    {
+      "name": "Jordan James",
+      "team": "SF",
+      "position": "RB",
+      "salary": 400,
+      "projection": 0.66,
+      "ceiling": 1.45,
+      "model_games": 2,
+      "source": "2026 published baseline (SMALL SAMPLE: 2 games)",
+      "confidence": "Limited",
+      "role_review": "unreviewed",
+      "status": "unknown",
+      "key": "jordanjames|SF"
+    },
+    {
+      "name": "Brayden Willis",
+      "team": "SF",
+      "position": "TE",
+      "salary": 200,
+      "projection": 0,
+      "ceiling": 0,
+      "model_games": 4,
+      "source": "2026 published baseline",
+      "confidence": "Moderate",
+      "role_review": "unreviewed",
+      "status": "unknown",
+      "key": "braydenwillis|SF"
+    },
+    {
+      "name": "Jaylin Lane",
+      "team": "WAS",
+      "position": "WR",
+      "salary": 200,
+      "projection": 1.03,
+      "ceiling": 2.73,
+      "model_games": 4,
+      "source": "2026 published baseline",
+      "confidence": "Moderate",
+      "role_review": "unreviewed",
+      "status": "out",
+      "key": "jaylinlane|WAS"
+    },
+    {
+      "name": "Demarcus Robinson",
+      "team": "SF",
+      "position": "WR",
+      "salary": 200,
+      "projection": 10.68,
+      "ceiling": 15,
+      "model_games": 2,
+      "source": "2026 published baseline (SMALL SAMPLE: 2 games)",
+      "confidence": "Limited",
+      "role_review": "unreviewed",
+      "status": "out",
+      "key": "demarcusrobinson|SF"
+    },
+    {
+      "name": "Colson Yankoff",
+      "team": "WAS",
+      "position": "TE",
+      "salary": 200,
+      "projection": 0.5,
+      "ceiling": 1.71,
+      "model_games": 5,
+      "source": "2026 published baseline",
+      "confidence": "Moderate",
+      "role_review": "unreviewed",
+      "status": "unknown",
+      "key": "colsonyankoff|WAS"
     }
   ],
-  "model_status": "pregame snapshot; outcome unknown",
-  "limitations": [
-    "Compact GitHub record; original full snapshot retained in conversation upload, not copied into repository.",
-    "No live injury or ownership feed.",
-    "Unreviewed role and unknown statuses for multiple players."
+  "lineups": [
+    {
+      "strategy": "cash",
+      "index": 1,
+      "projected": 102.96122085714286,
+      "modeled_p90": 136.38815706504704,
+      "modeled_p99": 162.49507243876235,
+      "players": [
+        {
+          "slot": "CPT",
+          "name": "Brock Purdy",
+          "team": "SF",
+          "position": "QB",
+          "salary": 10800,
+          "key": "brockpurdy|SF"
+        },
+        {
+          "slot": "FLEX",
+          "name": "George Kittle",
+          "team": "SF",
+          "position": "TE",
+          "salary": 8200,
+          "key": "georgekittle|SF"
+        },
+        {
+          "slot": "FLEX",
+          "name": "Jayden Daniels",
+          "team": "WAS",
+          "position": "QB",
+          "salary": 10000,
+          "key": "jaydendaniels|WAS"
+        },
+        {
+          "slot": "FLEX",
+          "name": "Mike Evans",
+          "team": "SF",
+          "position": "WR",
+          "salary": 9600,
+          "key": "mikeevans|SF"
+        },
+        {
+          "slot": "FLEX",
+          "name": "Treylon Burks",
+          "team": "WAS",
+          "position": "WR",
+          "salary": 3200,
+          "key": "treylonburks|WAS"
+        },
+        {
+          "slot": "FLEX",
+          "name": "John Bates",
+          "team": "WAS",
+          "position": "TE",
+          "salary": 1600,
+          "key": "johnbates|WAS"
+        }
+      ]
+    },
+    {
+      "strategy": "cash",
+      "index": 2,
+      "projected": 104.12110657142858,
+      "modeled_p90": 135.7937932358375,
+      "modeled_p99": 164.51284150034388,
+      "players": [
+        {
+          "slot": "CPT",
+          "name": "Brock Purdy",
+          "team": "SF",
+          "position": "QB",
+          "salary": 10800,
+          "key": "brockpurdy|SF"
+        },
+        {
+          "slot": "FLEX",
+          "name": "George Kittle",
+          "team": "SF",
+          "position": "TE",
+          "salary": 8200,
+          "key": "georgekittle|SF"
+        },
+        {
+          "slot": "FLEX",
+          "name": "Jayden Daniels",
+          "team": "WAS",
+          "position": "QB",
+          "salary": 10000,
+          "key": "jaydendaniels|WAS"
+        },
+        {
+          "slot": "FLEX",
+          "name": "Mike Evans",
+          "team": "SF",
+          "position": "WR",
+          "salary": 9600,
+          "key": "mikeevans|SF"
+        },
+        {
+          "slot": "FLEX",
+          "name": "Treylon Burks",
+          "team": "WAS",
+          "position": "WR",
+          "salary": 3200,
+          "key": "treylonburks|WAS"
+        },
+        {
+          "slot": "FLEX",
+          "name": "Dyami Brown",
+          "team": "WAS",
+          "position": "WR",
+          "salary": 2600,
+          "key": "dyamibrown|WAS"
+        }
+      ]
+    },
+    {
+      "strategy": "cash",
+      "index": 3,
+      "projected": 102.76661942857143,
+      "modeled_p90": 133.48413702095513,
+      "modeled_p99": 157.85566396571448,
+      "players": [
+        {
+          "slot": "CPT",
+          "name": "Brock Purdy",
+          "team": "SF",
+          "position": "QB",
+          "salary": 10800,
+          "key": "brockpurdy|SF"
+        },
+        {
+          "slot": "FLEX",
+          "name": "George Kittle",
+          "team": "SF",
+          "position": "TE",
+          "salary": 8200,
+          "key": "georgekittle|SF"
+        },
+        {
+          "slot": "FLEX",
+          "name": "Jayden Daniels",
+          "team": "WAS",
+          "position": "QB",
+          "salary": 10000,
+          "key": "jaydendaniels|WAS"
+        },
+        {
+          "slot": "FLEX",
+          "name": "Mike Evans",
+          "team": "SF",
+          "position": "WR",
+          "salary": 9600,
+          "key": "mikeevans|SF"
+        },
+        {
+          "slot": "FLEX",
+          "name": "Antonio Williams",
+          "team": "WAS",
+          "position": "WR",
+          "salary": 4200,
+          "key": "antoniowilliams|WAS"
+        },
+        {
+          "slot": "FLEX",
+          "name": "John Bates",
+          "team": "WAS",
+          "position": "TE",
+          "salary": 1600,
+          "key": "johnbates|WAS"
+        }
+      ]
+    },
+    {
+      "strategy": "cash",
+      "index": 4,
+      "projected": 100.99337183928573,
+      "modeled_p90": 130.9755251356558,
+      "modeled_p99": 151.0052520396424,
+      "players": [
+        {
+          "slot": "CPT",
+          "name": "Brock Purdy",
+          "team": "SF",
+          "position": "QB",
+          "salary": 10800,
+          "key": "brockpurdy|SF"
+        },
+        {
+          "slot": "FLEX",
+          "name": "George Kittle",
+          "team": "SF",
+          "position": "TE",
+          "salary": 8200,
+          "key": "georgekittle|SF"
+        },
+        {
+          "slot": "FLEX",
+          "name": "Jayden Daniels",
+          "team": "WAS",
+          "position": "QB",
+          "salary": 10000,
+          "key": "jaydendaniels|WAS"
+        },
+        {
+          "slot": "FLEX",
+          "name": "Treylon Burks",
+          "team": "WAS",
+          "position": "WR",
+          "salary": 3200,
+          "key": "treylonburks|WAS"
+        },
+        {
+          "slot": "FLEX",
+          "name": "Rachaad White",
+          "team": "WAS",
+          "position": "RB",
+          "salary": 6600,
+          "key": "rachaadwhite|WAS"
+        },
+        {
+          "slot": "FLEX",
+          "name": "Drew Stevens",
+          "team": "WAS",
+          "position": "K",
+          "salary": 5000,
+          "key": "drewstevens|WAS"
+        }
+      ]
+    },
+    {
+      "strategy": "cash",
+      "index": 5,
+      "projected": 100.35610657142857,
+      "modeled_p90": 135.28952735658288,
+      "modeled_p99": 160.3609881241137,
+      "players": [
+        {
+          "slot": "CPT",
+          "name": "Jayden Daniels",
+          "team": "WAS",
+          "position": "QB",
+          "salary": 10000,
+          "key": "jaydendaniels|WAS"
+        },
+        {
+          "slot": "FLEX",
+          "name": "George Kittle",
+          "team": "SF",
+          "position": "TE",
+          "salary": 8200,
+          "key": "georgekittle|SF"
+        },
+        {
+          "slot": "FLEX",
+          "name": "Brock Purdy",
+          "team": "SF",
+          "position": "QB",
+          "salary": 10800,
+          "key": "brockpurdy|SF"
+        },
+        {
+          "slot": "FLEX",
+          "name": "Mike Evans",
+          "team": "SF",
+          "position": "WR",
+          "salary": 9600,
+          "key": "mikeevans|SF"
+        },
+        {
+          "slot": "FLEX",
+          "name": "Treylon Burks",
+          "team": "WAS",
+          "position": "WR",
+          "salary": 3200,
+          "key": "treylonburks|WAS"
+        },
+        {
+          "slot": "FLEX",
+          "name": "Dyami Brown",
+          "team": "WAS",
+          "position": "WR",
+          "salary": 2600,
+          "key": "dyamibrown|WAS"
+        }
+      ]
+    },
+    {
+      "strategy": "gpp",
+      "index": 1,
+      "projected": 104.12110657142858,
+      "modeled_p90": 135.7937932358375,
+      "modeled_p99": 164.51284150034388,
+      "players": [
+        {
+          "slot": "CPT",
+          "name": "Brock Purdy",
+          "team": "SF",
+          "position": "QB",
+          "salary": 10800,
+          "key": "brockpurdy|SF"
+        },
+        {
+          "slot": "FLEX",
+          "name": "George Kittle",
+          "team": "SF",
+          "position": "TE",
+          "salary": 8200,
+          "key": "georgekittle|SF"
+        },
+        {
+          "slot": "FLEX",
+          "name": "Jayden Daniels",
+          "team": "WAS",
+          "position": "QB",
+          "salary": 10000,
+          "key": "jaydendaniels|WAS"
+        },
+        {
+          "slot": "FLEX",
+          "name": "Mike Evans",
+          "team": "SF",
+          "position": "WR",
+          "salary": 9600,
+          "key": "mikeevans|SF"
+        },
+        {
+          "slot": "FLEX",
+          "name": "Treylon Burks",
+          "team": "WAS",
+          "position": "WR",
+          "salary": 3200,
+          "key": "treylonburks|WAS"
+        },
+        {
+          "slot": "FLEX",
+          "name": "Dyami Brown",
+          "team": "WAS",
+          "position": "WR",
+          "salary": 2600,
+          "key": "dyamibrown|WAS"
+        }
+      ]
+    },
+    {
+      "strategy": "gpp",
+      "index": 2,
+      "projected": 100.254898,
+      "modeled_p90": 135.5254161603405,
+      "modeled_p99": 159.70000415236015,
+      "players": [
+        {
+          "slot": "CPT",
+          "name": "Brock Purdy",
+          "team": "SF",
+          "position": "QB",
+          "salary": 10800,
+          "key": "brockpurdy|SF"
+        },
+        {
+          "slot": "FLEX",
+          "name": "George Kittle",
+          "team": "SF",
+          "position": "TE",
+          "salary": 8200,
+          "key": "georgekittle|SF"
+        },
+        {
+          "slot": "FLEX",
+          "name": "Mike Evans",
+          "team": "SF",
+          "position": "WR",
+          "salary": 9600,
+          "key": "mikeevans|SF"
+        },
+        {
+          "slot": "FLEX",
+          "name": "Stefon Diggs",
+          "team": "WAS",
+          "position": "WR",
+          "salary": 8400,
+          "key": "stefondiggs|WAS"
+        },
+        {
+          "slot": "FLEX",
+          "name": "Antonio Williams",
+          "team": "WAS",
+          "position": "WR",
+          "salary": 4200,
+          "key": "antoniowilliams|WAS"
+        },
+        {
+          "slot": "FLEX",
+          "name": "Treylon Burks",
+          "team": "WAS",
+          "position": "WR",
+          "salary": 3200,
+          "key": "treylonburks|WAS"
+        }
+      ]
+    },
+    {
+      "strategy": "gpp",
+      "index": 3,
+      "projected": 102.76661942857143,
+      "modeled_p90": 133.48413702095513,
+      "modeled_p99": 157.85566396571448,
+      "players": [
+        {
+          "slot": "CPT",
+          "name": "Brock Purdy",
+          "team": "SF",
+          "position": "QB",
+          "salary": 10800,
+          "key": "brockpurdy|SF"
+        },
+        {
+          "slot": "FLEX",
+          "name": "George Kittle",
+          "team": "SF",
+          "position": "TE",
+          "salary": 8200,
+          "key": "georgekittle|SF"
+        },
+        {
+          "slot": "FLEX",
+          "name": "Jayden Daniels",
+          "team": "WAS",
+          "position": "QB",
+          "salary": 10000,
+          "key": "jaydendaniels|WAS"
+        },
+        {
+          "slot": "FLEX",
+          "name": "Mike Evans",
+          "team": "SF",
+          "position": "WR",
+          "salary": 9600,
+          "key": "mikeevans|SF"
+        },
+        {
+          "slot": "FLEX",
+          "name": "Antonio Williams",
+          "team": "WAS",
+          "position": "WR",
+          "salary": 4200,
+          "key": "antoniowilliams|WAS"
+        },
+        {
+          "slot": "FLEX",
+          "name": "John Bates",
+          "team": "WAS",
+          "position": "TE",
+          "salary": 1600,
+          "key": "johnbates|WAS"
+        }
+      ]
+    },
+    {
+      "strategy": "gpp",
+      "index": 4,
+      "projected": 98.99305085714286,
+      "modeled_p90": 132.98674817285936,
+      "modeled_p99": 154.61219453696992,
+      "players": [
+        {
+          "slot": "CPT",
+          "name": "Brock Purdy",
+          "team": "SF",
+          "position": "QB",
+          "salary": 10800,
+          "key": "brockpurdy|SF"
+        },
+        {
+          "slot": "FLEX",
+          "name": "George Kittle",
+          "team": "SF",
+          "position": "TE",
+          "salary": 8200,
+          "key": "georgekittle|SF"
+        },
+        {
+          "slot": "FLEX",
+          "name": "Jayden Daniels",
+          "team": "WAS",
+          "position": "QB",
+          "salary": 10000,
+          "key": "jaydendaniels|WAS"
+        },
+        {
+          "slot": "FLEX",
+          "name": "Stefon Diggs",
+          "team": "WAS",
+          "position": "WR",
+          "salary": 8400,
+          "key": "stefondiggs|WAS"
+        },
+        {
+          "slot": "FLEX",
+          "name": "Antonio Williams",
+          "team": "WAS",
+          "position": "WR",
+          "salary": 4200,
+          "key": "antoniowilliams|WAS"
+        },
+        {
+          "slot": "FLEX",
+          "name": "Dyami Brown",
+          "team": "WAS",
+          "position": "WR",
+          "salary": 2600,
+          "key": "dyamibrown|WAS"
+        }
+      ]
+    },
+    {
+      "strategy": "gpp",
+      "index": 5,
+      "projected": 100.15450942857143,
+      "modeled_p90": 131.9806447654169,
+      "modeled_p99": 160.09509626283818,
+      "players": [
+        {
+          "slot": "CPT",
+          "name": "Brock Purdy",
+          "team": "SF",
+          "position": "QB",
+          "salary": 10800,
+          "key": "brockpurdy|SF"
+        },
+        {
+          "slot": "FLEX",
+          "name": "George Kittle",
+          "team": "SF",
+          "position": "TE",
+          "salary": 8200,
+          "key": "georgekittle|SF"
+        },
+        {
+          "slot": "FLEX",
+          "name": "Jayden Daniels",
+          "team": "WAS",
+          "position": "QB",
+          "salary": 10000,
+          "key": "jaydendaniels|WAS"
+        },
+        {
+          "slot": "FLEX",
+          "name": "Stefon Diggs",
+          "team": "WAS",
+          "position": "WR",
+          "salary": 8400,
+          "key": "stefondiggs|WAS"
+        },
+        {
+          "slot": "FLEX",
+          "name": "Treylon Burks",
+          "team": "WAS",
+          "position": "WR",
+          "salary": 3200,
+          "key": "treylonburks|WAS"
+        },
+        {
+          "slot": "FLEX",
+          "name": "Brandin Cooks",
+          "team": "SF",
+          "position": "WR",
+          "salary": 4000,
+          "key": "brandincooks|SF"
+        }
+      ]
+    }
   ]
 }
