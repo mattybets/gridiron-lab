@@ -104,8 +104,8 @@ function generateShowdown(eligible,found){
 }
 function optimize(){
  const format=$('mode').value;mode=format;
- const available=pool.filter(p=>p.active&&p.status!=='out'&&p.roleReview!=='not_playing'&&(!$('strictstatus').checked||p.status==='available')&&Number(p.opportunity??100)>0&&p.salary>0&&p.modeled&&Number.isFinite(p.projection)&&Number.isFinite(p.ceiling));
- if(!available.length){$('status').textContent='No eligible reviewed/modelled players available. Import the DraftKings CSV, then tap Apply current-season matchup estimates.';return}
+ const available=pool.filter(p=>p.active&&p.status!=='out'&&p.roleReview!=='not_playing'&&(!$('strictstatus').checked||p.status==='available')&&Number(p.opportunity??100)>0&&p.salary>0&&p.modeled&&Number.isFinite(p.projection)&&Number.isFinite(p.ceiling)&&((p.projectionSource==='manual CSV'&&['starter','rotation'].includes(p.roleReview))||(Number(p.modelGames)>=1&&p.projection>=1)));
+ if(!available.length){$('status').textContent='No eligible modeled players with sufficient evidence of playing time. Import salaries, apply current-season estimates, and review roles; zero-game players and sub-1-point projections are excluded by default.';return}
  const unreviewed=available.filter(p=>p.status!=='available'||!['starter','rotation'].includes(p.roleReview));
  const lowSample=available.filter(p=>Number(p.modelGames||0)<4);
  const missingOwn=available.filter(p=>!Number.isFinite(p.ownership));
