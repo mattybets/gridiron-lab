@@ -1,7 +1,7 @@
 """Free nflverse weekly player stats -> conservative historical DK PPG baselines.
 No salary, ownership, injuries or forward-looking matchup adjustment is inferred.
 """
-import csv, io, json, urllib.request, datetime, pathlib, statistics
+import csv, io, json, urllib.request, datetime, pathlib, statistics, gzip, collections
 URL_TEMPLATE='https://github.com/nflverse/nflverse-data/releases/download/stats_player/stats_player_week_{season}.csv'
 OUT=pathlib.Path(__file__).parent/'data'/'nfl_baselines.json'
 def main():
@@ -63,8 +63,39 @@ def main():
             try: usage[col]=float(raw) if raw not in (None,'') else None
             except (ValueError,TypeError): usage[col]=None
         by.setdefault(key,[]).append((int(r['week']),pts,name,pos,usage))
+    # Count designed rush attempts inside the opponent's 20 from nflverse PBP.
+    # Match using the same GSIS player_id as the weekly stats, not fuzzy names.
+    redzone_by_player=collections.Counter()
+    pbp_available=False
+    pbp_url=f'https://github.com/nflverse/nflverse-data/releases/download/pbp/play_by_play_{season}.csv.gz'
+    try:
+        pbp_req=urllib.request.Request(pbp_url,headers={'User-Agent':'GridironLab/5.1'})
+        with urllib.request.urlopen(pbp_req,timeout=120) as response:
+            with gzip.GzipFile(fileobj=response) as zipped:
+                reader=csv.DictReader(io.TextIOWrapper(zipped,encoding='utf-8-sig'))
+                required={'rusher_player_id','rush_attempt','yardline_100','week','season_type'}
+                if not required.issubset(reader.fieldnames or []):
+                    raise ValueError('PBP missing required red-zone fields')
+                for play in reader:
+                    if play.get('season_type')!='REG' or play.get('rush_attempt')!='1':
+                        continue
+                    try:
+                        week=int(play['week'])
+                        yards=float(play['yardline_100'])
+                    except (TypeError,ValueError):
+                        continue
+                    if not maxweek-5<=week<=maxweek or not 0<yards<=20:
+                        continue
+                    player_id=(play.get('rusher_player_id') or '').strip()
+                    if player_id:
+                        redzone_by_player[player_id]+=1
+        pbp_available=True
+        print('Loaded red-zone rush attempts for',len(redzone_by_player),'players')
+    except Exception as exc:
+        # Missing or incompatible PBP must not fabricate zero red-zone attempts.
+        print('Red-zone play-by-play unavailable; redzone remains null:',exc)
     players=[]
-    for (_,team),games in by.items():
+    for (player_id,team),games in by.items():
         games.sort(); pts=[g[1] for g in games]; name=games[-1][2];pos=games[-1][3]
         if len(pts)<2: continue
         # historical baseline, not a forward prediction
@@ -78,12 +109,12 @@ def main():
             values=[g[4].get(col) for g in games]
             usage_totals[col]=round(sum(values),2) if all(v is not None for v in values) else None
         usage_totals['games']=len(games)
-        # Red-zone touches are not reliably available in this weekly feed.
-        usage_totals['redzone']=None
+        # Red-zone carries come from PBP; zero is valid only when the PBP loaded.
+        usage_totals['redzone']=redzone_by_player.get(player_id,0) if pbp_available and player_id else None
         players.append({'usage':usage_totals,'ppr_p90':round(p90,2),'ppr_stddev':round(std,2),'name':name,'team':team,'position':pos,'historical_ppr_avg':avg,'games':len(pts),'last_week':games[-1][0], 'recent_ppr_avg':round(sum(pts[-3:])/len(pts[-3:]),2)})
     if not players: raise RuntimeError('No usable player records; preserving last published data')
     OUT.parent.mkdir(exist_ok=True)
-    OUT.write_text(json.dumps({'season':season,'through_week':maxweek,'updated_utc':datetime.datetime.now(datetime.timezone.utc).isoformat(),'source':url,'metric':'Historical PPR player game points and defense positional points allowed; projections are estimates, not DraftKings scoring','players':players,'defense_allowed_by_position':def_avgs,'league_allowed_by_position':league_avgs,'current_season_available':True},separators=(',',':')))
+    OUT.write_text(json.dumps({'season':season,'through_week':maxweek,'updated_utc':datetime.datetime.now(datetime.timezone.utc).isoformat(),'source':url,'redzone_source':pbp_url if pbp_available else None,'redzone_available':pbp_available,'metric':'Historical PPR player game points and defense positional points allowed; projections are estimates, not DraftKings scoring','players':players,'defense_allowed_by_position':def_avgs,'league_allowed_by_position':league_avgs,'current_season_available':True},separators=(',',':')))
     print('Wrote',len(players),'players through week',maxweek)
     # NFL matchup feed from ESPN public scoreboard; does not include DFS salaries.
     start=datetime.datetime.now(datetime.timezone.utc)
