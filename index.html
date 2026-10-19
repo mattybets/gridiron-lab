@@ -362,8 +362,8 @@ $('baselines').onclick=async()=>{
    const autoGames=Number(automaticUsage.games);
    const autoTargets=automaticUsage.targets===null||automaticUsage.targets===undefined?null:Number(automaticUsage.targets);
    const autoCarries=automaticUsage.carries===null||automaticUsage.carries===undefined?null:Number(automaticUsage.carries);
-   if(!p.usageReviewed&&Number.isInteger(autoGames)&&autoGames>0&&(Number.isFinite(autoTargets)||Number.isFinite(autoCarries))){
-    p.usage={games:autoGames,targets:Number.isFinite(autoTargets)?autoTargets:null,carries:Number.isFinite(autoCarries)?autoCarries:null,redzone:null};
+   if((!p.usageReviewed||p.usageSource==='automated weekly NFL data')&&Number.isInteger(autoGames)&&autoGames>0&&(Number.isFinite(autoTargets)||Number.isFinite(autoCarries))){
+    p.usage={games:autoGames,targets:Number.isFinite(autoTargets)?autoTargets:null,carries:Number.isFinite(autoCarries)?autoCarries:null,redzone:automaticUsage.redzone===null||automaticUsage.redzone===undefined?null:Number(automaticUsage.redzone)};
     p.usageReviewed=true;p.usageSource='automated weekly NFL data';
    }
    const opp=String(p.opponent||'').toUpperCase().replace(/^@/,'').trim();
