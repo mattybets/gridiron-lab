@@ -32,6 +32,19 @@ class FeedbackTests(unittest.TestCase):
             self.assertEqual(result[0]['evaluated_lineups'][0]['actual_points'],21.5)
             self.assertAlmostEqual(result[0]['mean_absolute_player_error'],6.5)
 
+    def test_calibration_refuses_small_sample(self):
+        row={'matchup':'TEST','saved_at_utc':'2026-10-18T18:00:00Z',
+             'status':'evaluated','gpp_candidate_count':2,
+             'evaluated_lineups':[
+                 {'strategy':'gpp','modeled_p90':120,'modeled_mean':95,
+                  'projected':98,'modeled_ceiling':130,'actual_points':110},
+                 {'strategy':'gpp','modeled_p90':110,'modeled_mean':90,
+                  'projected':92,'modeled_ceiling':125,'actual_points':120}]}
+        result=ec.fit_ranking([row,row,row])
+        self.assertFalse(result['enabled'])
+        self.assertEqual(result['validated_games'],1)
+        self.assertEqual(result['weights'],ec.DEFAULT_WEIGHTS)
+
     def test_real_snapshots_are_readable(self):
         rows=ec.evaluate_snapshots()
         self.assertGreaterEqual(len(rows),4)
