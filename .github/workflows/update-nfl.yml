@@ -8,6 +8,7 @@ on:
       - 'evaluate_contests.py'
       - 'test_feedback.py'
       - 'data/pregame/**'
+      - 'data/actuals/**'
       - '.github/workflows/update-nfl.yml'
   workflow_dispatch:
       # Enable manual testing
