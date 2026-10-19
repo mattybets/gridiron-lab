@@ -1,1 +1,1 @@
-{"updated_utc":"2026-10-19T20:01:27.804831+00:00","source":"https://site.api.espn.com/apis/site/v2/sports/football/nfl/scoreboard?limit=100","games":[{"id":"401873008","home":"SF","away":"WSH","kickoff_utc":"2026-10-20T00:15Z"}]}
+{"updated_utc":"2026-10-19T20:08:06.789796+00:00","source":"https://site.api.espn.com/apis/site/v2/sports/football/nfl/scoreboard?limit=100","games":[{"id":"401873008","home":"SF","away":"WSH","kickoff_utc":"2026-10-20T00:15Z"}]}
