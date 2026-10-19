@@ -1,0 +1,41 @@
+name: Validate Showdown salary slates
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [v8-2-testing]
+    paths:
+      - 'data/slates/**'
+      - 'validate_slate.py'
+      - '.github/workflows/validate-slates.yml'
+  pull_request:
+    branches: [v8-2-testing]
+    paths:
+      - 'data/slates/**'
+      - 'validate_slate.py'
+      - '.github/workflows/validate-slates.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Validate available sourced slate files
+        shell: bash
+        run: |
+          shopt -s nullglob
+          slates=(data/slates/*.json)
+          if [ ${#slates[@]} -eq 0 ]; then
+            echo 'No authorized salary slates published yet; no player salaries have been verified.'
+            exit 0
+          fi
+          for slate in "${slates[@]}"; do
+            echo "Checking $slate"
+            python validate_slate.py "$slate"
+          done
