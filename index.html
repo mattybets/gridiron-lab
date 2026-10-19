@@ -357,6 +357,15 @@ $('baselines').onclick=async()=>{
    const recent=Number(b.recent_ppr_avg ?? b.historical_ppr_avg);
    const baseline=Number(b.historical_ppr_avg);
    if(!Number.isFinite(recent)||!Number.isFinite(baseline)){p.projectionIssue='Matched player, missing valid historical/recent points';unmatched++;continue;}p.modelGames=Number(b.games)||0;
+   // Automatically use workload counts published by the free weekly updater.
+   const automaticUsage=b.usage||{};
+   const autoGames=Number(automaticUsage.games);
+   const autoTargets=automaticUsage.targets===null||automaticUsage.targets===undefined?null:Number(automaticUsage.targets);
+   const autoCarries=automaticUsage.carries===null||automaticUsage.carries===undefined?null:Number(automaticUsage.carries);
+   if(!p.usageReviewed&&Number.isInteger(autoGames)&&autoGames>0&&(Number.isFinite(autoTargets)||Number.isFinite(autoCarries))){
+    p.usage={games:autoGames,targets:Number.isFinite(autoTargets)?autoTargets:null,carries:Number.isFinite(autoCarries)?autoCarries:null,redzone:null};
+    p.usageReviewed=true;p.usageSource='automated weekly NFL data';
+   }
    const opp=String(p.opponent||'').toUpperCase().replace(/^@/,'').trim();
    const allowed=data.defense_allowed_by_position?.[p.position]?.[opp];
    const league=data.league_allowed_by_position?.[p.position];
@@ -374,7 +383,7 @@ $('baselines').onclick=async()=>{
   }
   lineups=[];rankedGroups={cash:[],gpp:[]};render();
   $('datafresh').textContent='NFL '+data.season+' through Week '+data.through_week+' · '+matched+' matched · '+pool.filter(p=>p.modeled&&p.position==='K').length+' K · '+pool.filter(p=>p.modeled&&p.position==='DST').length+' DST';
-  $('status').textContent='Applied 2026 projections and empirical ceilings to '+matched+' of '+pool.length+' players ('+unmatched+' unmatched). '+(missingExamples.length?'Examples: '+missingExamples.join(', ')+'. ':'')+'Offense is estimated PPR; kicker/defense scores use play-by-play approximations (not exact DraftKings scoring); manual status/opportunity controls are not live injury verification. Check official inactives, salary, opponents and ownership.';
+  $('status').textContent='Applied 2026 projections and empirical ceilings to '+matched+' of '+pool.length+' players ('+unmatched+' unmatched). '+(missingExamples.length?'Examples: '+missingExamples.join(', ')+'. ':'')+'Available weekly targets and carries are imported automatically when the updater publishes them; red-zone and live injury-driven workload changes remain unavailable. Offense is estimated PPR; kicker/defense scores use play-by-play approximations (not exact DraftKings scoring); manual status/opportunity controls are not live injury verification. Check official inactives, salary, opponents and ownership.';
  }catch(e){$('datafresh').textContent='Current-season player data unavailable';$('status').textContent=e.message}
 };
 $('demo').onclick=demo;$('run').onclick=()=>{try{optimize()}catch(e){$('status').textContent='Optimizer error: '+e.message;console.error(e)}};$('csv').onchange=async e=>{let f=e.target.files[0];if(!f)return;try{pool=parseCSV(await f.text());lineups=[];render();$('status').textContent='Loaded '+pool.length+' players from '+f.name+'. Injury status imported: '+pool.filter(p=>p.status==='out').length+' OUT/IR excluded; '+pool.filter(p=>p.status==='questionable').length+' questionable flagged for review. Now tap Apply current-season matchup estimates. Confirm official inactives before entering.'}catch(err){$('status').textContent='CSV error: '+err.message}};$('template').onclick=()=>download('dfs_player_template.csv','name,team,opponent,position,salary,active,game\n');$('export').onclick=()=>{if(!lineups.length){$('status').textContent='Generate lineups before exporting.';return}let rows=['strategy,lineup,slot,name,team,position,base_salary,roster_salary,projection,ownership'];let groups=$('risk').value==='both'?['cash','gpp']:[$('risk').value];groups.forEach(type=>rankedGroups[type].forEach((x,i)=>x.l.forEach(v=>rows.push([type,i+1,v.slot,v.p.name,v.p.team,v.p.position,v.p.salary,Math.round(v.p.salary*(v.slot==='CPT'?1.5:1)),v.p.projection,v.p.ownership??''].map(csvVal).join(',')))));download('dfs_lineups.csv',rows.join('\n'))};
