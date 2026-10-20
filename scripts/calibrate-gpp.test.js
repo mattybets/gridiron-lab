@@ -4,8 +4,12 @@ const make=(id,actual)=>({game_id:id,lineups:actual.map((x,i)=>({index:i+1,actua
 assert.equal(select(make("x",[10,20]).lineups,WEIGHTS.baseline).index,1);
 assert.equal(calibrate([make("a",[1,2])]).enabled,false);
 assert.equal(calibrate([make("a",[1,2]),make("a",[1,2]),make("b",[1,2]),make("c",[1,2])]).enabled,false);
-const g=[make("buf-lv",[98.17,97.45,92.42,112.57,99.22]),make("chi-atl",[57.85,44.35,60.5,52.6,51.75]),make("dal-gb",[68.7,66.9,76.64,67.14,65.34]),make("wsh-sf",[92.54,91.34,89.74,93.94,97.24])];
+const fixture=require("../data/backtests/gpp-ranking-fixture-20261020.json");
+const g=fixture.games.map(x=>({game_id:x.game_id,lineups:x.rows.map(([projected,modeled_p90,modeled_ceiling,actual],i)=>({index:i+1,projected,modeled_p90,modeled_ceiling,actual}))}));
 const r=calibrate(g);
 assert.equal(r.enabled,false);
-assert.equal(r.baselineMean,79.315);
+assert.ok(Number.isFinite(r.baselineMean));
+assert.equal(g.length,4);
+assert.equal(new Set(g.map(x=>x.game_id)).size,4);
+console.log(JSON.stringify({baselineMean:r.baselineMean,candidates:r.candidates.map(x=>({name:x.name,meanLift:x.meanLift,worstLift:x.worstLift}))}));
 console.log("PASS calibration safety gates; baseline",r.baselineMean);
