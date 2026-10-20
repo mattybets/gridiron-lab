@@ -91,23 +91,45 @@ function selectRanked(candidates,n,cap,diversifyCaptain=false){
  return chosen;
 }
 function selectDistinctGpp(candidates,n,cap,format){
- const ranked=selectRanked(candidates,n,cap,format==='showdown');
- if(!ranked.length)return ranked;
- const best=ranked[0],result=[best];
- const overlap=(a,b)=>{const ids=new Set(a.l.map(v=>v.p.name+'|'+v.p.team));return b.l.filter(v=>ids.has(v.p.name+'|'+v.p.team)).length};
- // Prefer at least two player changes from every already displayed option.
- // Preserve the best-ranked lineup as #1 and relax only if the pool is too small.
- for(const limit of [4,5]){
-  for(const x of candidates){
-   if(result.length>=n)break;
-   if(result.includes(x)||result.some(y=>overlap(x,y)>limit))continue;
-   if(result.some(y=>lineupKey(y.l)===lineupKey(x.l)))continue;
-   result.push(x);
+ // Enforce the Captain limit across every selection pass, including diversity fallbacks.
+ const chosen=[],counts=new Map(),captains=new Map();
+ const showdown=format==='showdown';
+ const maxCpt=Math.max(1,Math.floor(n*Number($('captainexposure').value||40)/100));
+ const maxOwn=Math.max(1,cap);
+ const overlap=(a,b)=>{
+  const ids=new Set(a.l.map(v=>v.p.name+'|'+v.p.team));
+  return b.l.filter(v=>ids.has(v.p.name+'|'+v.p.team)).length;
+ };
+ function fits(x,strictExposure){
+  if(chosen.includes(x)||chosen.some(y=>lineupKey(y.l)===lineupKey(x.l)))return false;
+  if(showdown){
+   const cp=x.l.find(v=>v.slot==='CPT')?.p;
+   if(!cp)return false;
+   const key=cp.name+'|'+cp.team;
+   if((captains.get(key)||0)>=maxCpt)return false;
   }
-  if(result.length>=n)break;
+  if(strictExposure&&x.l.some(v=>(counts.get(v.p.name+'|'+v.p.team)||0)>=maxOwn))return false;
+  return true;
  }
- for(const x of ranked){if(result.length>=n)break;if(!result.includes(x))result.push(x)}
- return result;
+ function add(x){
+  chosen.push(x);
+  for(const v of x.l){const key=v.p.name+'|'+v.p.team;counts.set(key,(counts.get(key)||0)+1)}
+  const cp=x.l.find(v=>v.slot==='CPT')?.p;
+  if(cp){const key=cp.name+'|'+cp.team;captains.set(key,(captains.get(key)||0)+1)}
+ }
+ // Preserve top-ranked lineup. Prefer 2-player changes; relax only when necessary.
+ for(const strictExposure of [true,false]){
+  for(const maxOverlap of [4,5,6]){
+   for(const x of candidates){
+    if(chosen.length>=n)break;
+    if(!fits(x,strictExposure)||chosen.some(y=>overlap(x,y)>maxOverlap))continue;
+    add(x);
+   }
+   if(chosen.length>=n)break;
+  }
+  if(chosen.length>=n)break;
+ }
+ return chosen;
 }
 function lineupKey(l){return l.map(x=>x.slot+':'+x.p.name+'|'+x.p.team).sort().join(';')}
 // Deterministic bounded search over top candidates by modeled ceiling/point-per-dollar,
