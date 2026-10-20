@@ -1,0 +1,14 @@
+const assert=require("node:assert/strict"),fs=require("node:fs"),vm=require("node:vm"),path=require("node:path");
+const html=fs.readFileSync(path.join(__dirname,"..","index.html"),"utf8");
+const start=html.indexOf("function simulateDistribution("),end=html.indexOf("\nfunction quantile(",start);
+assert.ok(start>=0&&end>start);
+const src=html.slice(start,end);
+const ctx={quantile:(a,q)=>{const z=[...a].sort((x,y)=>x-y);return z[Math.floor((z.length-1)*q)]}};
+vm.createContext(ctx);
+vm.runInContext(src+";globalThis.simulateDistribution=simulateDistribution",ctx);
+const lineup=[{slot:"CPT",p:{name:"A",team:"SF",opponent:"WAS",position:"QB",projection:18,ceiling:28}},{slot:"FLEX",p:{name:"B",team:"WAS",opponent:"SF",position:"QB",projection:16,ceiling:26}}];
+const first=ctx.simulateDistribution(lineup,500);
+const second=ctx.simulateDistribution(lineup,500);
+assert.deepEqual(JSON.parse(JSON.stringify(first)),JSON.parse(JSON.stringify(second)),"Same inputs must have identical simulation outputs");
+assert.ok(first.p10<=first.p90&&first.p90<=first.p99,"Quantiles ordered");
+console.log("PASS deterministic simulation",JSON.stringify(first));
