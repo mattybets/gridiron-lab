@@ -1,0 +1,53 @@
+{
+  "date": "2026-10-20",
+  "branch_target": "v8-2-testing",
+  "snapshots": 5,
+  "independent_games": 4,
+  "draftkings_export_games": 3,
+  "boxscore_derived_games": 1,
+  "scored_lineups": 50,
+  "checks": "PASS: all 50 saved lineups legal and fully scored; exact snapshot order/SHA verified",
+  "gpp": [
+    [
+      "BUF-LV",
+      1,
+      98.17,
+      4,
+      112.57
+    ],
+    [
+      "CHI-ATL",
+      1,
+      57.85,
+      3,
+      60.5
+    ],
+    [
+      "DAL-GB early",
+      1,
+      68.7,
+      3,
+      76.64
+    ],
+    [
+      "DAL-GB later",
+      1,
+      68.7,
+      2,
+      76.64
+    ],
+    [
+      "WSH-SF",
+      1,
+      92.54,
+      5,
+      97.24
+    ]
+  ],
+  "missing": [
+    "BUF-LV: Jack Bech (not used)",
+    "CHI-ATL: Cooper Rush (not used)"
+  ],
+  "caveat": "WSH-SF DK scores derived from final box score and published scoring rules, not a DK contest export; no winner score. DAL snapshots are same game.",
+  "training": "No weights changed; 3 independent DK-export games is too small for validated improvement."
+}
