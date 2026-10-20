@@ -1,0 +1,233 @@
+{
+  "matchup": "WSH @ SF · Oct 19, 2026",
+  "source": "User-uploaded MNF Results.zip / contest-standings-196786691.csv",
+  "source_contest_id": "196786691",
+  "scoring": "DraftKings FLEX FPTS; multiply by 1.5 for CPT",
+  "winning_score": 125.8,
+  "players": [
+    {
+      "name": "Brock Purdy",
+      "actual_points": 17.36
+    },
+    {
+      "name": "Jayden Daniels",
+      "actual_points": 24
+    },
+    {
+      "name": "Christian McCaffrey",
+      "actual_points": 31.7
+    },
+    {
+      "name": "George Kittle",
+      "actual_points": 17.9
+    },
+    {
+      "name": "Rachaad White",
+      "actual_points": 15.7
+    },
+    {
+      "name": "Mike Evans",
+      "actual_points": 12.4
+    },
+    {
+      "name": "Eddy Pineiro",
+      "actual_points": 5
+    },
+    {
+      "name": "Terry McLaurin",
+      "actual_points": 3.7
+    },
+    {
+      "name": "Brandin Cooks",
+      "actual_points": 2.3
+    },
+    {
+      "name": "Austin Ekeler",
+      "actual_points": 2.7
+    },
+    {
+      "name": "Chig Okonkwo",
+      "actual_points": 13.9
+    },
+    {
+      "name": "Drew Stevens",
+      "actual_points": 7
+    },
+    {
+      "name": "49ers",
+      "actual_points": 5
+    },
+    {
+      "name": "Antonio Williams",
+      "actual_points": 8
+    },
+    {
+      "name": "Stefon Diggs",
+      "actual_points": 16.4
+    },
+    {
+      "name": "Kyle Juszczyk",
+      "actual_points": 2
+    },
+    {
+      "name": "Jacob Cowing",
+      "actual_points": 0
+    },
+    {
+      "name": "Jeremy McNichols",
+      "actual_points": 1.3
+    },
+    {
+      "name": "Treylon Burks",
+      "actual_points": 10.6
+    },
+    {
+      "name": "Kaelon Black",
+      "actual_points": 4.7
+    },
+    {
+      "name": "Commanders",
+      "actual_points": 4
+    },
+    {
+      "name": "Jordan Watkins",
+      "actual_points": 3.2
+    },
+    {
+      "name": "Dyami Brown",
+      "actual_points": 1.6
+    },
+    {
+      "name": "Luke Farrell",
+      "actual_points": 0
+    },
+    {
+      "name": "Ben Sinnott",
+      "actual_points": 0
+    },
+    {
+      "name": "John Bates",
+      "actual_points": 1.4
+    },
+    {
+      "name": "Brayden Willis",
+      "actual_points": 0
+    },
+    {
+      "name": "Malik Turner",
+      "actual_points": 0
+    },
+    {
+      "name": "Colson Yankoff",
+      "actual_points": 0
+    },
+    {
+      "name": "Jordan James",
+      "actual_points": 0
+    },
+    {
+      "name": "Craig Reynolds",
+      "actual_points": 0
+    },
+    {
+      "name": "Luke McCaffrey",
+      "actual_points": 0
+    },
+    {
+      "name": "Jacory Croskey-Merritt",
+      "actual_points": 0
+    },
+    {
+      "name": "Van Jefferson",
+      "actual_points": 0
+    },
+    {
+      "name": "Christian Kirk",
+      "actual_points": 0
+    },
+    {
+      "name": "Athan Kaliakmanis",
+      "actual_points": 0
+    },
+    {
+      "name": "Mac Jones",
+      "actual_points": 0
+    },
+    {
+      "name": "Deebo Samuel Sr.",
+      "actual_points": 0
+    },
+    {
+      "name": "Sincere McCormick",
+      "actual_points": 0
+    },
+    {
+      "name": "Xavier Smith",
+      "actual_points": 0
+    },
+    {
+      "name": "Devin Neal",
+      "actual_points": 0
+    },
+    {
+      "name": "Sam Hartman",
+      "actual_points": 0
+    },
+    {
+      "name": "Wesley Grimes",
+      "actual_points": 0
+    },
+    {
+      "name": "Kurtis Rourke",
+      "actual_points": 0
+    },
+    {
+      "name": "Jack Westover",
+      "actual_points": 0
+    },
+    {
+      "name": "Jaden Bradley",
+      "actual_points": 0
+    },
+    {
+      "name": "Jack Stoll",
+      "actual_points": 0
+    },
+    {
+      "name": "Nick DeGennaro",
+      "actual_points": 0
+    },
+    {
+      "name": "Marcus Mariota",
+      "actual_points": 0
+    },
+    {
+      "name": "Demarcus Robinson",
+      "actual_points": 0
+    },
+    {
+      "name": "Khalil Dinkins",
+      "actual_points": 0
+    },
+    {
+      "name": "Tyler Ott",
+      "actual_points": 0
+    },
+    {
+      "name": "Jaylin Lane",
+      "actual_points": 0
+    },
+    {
+      "name": "Will Pauling",
+      "actual_points": 0
+    },
+    {
+      "name": "Jake Tonges",
+      "actual_points": 0
+    },
+    {
+      "name": "Brandon Aiyuk",
+      "actual_points": 0
+    }
+  ]
+}
