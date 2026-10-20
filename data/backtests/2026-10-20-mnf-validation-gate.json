@@ -1,0 +1,35 @@
+{
+  "schema_version": 1,
+  "date": "2026-10-20",
+  "branch": "v8-2-testing",
+  "status": "validation_pending",
+  "actuals": {
+    "matchup": "WSH-SF",
+    "contest_id": "196786691",
+    "player_count": 57,
+    "winner_points": 125.8,
+    "source": "user-uploaded DraftKings contest standings"
+  },
+  "prior_backtest": {
+    "independent_games": 4,
+    "snapshots": 5,
+    "scored_lineups": 50,
+    "source_branch": "gridiron-backtests-final-20261020",
+    "wsh_sf_source": "boxscore_derived",
+    "wsh_sf_gpp_first": 92.54,
+    "wsh_sf_gpp_best": 97.24
+  },
+  "training": {
+    "weights_updated": false,
+    "calibration_enabled": false,
+    "reason": "No verified out-of-sample improvement; do not fit weights to one slate."
+  },
+  "required_checks": [
+    "Reconcile all 57 DK player actuals against pregame snapshot player IDs; detect missing or duplicate IDs",
+    "Recompute all ten WSH-SF lineups using DK FLEX points and CPT 1.5 multiplier",
+    "Compare rankers using leave-one-independent-game-out; DAL-GB snapshots must stay in same fold",
+    "Compare baseline vs candidate mean held-out GPP score, top-1 regret, and worst-game score",
+    "Reject candidate changes that fail salary legality, both-team, or held-out performance checks",
+    "Run repository evaluator/unit tests and inspect GitHub Actions logs before enabling calibration"
+  ]
+}
