@@ -1,0 +1,26 @@
+name: Gridiron calibration regression
+on:
+  push:
+    branches: [v8-2-testing]
+    paths:
+      - 'index.html'
+      - 'scripts/calibrate-gpp.js'
+      - 'scripts/calibrate-gpp.test.js'
+      - 'scripts/captain-exposure.test.js'
+      - 'data/backtests/gpp-ranking-fixture-20261020.json'
+      - '.github/workflows/gridiron-calibration-tests.yml'
+  workflow_dispatch:
+jobs:
+  regression:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: GPP calibration holdout
+        run: node scripts/calibrate-gpp.test.js
+      - name: Captain exposure in live selector
+        run: node scripts/captain-exposure.test.js
