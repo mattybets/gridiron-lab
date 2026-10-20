@@ -1,0 +1,36 @@
+{
+  "matchup": "WSH-SF",
+  "status": "requires_source_reconciliation",
+  "players_with_projection_and_matched_actual": 31,
+  "raw_mae": 3.7109677419354825,
+  "raw_bias": 0.4058064516129033,
+  "warning": "Raw error statistics are not validated: imported actuals have zero scores for named projected players; zero may represent DNP or missing export mapping. Do not fit projection weights to these without source/participation checks.",
+  "examples": [
+    {
+      "name": "Christian McCaffrey",
+      "projection": 16.16,
+      "imported_actual": 31.7
+    },
+    {
+      "name": "Brock Purdy",
+      "projection": 26.93,
+      "imported_actual": 17.36
+    },
+    {
+      "name": "Demarcus Robinson",
+      "projection": 10.68,
+      "imported_actual": 0
+    },
+    {
+      "name": "Marcus Mariota",
+      "projection": 10.35,
+      "imported_actual": 0
+    }
+  ],
+  "actions": [
+    "Validate every imported zero against contest export and official participation before training",
+    "Separate inactive/nonparticipant outcomes from projection error",
+    "Require exact team/player identity and pregame availability timestamps",
+    "Measure MAE and calibration by position and sample size using independent slates"
+  ]
+}
