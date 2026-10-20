@@ -226,8 +226,13 @@
       "actual_points": 0
     },
     {
+      "name": "Isaac Guerendo",
+      "actual_points": 0
+    },
+    {
       "name": "Brandon Aiyuk",
       "actual_points": 0
     }
-  ]
+  ],
+  "source_note": "FLEX and CPT values cross-checked against user-provided DraftKings contest export; CPT=1.5x FLEX. 57 unique player names."
 }
