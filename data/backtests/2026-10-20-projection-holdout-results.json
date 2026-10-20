@@ -1,0 +1,41 @@
+{
+  "independent_games": 4,
+  "matched_positive_scorers": 80,
+  "baseline_mae": 5.158569444444444,
+  "candidate_mae": 5.253163492063492,
+  "mean_improvement": -0.0945940476190481,
+  "approved": false,
+  "method": "Nested leave-one-independent-game-out scaling factor chosen on remaining games; macro average game MAE",
+  "folds": [
+    {
+      "game": "buf-lv",
+      "n": 21,
+      "selected_factor": 0.8,
+      "baseline_mae": 4.477142857142857,
+      "candidate_mae": 4.793142857142858
+    },
+    {
+      "game": "chi-atl",
+      "n": 21,
+      "selected_factor": 0.9,
+      "baseline_mae": 6.7961904761904774,
+      "candidate_mae": 6.628666666666665
+    },
+    {
+      "game": "dal-gb",
+      "n": 18,
+      "selected_factor": 1,
+      "baseline_mae": 5.3244444444444445,
+      "candidate_mae": 5.3244444444444445
+    },
+    {
+      "game": "wsh-sf",
+      "n": 20,
+      "selected_factor": 0.8,
+      "baseline_mae": 4.036499999999998,
+      "candidate_mae": 4.266400000000001
+    }
+  ],
+  "limitations": "Positive scoring players only; zero and missing values excluded because participation verification is incomplete. Not a full-slate accuracy estimate.",
+  "decision": "Do not deploy scaled projections; no evidence of out-of-sample improvement."
+}
