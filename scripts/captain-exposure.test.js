@@ -22,4 +22,10 @@ const counts={};
 for(const x of selected){const captain=x.l.find(v=>v.slot==="CPT").p.name;counts[captain]=(counts[captain]||0)+1}
 assert.equal(selected.length,5,"Should fill five lineups when diverse candidates exist");
 assert.ok(Object.values(counts).every(n=>n<=2),"No captain can exceed 40% of five entries");
+assert.equal(new Set(selected.map(x=>x.l.map(v=>v.slot+":"+v.p.name+"|"+v.p.team).sort().join(";"))).size,selected.length,"No duplicate lineups");
+assert.ok(selected.every(x=>x.l.length===6 && x.l.filter(v=>v.slot==="CPT").length===1),"Every lineup has exactly one Captain and five FLEX");
+const one=context.selectDistinctGpp(candidates,1,1,"showdown");
+assert.equal(one.length,1,"Single-entry GPP still produces a lineup");
+const strict=context.selectDistinctGpp(candidates,5,1,"showdown");
+assert.ok(strict.length<=5,"Selection never exceeds requested entries");
 console.log("PASS: GPP captain hard exposure",JSON.stringify(counts));
