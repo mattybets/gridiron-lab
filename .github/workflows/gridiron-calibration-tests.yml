@@ -10,6 +10,7 @@ on:
       - 'scripts/simulation-determinism.test.js'
       - 'scripts/projection-backtest.js'
       - 'scripts/projection-backtest.test.js'
+      - 'scripts/showdown-validity.test.js'
       - 'data/backtests/positive-scorer-projection-fixture.json'
       - 'data/backtests/gpp-ranking-fixture-20261020.json'
       - '.github/workflows/gridiron-calibration-tests.yml'
@@ -32,3 +33,5 @@ jobs:
         run: node scripts/simulation-determinism.test.js
       - name: Projection leave-one-game-out
         run: node scripts/projection-backtest.test.js
+      - name: Showdown legality and salary
+        run: node scripts/showdown-validity.test.js
