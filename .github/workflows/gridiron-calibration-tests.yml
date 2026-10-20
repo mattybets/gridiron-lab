@@ -7,6 +7,7 @@ on:
       - 'scripts/calibrate-gpp.js'
       - 'scripts/calibrate-gpp.test.js'
       - 'scripts/captain-exposure.test.js'
+      - 'scripts/simulation-determinism.test.js'
       - 'data/backtests/gpp-ranking-fixture-20261020.json'
       - '.github/workflows/gridiron-calibration-tests.yml'
   workflow_dispatch:
@@ -24,3 +25,5 @@ jobs:
         run: node scripts/calibrate-gpp.test.js
       - name: Captain exposure in live selector
         run: node scripts/captain-exposure.test.js
+      - name: Monte Carlo reproducibility
+        run: node scripts/simulation-determinism.test.js
