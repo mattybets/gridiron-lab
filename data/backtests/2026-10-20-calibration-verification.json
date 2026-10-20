@@ -2,7 +2,7 @@
   "schema_version": 1,
   "run_date": "2026-10-20",
   "branch": "v8-2-testing",
-  "verification": "Node.js 22 local reproduction of scripts/calibrate-gpp.js against four-game historical fixture",
+  "verification": "Direct JavaScript execution of current GitHub branch calibration and live GPP selector in isolated V8 runtime; GitHub Actions remains unverified",
   "independent_games": 4,
   "baseline_mean_points": 78.925,
   "held_out_mean_lift": 0,
@@ -35,9 +35,29 @@
     "Leakage-resistant candidate selection for held-out calibration"
   ],
   "limitations": [
-    "GitHub Actions success not verified",
+    "GitHub Actions success not verified; tests executed directly against fetched code, not GitHub-hosted CI",
     "Historical fixture has five preselected GPP candidates per game, not complete slate-wide candidate universe",
     "No demonstrated improvement to player projections or win probability",
     "Live DraftKings salary and official inactive feed unavailable"
-  ]
+  ],
+  "runtime_checks": {
+    "calibration": {
+      "pass": true,
+      "baseline_mean": 78.925,
+      "mean_lift": 0,
+      "held_out_games": 4,
+      "enabled": false
+    },
+    "captain_exposure": {
+      "pass": true,
+      "lineups": 5,
+      "max_captain_count": 2,
+      "captain_counts": {
+        "Purdy": 2,
+        "Evans": 1,
+        "Daniels": 1,
+        "McCaffrey": 1
+      }
+    }
+  }
 }
