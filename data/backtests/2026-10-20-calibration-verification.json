@@ -1,0 +1,43 @@
+{
+  "schema_version": 1,
+  "run_date": "2026-10-20",
+  "branch": "v8-2-testing",
+  "verification": "Node.js 22 local reproduction of scripts/calibrate-gpp.js against four-game historical fixture",
+  "independent_games": 4,
+  "baseline_mean_points": 78.925,
+  "held_out_mean_lift": 0,
+  "held_out": [
+    {
+      "game": "buf-lv",
+      "selected": "ceiling",
+      "lift": 0
+    },
+    {
+      "game": "chi-atl",
+      "selected": "ceiling",
+      "lift": 0
+    },
+    {
+      "game": "dal-gb",
+      "selected": "baseline",
+      "lift": 0
+    },
+    {
+      "game": "wsh-sf",
+      "selected": "ceiling",
+      "lift": 0
+    }
+  ],
+  "calibration_enabled": false,
+  "reason": "No out-of-sample improvement. Calibration remains disabled.",
+  "fixes": [
+    "GPP Captain exposure limit enforced in all selection passes",
+    "Leakage-resistant candidate selection for held-out calibration"
+  ],
+  "limitations": [
+    "GitHub Actions success not verified",
+    "Historical fixture has five preselected GPP candidates per game, not complete slate-wide candidate universe",
+    "No demonstrated improvement to player projections or win probability",
+    "Live DraftKings salary and official inactive feed unavailable"
+  ]
+}
