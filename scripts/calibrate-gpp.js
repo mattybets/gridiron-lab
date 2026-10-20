@@ -23,7 +23,7 @@ function select(lines, w) {
 function calibrate(games) {
   if (games.length < 4 || new Set(games.map(g=>g.game_id)).size !== games.length)
     return {enabled:false,reason:"Need four independent games"};
-  if (games.some(g=>!g.lineups?.length || g.lineups.some(l=>!Number.isFinite(l.actual))))
+  if (games.some(g=>!g.lineups?.length || g.lineups.some(l=>!Number.isFinite(l.actual) || !Number.isFinite(l.modeled_p90) || !Number.isFinite(l.projected) || !Number.isFinite(l.modeled_ceiling ?? l.ceiling))))
     return {enabled:false,reason:"Missing actual scores"};
   const names=Object.keys(WEIGHTS).filter(n=>n!=="baseline");
   const baseline=games.map(g=>select(g.lineups,WEIGHTS.baseline).actual);
