@@ -21,23 +21,29 @@ function select(lines, w) {
   return [...lines].sort((a,b) => score(b,w)-score(a,w) || a.index-b.index)[0];
 }
 function calibrate(games) {
-  if (games.length < 4 || new Set(games.map(g => g.game_id)).size !== games.length)
+  if (games.length < 4 || new Set(games.map(g=>g.game_id)).size !== games.length)
     return {enabled:false,reason:"Need four independent games"};
-  if (games.some(g => !g.lineups?.length || g.lineups.some(l => !Number.isFinite(l.actual))))
+  if (games.some(g=>!g.lineups?.length || g.lineups.some(l=>!Number.isFinite(l.actual))))
     return {enabled:false,reason:"Missing actual scores"};
-  const base = games.map(g => select(g.lineups, WEIGHTS.baseline).actual);
-  const candidates = Object.entries(WEIGHTS).filter(([k]) => k !== "baseline").map(([name,w]) => {
-    const heldOut = games.map((g,i) => {
-      const training = games.filter((_,j) => i !== j);
-      const trainLift = training.reduce((s,t) => s + select(t.lineups,w).actual - select(t.lineups,WEIGHTS.baseline).actual,0);
-      return {game:g.game_id,trainLift,actual:select(g.lineups,w).actual,baseline:base[i]};
-    });
-    const lift = heldOut.reduce((s,x)=>s+x.actual-x.baseline,0)/heldOut.length;
-    return {name,meanLift:lift,worstLift:Math.min(...heldOut.map(x=>x.actual-x.baseline)),heldOut};
-  }).sort((a,b)=>b.meanLift-a.meanLift);
-  const best = candidates[0];
-  // Four games is exploratory: do not auto-enable unless all independent held-out games improve.
-  const approved = best.meanLift > 0 && best.worstLift >= 0 && best.heldOut.every(x=>x.trainLift>0);
-  return {enabled:approved,selected:approved?best.name:"baseline",baselineMean:base.reduce((a,b)=>a+b,0)/base.length,candidates,reason:approved?"All folds improved; still small-sample":"No consistently superior held-out ranker"};
+  const names=Object.keys(WEIGHTS).filter(n=>n!=="baseline");
+  const baseline=games.map(g=>select(g.lineups,WEIGHTS.baseline).actual);
+  const heldOut=games.map((game,i)=>{
+    const train=games.filter((_,j)=>j!==i);
+    const ranked=names.map(name=>({
+      name,trainLift:train.reduce((sum,g)=>sum+select(g.lineups,WEIGHTS[name]).actual-select(g.lineups,WEIGHTS.baseline).actual,0)
+    })).sort((a,b)=>b.trainLift-a.trainLift||a.name.localeCompare(b.name));
+    const choice=ranked[0].trainLift>0?ranked[0].name:"baseline";
+    const actual=select(game.lineups,WEIGHTS[choice]).actual;
+    return {game:game.game_id,selected:choice,trainLift:ranked[0].trainLift,actual,baseline:baseline[i],lift:actual-baseline[i]};
+  });
+  const meanLift=heldOut.reduce((sum,x)=>sum+x.lift,0)/heldOut.length;
+  const noLoss=heldOut.every(x=>x.lift>=0);
+  const positiveFolds=heldOut.filter(x=>x.lift>0).length;
+  const sameCandidate=heldOut.every(x=>x.selected===heldOut[0].selected && x.selected!=="baseline");
+  // No deployment based on one lucky slate or a candidate chosen with held-out information.
+  const enabled=meanLift>0 && noLoss && positiveFolds>=2 && sameCandidate;
+  return {enabled,selected:enabled?heldOut[0].selected:"baseline",
+    baselineMean:baseline.reduce((a,b)=>a+b,0)/baseline.length,
+    meanLift,heldOut,reason:enabled?"Independent held-out gains verified":"Insufficient consistent out-of-sample improvement"};
 }
 module.exports = {WEIGHTS, features, score, select, calibrate};
