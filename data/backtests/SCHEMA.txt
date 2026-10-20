@@ -1,0 +1,1 @@
+ordered_points_v1: points[i] belongs to the corresponding pregame snapshot players[i]. Require snapshot_sha match. Points are FLEX points; apply 1.5x for CPT. WSH-SF derived from final box score and DraftKings scoring rules. DAL early and later snapshots refer to the same game.
