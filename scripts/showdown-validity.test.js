@@ -1,0 +1,16 @@
+const assert=require("node:assert/strict"),fs=require("node:fs"),vm=require("node:vm"),path=require("node:path");
+const html=fs.readFileSync(path.join(__dirname,"..","index.html"),"utf8");
+const a=html.indexOf("function salary("),b=html.indexOf("\nfunction build(",a);
+assert.ok(a>=0&&b>a,"Salary and validity functions exist");
+const context={$:id=>({value:id==="maxown"?"600":"same"})};
+vm.createContext(context);
+vm.runInContext(html.slice(a,b)+";globalThis.check={salary,valid}",context);
+const p=(name,team,salary,position="WR")=>({name,team,salary,position,ownership:null});
+const lineup=[{slot:"CPT",p:p("A","HOME",12000,"QB")},...["B","C","D","E","F"].map((name,i)=>({slot:"FLEX",p:p(name,i===0?"AWAY":"HOME",6000)}))];
+assert.equal(context.check.salary(lineup),48000);
+assert.equal(context.check.valid(lineup,"showdown"),true,"Legal lineup");
+assert.equal(context.check.valid(lineup.map((x,i)=>i===1?{...x,p:p("B","HOME",6000)}:x),"showdown"),false,"Both teams required");
+assert.equal(context.check.valid(lineup.map((x,i)=>i===2?{...x,p:p("C","HOME",9000)}:x),"showdown"),false,"Salary cap required");
+assert.equal(context.check.valid(lineup.map((x,i)=>i===2?{...x,p:p("A","HOME",6000)}:x),"showdown"),false,"Duplicate player prohibited");
+assert.equal(context.check.valid(lineup.map((x,i)=>i===0?{...x,slot:"FLEX"}:x),"showdown"),false,"Captain required");
+console.log("PASS salary, captain multiplier, two-team and duplicate constraints");
