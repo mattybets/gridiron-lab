@@ -11,5 +11,5 @@ assert.equal(r.enabled,false);
 assert.ok(Number.isFinite(r.baselineMean));
 assert.equal(g.length,4);
 assert.equal(new Set(g.map(x=>x.game_id)).size,4);
-console.log(JSON.stringify({baselineMean:r.baselineMean,candidates:r.candidates.map(x=>({name:x.name,meanLift:x.meanLift,worstLift:x.worstLift}))}));
+console.log(JSON.stringify({baselineMean:r.baselineMean,candidates:r.heldOut.map(x=>({game:x.game,selected:x.selected,lift:x.lift}))}));
 console.log("PASS calibration safety gates; baseline",r.baselineMean);
