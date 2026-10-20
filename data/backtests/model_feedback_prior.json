@@ -1,0 +1,227 @@
+{
+  "schema_version": 1,
+  "generated_utc": "2026-10-19T21:04:25.447390+00:00",
+  "contest_count": 4,
+  "known_winner_count": 3,
+  "mean_lineup_points": 109.94,
+  "mean_gap_to_winner": 29.0,
+  "roi_complete_records": 1,
+  "roi_percent_complete_records": 66.67,
+  "pregame_snapshot_count": 4,
+  "saved_snapshot_file_count": 5,
+  "full_field_count": 0,
+  "records": [
+    {
+      "id": "2026-10-05-mnf",
+      "date": "2026-10-05",
+      "lineup_points": 119.69,
+      "finish_rank": 6540,
+      "winner_points": 143.9,
+      "gap_to_winner": 24.21,
+      "has_player_scores": false,
+      "has_pregame_snapshot": false,
+      "has_verified_full_field": false
+    },
+    {
+      "id": "2026-10-09-mnf",
+      "date": "2026-10-09",
+      "lineup_points": 99,
+      "finish_rank": 17111,
+      "winner_points": 136.59,
+      "gap_to_winner": 37.59,
+      "has_player_scores": false,
+      "has_pregame_snapshot": false,
+      "has_verified_full_field": false
+    },
+    {
+      "id": "2026-10-12-snf",
+      "date": "2026-10-12",
+      "lineup_points": 79.7,
+      "finish_rank": 20757,
+      "winner_points": null,
+      "gap_to_winner": null,
+      "has_player_scores": false,
+      "has_pregame_snapshot": false,
+      "has_verified_full_field": false
+    },
+    {
+      "id": "2026-10-12-bills-rams",
+      "date": "2026-10-12",
+      "lineup_points": 141.37,
+      "finish_rank": 21459,
+      "winner_points": 166.57,
+      "gap_to_winner": 25.2,
+      "has_player_scores": true,
+      "has_pregame_snapshot": false,
+      "has_verified_full_field": false
+    }
+  ],
+  "snapshot_evaluations": [
+    {
+      "snapshot": "2026-10-18-buf-lv.json",
+      "matchup": "BUF @ LV \u00b7 Oct 18 at 3:25 PM",
+      "saved_at_utc": "2026-10-18T13:46:54.331Z",
+      "player_count": 30,
+      "lineup_count": 10,
+      "status": "evaluated",
+      "matched_player_count": 29,
+      "mean_absolute_player_error": 4.027,
+      "mean_signed_player_error": 0.416,
+      "evaluated_lineups": [
+        {
+          "strategy": "cash",
+          "index": 1,
+          "projected": 114.60499999999999,
+          "modeled_p90": 143.8821729943697,
+          "modeled_mean": 114.605,
+          "modeled_ceiling": 162.05,
+          "actual_points": 89.97
+        },
+        {
+          "strategy": "cash",
+          "index": 2,
+          "projected": 113.565,
+          "modeled_p90": 142.66282772875394,
+          "modeled_mean": 113.565,
+          "modeled_ceiling": 161.985,
+          "actual_points": 92.62
+        },
+        {
+          "strategy": "cash",
+          "index": 3,
+          "projected": 113.05000000000001,
+          "modeled_p90": 138.74890836016726,
+          "modeled_mean": 113.05,
+          "modeled_ceiling": 155.08,
+          "actual_points": 87.38
+        },
+        {
+          "strategy": "cash",
+          "index": 4,
+          "projected": 114.775,
+          "modeled_p90": 144.22250275821463,
+          "modeled_mean": 114.775,
+          "modeled_ceiling": 164.91,
+          "actual_points": 89.47
+        },
+        {
+          "strategy": "cash",
+          "index": 5,
+          "projected": 113.85499999999999,
+          "modeled_p90": 140.2142832501855,
+          "modeled_mean": 113.855,
+          "modeled_ceiling": 161.065,
+          "actual_points": 100.87
+        },
+        {
+          "strategy": "gpp",
+          "index": 1,
+          "projected": 109.115,
+          "modeled_p90": 149.90833069174366,
+          "modeled_mean": 109.11500000000001,
+          "modeled_ceiling": 178.02,
+          "actual_points": 98.17
+        },
+        {
+          "strategy": "gpp",
+          "index": 2,
+          "projected": 109.635,
+          "modeled_p90": 147.35349984797986,
+          "modeled_mean": 109.635,
+          "modeled_ceiling": 177.45,
+          "actual_points": 97.45
+        },
+        {
+          "strategy": "gpp",
+          "index": 3,
+          "projected": 105.805,
+          "modeled_p90": 147.372823304046,
+          "modeled_mean": 105.805,
+          "modeled_ceiling": 173.965,
+          "actual_points": 92.42
+        },
+        {
+          "strategy": "gpp",
+          "index": 4,
+          "projected": 102.105,
+          "modeled_p90": 141.96143995210033,
+          "modeled_mean": 102.105,
+          "modeled_ceiling": 176.2,
+          "actual_points": 112.57
+        },
+        {
+          "strategy": "gpp",
+          "index": 5,
+          "projected": 101.115,
+          "modeled_p90": 144.93776246503484,
+          "modeled_mean": 101.11500000000001,
+          "modeled_ceiling": 173.605,
+          "actual_points": 99.22
+        }
+      ],
+      "gpp_candidate_count": 5
+    },
+    {
+      "snapshot": "2026-10-18-chi-atl.json",
+      "matchup": "CHI @ ATL \u00b7 Oct 18 at 12:00 PM",
+      "saved_at_utc": "2026-10-16T19:38:41.132Z",
+      "player_count": 31,
+      "lineup_count": 10,
+      "status": "partial_actuals",
+      "matched_player_count": 8,
+      "mean_absolute_player_error": 8.578,
+      "mean_signed_player_error": -0.242,
+      "evaluated_lineups": [],
+      "gpp_candidate_count": 5
+    },
+    {
+      "snapshot": "2026-10-18-dal-gb-early.json",
+      "matchup": "DAL @ GB \u00b7 Oct 18 at 7:20 PM",
+      "saved_at_utc": "2026-10-17T17:46:41.855Z",
+      "player_count": 29,
+      "lineup_count": 10,
+      "status": "partial_actuals",
+      "matched_player_count": 1,
+      "mean_absolute_player_error": 0.41,
+      "mean_signed_player_error": -0.41,
+      "evaluated_lineups": [],
+      "gpp_candidate_count": 5
+    },
+    {
+      "snapshot": "2026-10-18-dal-gb-later.json",
+      "matchup": "DAL @ GB \u00b7 Oct 18 at 7:20 PM",
+      "saved_at_utc": "2026-10-17T17:54:22.492Z",
+      "player_count": 29,
+      "lineup_count": 10,
+      "status": "awaiting_verified_actuals"
+    },
+    {
+      "snapshot": "2026-10-19-wsh-sf.json",
+      "matchup": "WSH @ SF \u00b7 Oct 19 at 7:15 PM",
+      "saved_at_utc": "2026-10-19T20:29:36.750Z",
+      "player_count": 31,
+      "lineup_count": 10,
+      "status": "awaiting_verified_actuals"
+    }
+  ],
+  "calibration": {
+    "schema_version": 1,
+    "enabled": false,
+    "weights": {
+      "p90": 0.45,
+      "mean": 0.25,
+      "projection": 0.2,
+      "ceiling": 0.1
+    },
+    "validated_games": 1,
+    "method": "leave-one-game-out",
+    "reason": "At least four independent games with complete candidate scores are required"
+  },
+  "training_status": "insufficient_evidence",
+  "ranking_parameters_updated": false,
+  "limitations": [
+    "Historical outcomes are descriptive until matched with saved pre-kickoff projections and slate salaries.",
+    "Winning-score gaps do not identify the best alternative lineup or optimal ranking weights.",
+    "No model weights are changed from incomplete records."
+  ]
+}
