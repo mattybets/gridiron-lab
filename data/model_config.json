@@ -7,7 +7,7 @@
     "projection": 0.2,
     "ceiling": 0.1
   },
-  "validated_games": 1,
+  "validated_games": 3,
   "method": "leave-one-game-out",
-  "reason": "At least four independent games with complete candidate scores are required"
+  "reason": "Three independent games have direct DK contest-export scores; WSH-SF is boxscore-derived. No held-out ranking improvement established."
 }
