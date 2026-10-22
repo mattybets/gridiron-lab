@@ -1,1 +1,91 @@
-{"updated_utc":"2026-10-20T14:29:31.269168+00:00","source":"https://site.api.espn.com/apis/site/v2/sports/football/nfl/scoreboard?limit=100","games":[]}
+{
+  "updated_utc": "2026-10-22T22:22:00Z",
+  "source": "https://www.nfl.com/schedules/2026/by-week/week-7",
+  "source_type": "official_nfl_week_7_schedule_manual_recovery",
+  "games": [
+    {
+      "id": "2026-10-23-NE-CHI",
+      "away": "NE",
+      "home": "CHI",
+      "kickoff_utc": "2026-10-23T00:15:00Z"
+    },
+    {
+      "id": "2026-10-25-PIT-NO",
+      "away": "PIT",
+      "home": "NO",
+      "kickoff_utc": "2026-10-25T13:30:00Z"
+    },
+    {
+      "id": "2026-10-25-SF-ATL",
+      "away": "SF",
+      "home": "ATL",
+      "kickoff_utc": "2026-10-25T17:00:00Z"
+    },
+    {
+      "id": "2026-10-25-CIN-BAL",
+      "away": "CIN",
+      "home": "BAL",
+      "kickoff_utc": "2026-10-25T17:00:00Z"
+    },
+    {
+      "id": "2026-10-25-TB-CAR",
+      "away": "TB",
+      "home": "CAR",
+      "kickoff_utc": "2026-10-25T17:00:00Z"
+    },
+    {
+      "id": "2026-10-25-NYG-HOU",
+      "away": "NYG",
+      "home": "HOU",
+      "kickoff_utc": "2026-10-25T17:00:00Z"
+    },
+    {
+      "id": "2026-10-25-IND-MIN",
+      "away": "IND",
+      "home": "MIN",
+      "kickoff_utc": "2026-10-25T17:00:00Z"
+    },
+    {
+      "id": "2026-10-25-MIA-NYJ",
+      "away": "MIA",
+      "home": "NYJ",
+      "kickoff_utc": "2026-10-25T17:00:00Z"
+    },
+    {
+      "id": "2026-10-25-CLE-TEN",
+      "away": "CLE",
+      "home": "TEN",
+      "kickoff_utc": "2026-10-25T17:00:00Z"
+    },
+    {
+      "id": "2026-10-25-DEN-ARI",
+      "away": "DEN",
+      "home": "ARI",
+      "kickoff_utc": "2026-10-25T20:05:00Z"
+    },
+    {
+      "id": "2026-10-25-GB-DET",
+      "away": "GB",
+      "home": "DET",
+      "kickoff_utc": "2026-10-25T20:25:00Z"
+    },
+    {
+      "id": "2026-10-25-LAR-LV",
+      "away": "LAR",
+      "home": "LV",
+      "kickoff_utc": "2026-10-25T20:25:00Z"
+    },
+    {
+      "id": "2026-10-26-KC-SEA",
+      "away": "KC",
+      "home": "SEA",
+      "kickoff_utc": "2026-10-26T00:20:00Z"
+    },
+    {
+      "id": "2026-10-27-DAL-PHI",
+      "away": "DAL",
+      "home": "PHI",
+      "kickoff_utc": "2026-10-27T00:15:00Z"
+    }
+  ]
+}
