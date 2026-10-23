@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "generated_utc": "2026-10-23T16:02:38.036226+00:00",
+  "generated_utc": "2026-10-23T16:03:25.965383+00:00",
   "contest_count": 5,
   "known_winner_count": 4,
   "mean_lineup_points": 111.55,
@@ -285,11 +285,102 @@
       "saved_at_utc": "2026-10-17T17:46:41.855Z",
       "player_count": 29,
       "lineup_count": 10,
-      "status": "partial_actuals",
-      "matched_player_count": 1,
-      "mean_absolute_player_error": 0.41,
-      "mean_signed_player_error": -0.41,
-      "evaluated_lineups": [],
+      "status": "evaluated",
+      "matched_player_count": 29,
+      "mean_absolute_player_error": 4.268,
+      "mean_signed_player_error": 1.508,
+      "evaluated_lineups": [
+        {
+          "strategy": "cash",
+          "index": 1,
+          "projected": 113.995,
+          "modeled_p90": 148.32785215821707,
+          "modeled_mean": 113.995,
+          "modeled_ceiling": 172.465,
+          "actual_points": 87.04
+        },
+        {
+          "strategy": "cash",
+          "index": 2,
+          "projected": 114.595,
+          "modeled_p90": 146.00091500235675,
+          "modeled_mean": 114.595,
+          "modeled_ceiling": 173.46,
+          "actual_points": 88.84
+        },
+        {
+          "strategy": "cash",
+          "index": 3,
+          "projected": 113.315,
+          "modeled_p90": 143.81025732459202,
+          "modeled_mean": 113.315,
+          "modeled_ceiling": 169.385,
+          "actual_points": 92.96
+        },
+        {
+          "strategy": "cash",
+          "index": 4,
+          "projected": 111.22,
+          "modeled_p90": 152.76668023797478,
+          "modeled_mean": 111.22,
+          "modeled_ceiling": 178.79,
+          "actual_points": 68.64
+        },
+        {
+          "strategy": "cash",
+          "index": 5,
+          "projected": 111.695,
+          "modeled_p90": 144.21909389498967,
+          "modeled_mean": 111.695,
+          "modeled_ceiling": 166.97,
+          "actual_points": 95.04
+        },
+        {
+          "strategy": "gpp",
+          "index": 1,
+          "projected": 103.87,
+          "modeled_p90": 147.52683520387419,
+          "modeled_mean": 103.87,
+          "modeled_ceiling": 180.06,
+          "actual_points": 68.7
+        },
+        {
+          "strategy": "gpp",
+          "index": 2,
+          "projected": 108.36500000000001,
+          "modeled_p90": 148.68279785763252,
+          "modeled_mean": 108.36500000000001,
+          "modeled_ceiling": 178.03,
+          "actual_points": 66.9
+        },
+        {
+          "strategy": "gpp",
+          "index": 3,
+          "projected": 109.14,
+          "modeled_p90": 150.0846519911832,
+          "modeled_mean": 109.14,
+          "modeled_ceiling": 180.66,
+          "actual_points": 76.64
+        },
+        {
+          "strategy": "gpp",
+          "index": 4,
+          "projected": 112.185,
+          "modeled_p90": 149.32666591408213,
+          "modeled_mean": 112.185,
+          "modeled_ceiling": 177.46,
+          "actual_points": 67.14
+        },
+        {
+          "strategy": "gpp",
+          "index": 5,
+          "projected": 111.585,
+          "modeled_p90": 147.39748427935749,
+          "modeled_mean": 111.58500000000001,
+          "modeled_ceiling": 176.465,
+          "actual_points": 65.34
+        }
+      ],
       "gpp_candidate_count": 5
     },
     {
@@ -299,7 +390,103 @@
       "saved_at_utc": "2026-10-17T17:54:22.492Z",
       "player_count": 29,
       "lineup_count": 10,
-      "status": "awaiting_verified_actuals"
+      "status": "evaluated",
+      "matched_player_count": 29,
+      "mean_absolute_player_error": 4.268,
+      "mean_signed_player_error": 1.508,
+      "evaluated_lineups": [
+        {
+          "strategy": "cash",
+          "index": 1,
+          "projected": 112.19500000000001,
+          "modeled_p90": 146.36774382034983,
+          "modeled_mean": 112.19500000000001,
+          "modeled_ceiling": 171.445,
+          "actual_points": 85.04
+        },
+        {
+          "strategy": "cash",
+          "index": 2,
+          "projected": 112.11500000000001,
+          "modeled_p90": 143.56537903639187,
+          "modeled_mean": 112.115,
+          "modeled_ceiling": 168.82,
+          "actual_points": 88.84
+        },
+        {
+          "strategy": "cash",
+          "index": 3,
+          "projected": 111.95500000000001,
+          "modeled_p90": 145.4782680640845,
+          "modeled_mean": 111.955,
+          "modeled_ceiling": 169.22,
+          "actual_points": 92.74
+        },
+        {
+          "strategy": "cash",
+          "index": 4,
+          "projected": 110.67500000000001,
+          "modeled_p90": 143.0817257440217,
+          "modeled_mean": 110.675,
+          "modeled_ceiling": 165.145,
+          "actual_points": 96.86
+        },
+        {
+          "strategy": "cash",
+          "index": 5,
+          "projected": 111.595,
+          "modeled_p90": 144.33865872110013,
+          "modeled_mean": 111.595,
+          "modeled_ceiling": 169.625,
+          "actual_points": 94.54
+        },
+        {
+          "strategy": "gpp",
+          "index": 1,
+          "projected": 104.21000000000001,
+          "modeled_p90": 151.81267796363898,
+          "modeled_mean": 104.21,
+          "modeled_ceiling": 183.13,
+          "actual_points": 68.7
+        },
+        {
+          "strategy": "gpp",
+          "index": 2,
+          "projected": 110.28999999999999,
+          "modeled_p90": 152.0629692777715,
+          "modeled_mean": 110.28999999999999,
+          "modeled_ceiling": 181.96,
+          "actual_points": 76.64
+        },
+        {
+          "strategy": "gpp",
+          "index": 3,
+          "projected": 105.17500000000001,
+          "modeled_p90": 148.96345616187656,
+          "modeled_mean": 105.175,
+          "modeled_ceiling": 181.8,
+          "actual_points": 67.2
+        },
+        {
+          "strategy": "gpp",
+          "index": 4,
+          "projected": 104.57500000000002,
+          "modeled_p90": 148.26511139013263,
+          "modeled_mean": 104.575,
+          "modeled_ceiling": 180.805,
+          "actual_points": 65.4
+        },
+        {
+          "strategy": "gpp",
+          "index": 5,
+          "projected": 106.65500000000002,
+          "modeled_p90": 144.75074173039107,
+          "modeled_mean": 106.655,
+          "modeled_ceiling": 178.935,
+          "actual_points": 57.4
+        }
+      ],
+      "gpp_candidate_count": 5
     },
     {
       "snapshot": "2026-10-19-wsh-sf.json",
@@ -344,7 +531,7 @@
       "projection": 0.2,
       "ceiling": 0.1
     },
-    "validated_games": 2,
+    "validated_games": 3,
     "method": "leave-one-game-out",
     "reason": "At least four independent games with complete candidate scores are required"
   },
