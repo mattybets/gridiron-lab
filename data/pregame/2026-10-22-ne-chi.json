@@ -1,0 +1,97 @@
+{
+  "schema": "gridiron-lab-v8-research-snapshot",
+  "matchup": "NE @ CHI · Oct 22 at 7:15 PM",
+  "saved_at_utc": "2026-10-23T15:37:02.367Z",
+  "source_note": "Reconstructed from uploaded MNF ChiNe.json; saved after the game, so not independently timestamp-verified as pre-kickoff. GPP #1 only; other candidates omitted.",
+  "players": [
+    {
+      "name": "Drake Maye",
+      "team": "NE",
+      "projection": 23.25,
+      "ceiling": 42.77,
+      "salary": 10600
+    },
+    {
+      "name": "Caleb Williams",
+      "team": "CHI",
+      "projection": 18.92,
+      "ceiling": 33.94,
+      "salary": 10400
+    },
+    {
+      "name": "D'Andre Swift",
+      "team": "CHI",
+      "projection": 16.56,
+      "ceiling": 29.72,
+      "salary": 9800
+    },
+    {
+      "name": "Luther Burden III",
+      "team": "CHI",
+      "projection": 12.27,
+      "ceiling": 19.25,
+      "salary": 8400
+    },
+    {
+      "name": "Kalif Raymond",
+      "team": "CHI",
+      "projection": 7.12,
+      "ceiling": 17.63,
+      "salary": 3400
+    },
+    {
+      "name": "Kyle Williams",
+      "team": "NE",
+      "projection": 5.3,
+      "ceiling": 16.75,
+      "salary": 1800
+    }
+  ],
+  "lineups": [
+    {
+      "strategy": "gpp",
+      "index": 1,
+      "projected": 97.04212980952381,
+      "modeled_p90": 144.75102560911643,
+      "modeled_p99": 178.70599246085536,
+      "players": [
+        {
+          "slot": "CPT",
+          "name": "Drake Maye",
+          "team": "NE",
+          "salary": 10600
+        },
+        {
+          "slot": "FLEX",
+          "name": "Caleb Williams",
+          "team": "CHI",
+          "salary": 10400
+        },
+        {
+          "slot": "FLEX",
+          "name": "D'Andre Swift",
+          "team": "CHI",
+          "salary": 9800
+        },
+        {
+          "slot": "FLEX",
+          "name": "Luther Burden III",
+          "team": "CHI",
+          "salary": 8400
+        },
+        {
+          "slot": "FLEX",
+          "name": "Kalif Raymond",
+          "team": "CHI",
+          "salary": 3400
+        },
+        {
+          "slot": "FLEX",
+          "name": "Kyle Williams",
+          "team": "NE",
+          "salary": 1800
+        }
+      ]
+    }
+  ]
+}
