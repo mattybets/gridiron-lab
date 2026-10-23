@@ -1,0 +1,152 @@
+{
+  "matchup": "DAL @ GB · Oct 18 at 7:20 PM",
+  "source": "User-uploaded DraftKings contest-standings-196786588.csv; FLEX FPTS (not CPT multiplied)",
+  "source_contest_id": "196786588",
+  "players": [
+    {
+      "name": "CeeDee Lamb",
+      "team": "DAL",
+      "actual_points": 16
+    },
+    {
+      "name": "Dak Prescott",
+      "team": "DAL",
+      "actual_points": 13.02
+    },
+    {
+      "name": "Javonte Williams",
+      "team": "DAL",
+      "actual_points": 13
+    },
+    {
+      "name": "Jordan Love",
+      "team": "GB",
+      "actual_points": 21.24
+    },
+    {
+      "name": "Christian Watson",
+      "team": "GB",
+      "actual_points": 9.4
+    },
+    {
+      "name": "George Pickens",
+      "team": "DAL",
+      "actual_points": 13.3
+    },
+    {
+      "name": "Matthew Golden",
+      "team": "GB",
+      "actual_points": 25.4
+    },
+    {
+      "name": "MarShawn Lloyd",
+      "team": "GB",
+      "actual_points": 1
+    },
+    {
+      "name": "Tucker Kraft",
+      "team": "GB",
+      "actual_points": 8.7
+    },
+    {
+      "name": "Jake Ferguson",
+      "team": "DAL",
+      "actual_points": 3.3
+    },
+    {
+      "name": "Brandon Aubrey",
+      "team": "DAL",
+      "actual_points": 1
+    },
+    {
+      "name": "Trey Smack",
+      "team": "GB",
+      "actual_points": 12
+    },
+    {
+      "name": "Ryan Flournoy",
+      "team": "DAL",
+      "actual_points": 17
+    },
+    {
+      "name": "Packers",
+      "team": "GB",
+      "actual_points": 9
+    },
+    {
+      "name": "Cowboys",
+      "team": "DAL",
+      "actual_points": 5
+    },
+    {
+      "name": "Kaleb Johnson",
+      "team": "GB",
+      "actual_points": -0.2
+    },
+    {
+      "name": "Bo Melton",
+      "team": "GB",
+      "actual_points": 0
+    },
+    {
+      "name": "Skyy Moore",
+      "team": "GB",
+      "actual_points": 0
+    },
+    {
+      "name": "KaVontae Turpin",
+      "team": "DAL",
+      "actual_points": 0
+    },
+    {
+      "name": "Jonnu Smith",
+      "team": "GB",
+      "actual_points": 0
+    },
+    {
+      "name": "Tyler Goodson",
+      "team": "DAL",
+      "actual_points": 1.9
+    },
+    {
+      "name": "Luke Schoonmaker",
+      "team": "DAL",
+      "actual_points": 0
+    },
+    {
+      "name": "J. Michael Sturdivant",
+      "team": "GB",
+      "actual_points": 0
+    },
+    {
+      "name": "Jonathan Mingo",
+      "team": "DAL",
+      "actual_points": 0
+    },
+    {
+      "name": "Brevyn Spann-Ford",
+      "team": "DAL",
+      "actual_points": 7.5
+    },
+    {
+      "name": "Hunter Luepke",
+      "team": "DAL",
+      "actual_points": 3.9
+    },
+    {
+      "name": "Chris Brooks",
+      "team": "GB",
+      "actual_points": 0
+    },
+    {
+      "name": "Emari Demercado",
+      "team": "DAL",
+      "actual_points": 0
+    },
+    {
+      "name": "Jayden Reed",
+      "team": "GB",
+      "actual_points": 0
+    }
+  ]
+}
