@@ -1,15 +1,15 @@
 {
   "schema_version": 1,
-  "generated_utc": "2026-10-20T14:29:32.426284+00:00",
-  "contest_count": 4,
-  "known_winner_count": 3,
-  "mean_lineup_points": 109.94,
-  "mean_gap_to_winner": 29.0,
-  "roi_complete_records": 1,
+  "generated_utc": "2026-10-23T15:51:50.470556+00:00",
+  "contest_count": 5,
+  "known_winner_count": 4,
+  "mean_lineup_points": 111.55,
+  "mean_gap_to_winner": 30.66,
+  "roi_complete_records": 2,
   "roi_percent_complete_records": 66.67,
-  "pregame_snapshot_count": 4,
-  "saved_snapshot_file_count": 5,
-  "full_field_count": 0,
+  "pregame_snapshot_count": 5,
+  "saved_snapshot_file_count": 6,
+  "full_field_count": 1,
   "records": [
     {
       "id": "2026-10-05-mnf",
@@ -54,12 +54,24 @@
       "has_player_scores": true,
       "has_pregame_snapshot": false,
       "has_verified_full_field": false
+    },
+    {
+      "id": "2026-10-22-ne-chi",
+      "date": "2026-10-22",
+      "lineup_points": 117.98,
+      "finish_rank": 20874,
+      "winner_points": 153.61,
+      "gap_to_winner": 35.63,
+      "has_player_scores": true,
+      "has_pregame_snapshot": false,
+      "has_verified_full_field": true
     }
   ],
   "snapshot_evaluations": [
     {
       "snapshot": "2026-10-18-buf-lv.json",
       "matchup": "BUF @ LV \u00b7 Oct 18 at 3:25 PM",
+      "retrospective_only": false,
       "saved_at_utc": "2026-10-18T13:46:54.331Z",
       "player_count": 30,
       "lineup_count": 10,
@@ -164,6 +176,7 @@
     {
       "snapshot": "2026-10-18-chi-atl.json",
       "matchup": "CHI @ ATL \u00b7 Oct 18 at 12:00 PM",
+      "retrospective_only": false,
       "saved_at_utc": "2026-10-16T19:38:41.132Z",
       "player_count": 31,
       "lineup_count": 10,
@@ -177,6 +190,7 @@
     {
       "snapshot": "2026-10-18-dal-gb-early.json",
       "matchup": "DAL @ GB \u00b7 Oct 18 at 7:20 PM",
+      "retrospective_only": false,
       "saved_at_utc": "2026-10-17T17:46:41.855Z",
       "player_count": 29,
       "lineup_count": 10,
@@ -190,6 +204,7 @@
     {
       "snapshot": "2026-10-18-dal-gb-later.json",
       "matchup": "DAL @ GB \u00b7 Oct 18 at 7:20 PM",
+      "retrospective_only": false,
       "saved_at_utc": "2026-10-17T17:54:22.492Z",
       "player_count": 29,
       "lineup_count": 10,
@@ -198,10 +213,35 @@
     {
       "snapshot": "2026-10-19-wsh-sf.json",
       "matchup": "WSH @ SF \u00b7 Oct 19 at 7:15 PM",
+      "retrospective_only": false,
       "saved_at_utc": "2026-10-19T20:29:36.750Z",
       "player_count": 31,
       "lineup_count": 10,
       "status": "awaiting_verified_actuals"
+    },
+    {
+      "snapshot": "2026-10-22-ne-chi.json",
+      "matchup": "NE @ CHI \u00b7 Oct 22 at 7:15 PM",
+      "retrospective_only": true,
+      "saved_at_utc": "2026-10-23T15:37:02.367Z",
+      "player_count": 6,
+      "lineup_count": 1,
+      "status": "evaluated",
+      "matched_player_count": 6,
+      "mean_absolute_player_error": 7.28,
+      "mean_signed_player_error": -3.14,
+      "evaluated_lineups": [
+        {
+          "strategy": "gpp",
+          "index": 1,
+          "projected": 97.04212980952381,
+          "modeled_p90": 144.75102560911643,
+          "modeled_mean": 95.045,
+          "modeled_ceiling": 181.445,
+          "actual_points": 117.98
+        }
+      ],
+      "gpp_candidate_count": 1
     }
   ],
   "calibration": {

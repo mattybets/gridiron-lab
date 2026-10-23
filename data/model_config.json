@@ -7,8 +7,7 @@
     "projection": 0.2,
     "ceiling": 0.1
   },
-  "validated_games": 4,
+  "validated_games": 1,
   "method": "leave-one-game-out",
-  "reason": "Four independent historical games evaluated with nested leave-one-game-out; 0.00 held-out improvement. Keep automatic calibration disabled.",
-  "evaluation": "data/backtests/2026-10-20-calibration-verification.json"
+  "reason": "At least four independent games with complete candidate scores are required"
 }
