@@ -24,7 +24,7 @@ def evaluate_snapshots():
     for path in sorted((ROOT/'data'/'pregame').glob('*.json')):
         snapshot=json.loads(path.read_text(encoding='utf-8'))
         actual_path=ROOT/'data'/'actuals'/path.name
-        row={'snapshot':path.name,'matchup':snapshot.get('matchup'),
+        row={'snapshot':path.name,'matchup':snapshot.get('matchup'),'retrospective_only':bool(snapshot.get('retrospective_only')),
              'saved_at_utc':snapshot.get('saved_at_utc'),
              'player_count':len(snapshot.get('players',[])),
              'lineup_count':len(snapshot.get('lineups',[])),
@@ -76,7 +76,7 @@ def fit_ranking(snapshot_rows):
     """
     by_matchup={}
     for row in snapshot_rows:
-        if row.get('status')!='evaluated': continue
+        if row.get('status')!='evaluated' or row.get('retrospective_only'): continue
         candidates=[l for l in row.get('evaluated_lineups',[]) if l.get('strategy')=='gpp']
         saved=row.get('gpp_candidate_count',0)
         if saved<2 or len(candidates)!=saved: continue
