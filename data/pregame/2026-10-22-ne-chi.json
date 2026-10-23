@@ -93,5 +93,6 @@
         }
       ]
     }
-  ]
+  ],
+  "retrospective_only": true
 }
