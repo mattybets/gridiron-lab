@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "generated_utc": "2026-10-23T15:51:50.470556+00:00",
+  "generated_utc": "2026-10-23T16:02:38.036226+00:00",
   "contest_count": 5,
   "known_winner_count": 4,
   "mean_lineup_points": 111.55,
@@ -180,11 +180,102 @@
       "saved_at_utc": "2026-10-16T19:38:41.132Z",
       "player_count": 31,
       "lineup_count": 10,
-      "status": "partial_actuals",
-      "matched_player_count": 9,
-      "mean_absolute_player_error": 7.789,
-      "mean_signed_player_error": -0.38,
-      "evaluated_lineups": [],
+      "status": "evaluated",
+      "matched_player_count": 30,
+      "mean_absolute_player_error": 6.051,
+      "mean_signed_player_error": 0.281,
+      "evaluated_lineups": [
+        {
+          "strategy": "cash",
+          "index": 1,
+          "projected": 102.53,
+          "modeled_p90": 138.61112890778517,
+          "modeled_mean": 102.53,
+          "modeled_ceiling": 167.97,
+          "actual_points": 48.25
+        },
+        {
+          "strategy": "cash",
+          "index": 2,
+          "projected": 102.24000000000001,
+          "modeled_p90": 141.1005487655398,
+          "modeled_mean": 102.24000000000001,
+          "modeled_ceiling": 168.96,
+          "actual_points": 46.65
+        },
+        {
+          "strategy": "cash",
+          "index": 3,
+          "projected": 101.74,
+          "modeled_p90": 140.5226905173774,
+          "modeled_mean": 101.74000000000001,
+          "modeled_ceiling": 170.885,
+          "actual_points": 47.3
+        },
+        {
+          "strategy": "cash",
+          "index": 4,
+          "projected": 102.90500000000002,
+          "modeled_p90": 143.75674905314614,
+          "modeled_mean": 102.905,
+          "modeled_ceiling": 179.435,
+          "actual_points": 48.1
+        },
+        {
+          "strategy": "cash",
+          "index": 5,
+          "projected": 103.305,
+          "modeled_p90": 144.25054606954993,
+          "modeled_mean": 103.305,
+          "modeled_ceiling": 179.79999999999998,
+          "actual_points": 51.75
+        },
+        {
+          "strategy": "gpp",
+          "index": 1,
+          "projected": 101.305,
+          "modeled_p90": 150.40867978011934,
+          "modeled_mean": 101.305,
+          "modeled_ceiling": 182.09,
+          "actual_points": 57.85
+        },
+        {
+          "strategy": "gpp",
+          "index": 2,
+          "projected": 103.485,
+          "modeled_p90": 148.4298030663759,
+          "modeled_mean": 103.48500000000001,
+          "modeled_ceiling": 180.88,
+          "actual_points": 44.35
+        },
+        {
+          "strategy": "gpp",
+          "index": 3,
+          "projected": 102.755,
+          "modeled_p90": 146.65801757363568,
+          "modeled_mean": 102.75500000000001,
+          "modeled_ceiling": 179.665,
+          "actual_points": 60.5
+        },
+        {
+          "strategy": "gpp",
+          "index": 4,
+          "projected": 100.7,
+          "modeled_p90": 144.58392337555546,
+          "modeled_mean": 100.7,
+          "modeled_ceiling": 180.0,
+          "actual_points": 52.6
+        },
+        {
+          "strategy": "gpp",
+          "index": 5,
+          "projected": 101.35000000000001,
+          "modeled_p90": 144.25316745938423,
+          "modeled_mean": 101.35000000000001,
+          "modeled_ceiling": 178.22,
+          "actual_points": 51.75
+        }
+      ],
       "gpp_candidate_count": 5
     },
     {
@@ -253,7 +344,7 @@
       "projection": 0.2,
       "ceiling": 0.1
     },
-    "validated_games": 1,
+    "validated_games": 2,
     "method": "leave-one-game-out",
     "reason": "At least four independent games with complete candidate scores are required"
   },
