@@ -45,6 +45,17 @@ class FeedbackTests(unittest.TestCase):
         self.assertEqual(result['validated_games'],1)
         self.assertEqual(result['weights'],ec.DEFAULT_WEIGHTS)
 
+    def test_retrospective_case_excluded_from_calibration(self):
+        row={'matchup':'NE @ CHI','saved_at_utc':'2026-10-23T15:37:02Z',
+             'status':'evaluated','retrospective_only':True,'gpp_candidate_count':2,
+             'evaluated_lineups':[{'strategy':'gpp','modeled_p90':120,'modeled_mean':95,
+                 'projected':98,'modeled_ceiling':130,'actual_points':110},
+                 {'strategy':'gpp','modeled_p90':110,'modeled_mean':90,
+                 'projected':92,'modeled_ceiling':125,'actual_points':120}]}
+        result=ec.fit_ranking([row])
+        self.assertEqual(result['validated_games'],0)
+        self.assertFalse(result['enabled'])
+
     def test_real_snapshots_are_readable(self):
         rows=ec.evaluate_snapshots()
         self.assertGreaterEqual(len(rows),4)
