@@ -74,6 +74,50 @@
         }
       ],
       "notes": "Reported winner 166.57; contest date and exact winner lineup should be independently confirmed."
+    },
+    {
+      "id": "2026-10-22-ne-chi",
+      "reported_date": "2026-10-22",
+      "lineup_points": 117.98,
+      "finish_rank": 20874,
+      "entry_fee_usd": 3,
+      "payout_usd": 5,
+      "winner_points": 153.61,
+      "pregame_snapshot": false,
+      "verified_full_field": true,
+      "players": [
+        {
+          "slot": "CPT",
+          "name": "Drake Maye",
+          "points": 47.16
+        },
+        {
+          "slot": "FLEX",
+          "name": "Caleb Williams",
+          "points": 25.12
+        },
+        {
+          "slot": "FLEX",
+          "name": "D'Andre Swift",
+          "points": 19
+        },
+        {
+          "slot": "FLEX",
+          "name": "Luther Burden III",
+          "points": 26.7
+        },
+        {
+          "slot": "FLEX",
+          "name": "Kalif Raymond",
+          "points": 0
+        },
+        {
+          "slot": "FLEX",
+          "name": "Kyle Williams",
+          "points": 0
+        }
+      ],
+      "notes": "GPP lineup #1; DraftKings contest 196947074. Snapshot supplied after kickoff, therefore retrospective-only for calibration."
     }
   ]
 }
