@@ -1,0 +1,215 @@
+{
+  "schema": "gridiron-lab-v8-research-snapshot",
+  "saved_at_utc": "2026-10-25T16:21:47.237Z",
+  "matchup": "SF @ ATL · Oct 25 at 12:00 PM",
+  "source_note": "Extracted from user-supplied pregame JSON; five GPP candidates",
+  "players": [
+    {
+      "name": "Christian McCaffrey",
+      "team": "SF",
+      "projection": 23.07
+    },
+    {
+      "name": "Brock Purdy",
+      "team": "SF",
+      "projection": 22.61
+    },
+    {
+      "name": "Drake London",
+      "team": "ATL",
+      "projection": 16.07
+    },
+    {
+      "name": "Jahan Dotson",
+      "team": "ATL",
+      "projection": 10.07
+    },
+    {
+      "name": "Nick Folk",
+      "team": "ATL",
+      "projection": 7.11
+    },
+    {
+      "name": "Austin Hooper",
+      "team": "ATL",
+      "projection": 3.61
+    },
+    {
+      "name": "George Kittle",
+      "team": "SF",
+      "projection": 16.55
+    },
+    {
+      "name": "Jordan Watkins",
+      "team": "SF",
+      "projection": 6.18
+    },
+    {
+      "name": "Zachariah Branch",
+      "team": "ATL",
+      "projection": 3.46
+    },
+    {
+      "name": "Eddy Pineiro",
+      "team": "SF",
+      "projection": 5.89
+    },
+    {
+      "name": "49ers",
+      "team": "SF",
+      "projection": 4.62
+    }
+  ],
+  "lineups": [
+    {
+      "strategy": "gpp",
+      "index": 1,
+      "players": [
+        {
+          "slot": "CPT",
+          "name": "Christian McCaffrey"
+        },
+        {
+          "slot": "FLEX",
+          "name": "Brock Purdy"
+        },
+        {
+          "slot": "FLEX",
+          "name": "George Kittle"
+        },
+        {
+          "slot": "FLEX",
+          "name": "Jahan Dotson"
+        },
+        {
+          "slot": "FLEX",
+          "name": "Nick Folk"
+        },
+        {
+          "slot": "FLEX",
+          "name": "Jordan Watkins"
+        }
+      ]
+    },
+    {
+      "strategy": "gpp",
+      "index": 2,
+      "players": [
+        {
+          "slot": "CPT",
+          "name": "Christian McCaffrey"
+        },
+        {
+          "slot": "FLEX",
+          "name": "Brock Purdy"
+        },
+        {
+          "slot": "FLEX",
+          "name": "Drake London"
+        },
+        {
+          "slot": "FLEX",
+          "name": "Jahan Dotson"
+        },
+        {
+          "slot": "FLEX",
+          "name": "Nick Folk"
+        },
+        {
+          "slot": "FLEX",
+          "name": "Austin Hooper"
+        }
+      ]
+    },
+    {
+      "strategy": "gpp",
+      "index": 3,
+      "players": [
+        {
+          "slot": "CPT",
+          "name": "George Kittle"
+        },
+        {
+          "slot": "FLEX",
+          "name": "Christian McCaffrey"
+        },
+        {
+          "slot": "FLEX",
+          "name": "Brock Purdy"
+        },
+        {
+          "slot": "FLEX",
+          "name": "Drake London"
+        },
+        {
+          "slot": "FLEX",
+          "name": "Austin Hooper"
+        },
+        {
+          "slot": "FLEX",
+          "name": "Zachariah Branch"
+        }
+      ]
+    },
+    {
+      "strategy": "gpp",
+      "index": 4,
+      "players": [
+        {
+          "slot": "CPT",
+          "name": "Brock Purdy"
+        },
+        {
+          "slot": "FLEX",
+          "name": "Christian McCaffrey"
+        },
+        {
+          "slot": "FLEX",
+          "name": "Drake London"
+        },
+        {
+          "slot": "FLEX",
+          "name": "Jahan Dotson"
+        },
+        {
+          "slot": "FLEX",
+          "name": "Jordan Watkins"
+        },
+        {
+          "slot": "FLEX",
+          "name": "49ers"
+        }
+      ]
+    },
+    {
+      "strategy": "gpp",
+      "index": 5,
+      "players": [
+        {
+          "slot": "CPT",
+          "name": "Brock Purdy"
+        },
+        {
+          "slot": "FLEX",
+          "name": "Christian McCaffrey"
+        },
+        {
+          "slot": "FLEX",
+          "name": "George Kittle"
+        },
+        {
+          "slot": "FLEX",
+          "name": "Jahan Dotson"
+        },
+        {
+          "slot": "FLEX",
+          "name": "Austin Hooper"
+        },
+        {
+          "slot": "FLEX",
+          "name": "Eddy Pineiro"
+        }
+      ]
+    }
+  ]
+}
