@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "generated_utc": "2026-10-25T20:29:52.359154+00:00",
+  "generated_utc": "2026-10-25T20:35:13.106582+00:00",
   "contest_count": 5,
   "known_winner_count": 4,
   "mean_lineup_points": 111.55,
@@ -77,6 +77,211 @@
       "lineup_count": 10,
       "status": "evaluated",
       "matched_player_count": 29,
+      "matched_players": [
+        {
+          "name": "Josh Allen",
+          "team": "BUF",
+          "position": "QB",
+          "projection": 27.39,
+          "actual_points": 18.3
+        },
+        {
+          "name": "Brock Bowers",
+          "team": "LV",
+          "position": "TE",
+          "projection": 23.03,
+          "actual_points": 11.0
+        },
+        {
+          "name": "James Cook III",
+          "team": "BUF",
+          "position": "RB",
+          "projection": 19.15,
+          "actual_points": 24.3
+        },
+        {
+          "name": "Kirk Cousins",
+          "team": "LV",
+          "position": "QB",
+          "projection": 21.94,
+          "actual_points": 22.52
+        },
+        {
+          "name": "Ashton Jeanty",
+          "team": "LV",
+          "position": "RB",
+          "projection": 17.19,
+          "actual_points": 15.8
+        },
+        {
+          "name": "DJ Moore",
+          "team": "BUF",
+          "position": "WR",
+          "projection": 6.68,
+          "actual_points": 0.0
+        },
+        {
+          "name": "Khalil Shakir",
+          "team": "BUF",
+          "position": "WR",
+          "projection": 8.48,
+          "actual_points": 13.4
+        },
+        {
+          "name": "Dalton Kincaid",
+          "team": "BUF",
+          "position": "TE",
+          "projection": 6.81,
+          "actual_points": 10.8
+        },
+        {
+          "name": "Keon Coleman",
+          "team": "BUF",
+          "position": "WR",
+          "projection": 11.14,
+          "actual_points": 15.9
+        },
+        {
+          "name": "Tre Tucker",
+          "team": "LV",
+          "position": "WR",
+          "projection": 10.57,
+          "actual_points": 26.7
+        },
+        {
+          "name": "Tyler Bass",
+          "team": "BUF",
+          "position": "K",
+          "projection": 9.0,
+          "actual_points": 17.0
+        },
+        {
+          "name": "Matt Gay",
+          "team": "LV",
+          "position": "K",
+          "projection": 10.96,
+          "actual_points": 12.0
+        },
+        {
+          "name": "Ty Johnson",
+          "team": "BUF",
+          "position": "RB",
+          "projection": 7.93,
+          "actual_points": 4.7
+        },
+        {
+          "name": "Mike Washington Jr.",
+          "team": "LV",
+          "position": "RB",
+          "projection": 5.58,
+          "actual_points": 6.0
+        },
+        {
+          "name": "Bills",
+          "team": "BUF",
+          "position": "DST",
+          "projection": 3.24,
+          "actual_points": 1.0
+        },
+        {
+          "name": "Michael Mayer",
+          "team": "LV",
+          "position": "TE",
+          "projection": 9.17,
+          "actual_points": 16.5
+        },
+        {
+          "name": "Raiders",
+          "team": "LV",
+          "position": "DST",
+          "projection": 4.8,
+          "actual_points": 1.0
+        },
+        {
+          "name": "Jalen Nailor",
+          "team": "LV",
+          "position": "WR",
+          "projection": 4.0,
+          "actual_points": 1.9
+        },
+        {
+          "name": "Joshua Palmer",
+          "team": "BUF",
+          "position": "WR",
+          "projection": 7.66,
+          "actual_points": 4.7
+        },
+        {
+          "name": "Dylan Laube",
+          "team": "LV",
+          "position": "RB",
+          "projection": 3.67,
+          "actual_points": 0.9
+        },
+        {
+          "name": "Cody White",
+          "team": "LV",
+          "position": "WR",
+          "projection": 8.59,
+          "actual_points": 0.0
+        },
+        {
+          "name": "Dawson Knox",
+          "team": "BUF",
+          "position": "TE",
+          "projection": 3.05,
+          "actual_points": 1.0
+        },
+        {
+          "name": "Ian Thomas",
+          "team": "LV",
+          "position": "TE",
+          "projection": 4.92,
+          "actual_points": 0.0
+        },
+        {
+          "name": "Ray Davis",
+          "team": "BUF",
+          "position": "RB",
+          "projection": 1.86,
+          "actual_points": 1.9
+        },
+        {
+          "name": "Malik Benson",
+          "team": "LV",
+          "position": "WR",
+          "projection": 0.6,
+          "actual_points": 0.0
+        },
+        {
+          "name": "Jackson Hawes",
+          "team": "BUF",
+          "position": "TE",
+          "projection": 0.0,
+          "actual_points": 0.0
+        },
+        {
+          "name": "Dareke Young",
+          "team": "LV",
+          "position": "WR",
+          "projection": 1.98,
+          "actual_points": 0.0
+        },
+        {
+          "name": "Greg Dortch",
+          "team": "BUF",
+          "position": "WR",
+          "projection": 0.0,
+          "actual_points": 0.0
+        },
+        {
+          "name": "Keleki Latu",
+          "team": "BUF",
+          "position": "TE",
+          "projection": 0.0,
+          "actual_points": 0.0
+        }
+      ],
       "mean_absolute_player_error": 4.027,
       "mean_signed_player_error": 0.416,
       "evaluated_lineups": [
@@ -182,6 +387,218 @@
       "lineup_count": 10,
       "status": "evaluated",
       "matched_player_count": 30,
+      "matched_players": [
+        {
+          "name": "Bijan Robinson",
+          "team": "ATL",
+          "position": "RB",
+          "projection": 23.78,
+          "actual_points": 7.3
+        },
+        {
+          "name": "Caleb Williams",
+          "team": "CHI",
+          "position": "QB",
+          "projection": 23.69,
+          "actual_points": 19.5
+        },
+        {
+          "name": "Drake London",
+          "team": "ATL",
+          "position": "WR",
+          "projection": 18.37,
+          "actual_points": 12.2
+        },
+        {
+          "name": "D'Andre Swift",
+          "team": "CHI",
+          "position": "RB",
+          "projection": 13.03,
+          "actual_points": 23.0
+        },
+        {
+          "name": "Michael Penix Jr.",
+          "team": "ATL",
+          "position": "QB",
+          "projection": 13.72,
+          "actual_points": 24.1
+        },
+        {
+          "name": "Tyson Bagent",
+          "team": "CHI",
+          "position": "QB",
+          "projection": 4.27,
+          "actual_points": 0.0
+        },
+        {
+          "name": "Luther Burden III",
+          "team": "CHI",
+          "position": "WR",
+          "projection": 13.41,
+          "actual_points": 17.5
+        },
+        {
+          "name": "Case Keenum",
+          "team": "CHI",
+          "position": "QB",
+          "projection": 13.27,
+          "actual_points": 0.0
+        },
+        {
+          "name": "Rome Odunze",
+          "team": "CHI",
+          "position": "WR",
+          "projection": 9.61,
+          "actual_points": 6.9
+        },
+        {
+          "name": "Kyle Monangai",
+          "team": "CHI",
+          "position": "RB",
+          "projection": 13.17,
+          "actual_points": 0.0
+        },
+        {
+          "name": "Colston Loveland",
+          "team": "CHI",
+          "position": "TE",
+          "projection": 6.65,
+          "actual_points": 18.5
+        },
+        {
+          "name": "Kyle Pitts Sr.",
+          "team": "ATL",
+          "position": "TE",
+          "projection": 5.76,
+          "actual_points": 23.0
+        },
+        {
+          "name": "Nick Folk",
+          "team": "ATL",
+          "position": "K",
+          "projection": 9.8,
+          "actual_points": 1.0
+        },
+        {
+          "name": "Cairo Santos",
+          "team": "CHI",
+          "position": "K",
+          "projection": 7.52,
+          "actual_points": 9.0
+        },
+        {
+          "name": "Brian Robinson Jr.",
+          "team": "ATL",
+          "position": "RB",
+          "projection": 10.9,
+          "actual_points": 3.0
+        },
+        {
+          "name": "Kalif Raymond",
+          "team": "CHI",
+          "position": "WR",
+          "projection": 10.3,
+          "actual_points": 3.8
+        },
+        {
+          "name": "Falcons",
+          "team": "ATL",
+          "position": "DST",
+          "projection": 5.8,
+          "actual_points": 5.0
+        },
+        {
+          "name": "Bears",
+          "team": "CHI",
+          "position": "DST",
+          "projection": 6.32,
+          "actual_points": 11.0
+        },
+        {
+          "name": "Roschon Johnson",
+          "team": "CHI",
+          "position": "RB",
+          "projection": 3.94,
+          "actual_points": 15.5
+        },
+        {
+          "name": "Jahan Dotson",
+          "team": "ATL",
+          "position": "WR",
+          "projection": 6.86,
+          "actual_points": 17.7
+        },
+        {
+          "name": "Cole Kmet",
+          "team": "CHI",
+          "position": "TE",
+          "projection": 2.42,
+          "actual_points": 2.3
+        },
+        {
+          "name": "Zachariah Branch",
+          "team": "ATL",
+          "position": "WR",
+          "projection": 2.55,
+          "actual_points": 2.9
+        },
+        {
+          "name": "Olamide Zaccheaus",
+          "team": "ATL",
+          "position": "WR",
+          "projection": 1.03,
+          "actual_points": 0.0
+        },
+        {
+          "name": "Austin Hooper",
+          "team": "ATL",
+          "position": "TE",
+          "projection": 4.1,
+          "actual_points": 1.6
+        },
+        {
+          "name": "Charlie Woerner",
+          "team": "ATL",
+          "position": "TE",
+          "projection": 0.63,
+          "actual_points": 0.0
+        },
+        {
+          "name": "Zavion Thomas",
+          "team": "CHI",
+          "position": "WR",
+          "projection": 1.39,
+          "actual_points": 5.5
+        },
+        {
+          "name": "Jahdae Walker",
+          "team": "CHI",
+          "position": "WR",
+          "projection": 3.81,
+          "actual_points": 0.0
+        },
+        {
+          "name": "Chris Blair",
+          "team": "ATL",
+          "position": "WR",
+          "projection": 1.07,
+          "actual_points": 0.0
+        },
+        {
+          "name": "Sam Roush",
+          "team": "CHI",
+          "position": "TE",
+          "projection": 1.55,
+          "actual_points": 0.0
+        },
+        {
+          "name": "Nick Muse",
+          "team": "ATL",
+          "position": "TE",
+          "projection": 0.0,
+          "actual_points": 0.0
+        }
+      ],
       "mean_absolute_player_error": 6.051,
       "mean_signed_player_error": 0.281,
       "evaluated_lineups": [
@@ -287,6 +704,211 @@
       "lineup_count": 10,
       "status": "evaluated",
       "matched_player_count": 29,
+      "matched_players": [
+        {
+          "name": "CeeDee Lamb",
+          "team": "DAL",
+          "position": "WR",
+          "projection": 21.46,
+          "actual_points": 16.0
+        },
+        {
+          "name": "Dak Prescott",
+          "team": "DAL",
+          "position": "QB",
+          "projection": 15.33,
+          "actual_points": 13.02
+        },
+        {
+          "name": "Javonte Williams",
+          "team": "DAL",
+          "position": "RB",
+          "projection": 23.39,
+          "actual_points": 13.0
+        },
+        {
+          "name": "Jordan Love",
+          "team": "GB",
+          "position": "QB",
+          "projection": 20.83,
+          "actual_points": 21.24
+        },
+        {
+          "name": "Christian Watson",
+          "team": "GB",
+          "position": "WR",
+          "projection": 22.19,
+          "actual_points": 9.4
+        },
+        {
+          "name": "George Pickens",
+          "team": "DAL",
+          "position": "WR",
+          "projection": 15.56,
+          "actual_points": 13.3
+        },
+        {
+          "name": "Matthew Golden",
+          "team": "GB",
+          "position": "WR",
+          "projection": 17.59,
+          "actual_points": 25.4
+        },
+        {
+          "name": "MarShawn Lloyd",
+          "team": "GB",
+          "position": "RB",
+          "projection": 10.25,
+          "actual_points": 1.0
+        },
+        {
+          "name": "Tucker Kraft",
+          "team": "GB",
+          "position": "TE",
+          "projection": 10.73,
+          "actual_points": 8.7
+        },
+        {
+          "name": "Jake Ferguson",
+          "team": "DAL",
+          "position": "TE",
+          "projection": 6.02,
+          "actual_points": 3.3
+        },
+        {
+          "name": "Brandon Aubrey",
+          "team": "DAL",
+          "position": "K",
+          "projection": 9.28,
+          "actual_points": 1.0
+        },
+        {
+          "name": "Trey Smack",
+          "team": "GB",
+          "position": "K",
+          "projection": 5.6,
+          "actual_points": 12.0
+        },
+        {
+          "name": "Ryan Flournoy",
+          "team": "DAL",
+          "position": "WR",
+          "projection": 7.4,
+          "actual_points": 17.0
+        },
+        {
+          "name": "Packers",
+          "team": "GB",
+          "position": "DST",
+          "projection": 7.2,
+          "actual_points": 9.0
+        },
+        {
+          "name": "Cowboys",
+          "team": "DAL",
+          "position": "DST",
+          "projection": 0.76,
+          "actual_points": 5.0
+        },
+        {
+          "name": "Kaleb Johnson",
+          "team": "GB",
+          "position": "RB",
+          "projection": 2.52,
+          "actual_points": -0.2
+        },
+        {
+          "name": "Bo Melton",
+          "team": "GB",
+          "position": "WR",
+          "projection": 1.63,
+          "actual_points": 0.0
+        },
+        {
+          "name": "Skyy Moore",
+          "team": "GB",
+          "position": "WR",
+          "projection": 2.52,
+          "actual_points": 0.0
+        },
+        {
+          "name": "KaVontae Turpin",
+          "team": "DAL",
+          "position": "WR",
+          "projection": 3.68,
+          "actual_points": 0.0
+        },
+        {
+          "name": "Jonnu Smith",
+          "team": "GB",
+          "position": "TE",
+          "projection": 4.49,
+          "actual_points": 0.0
+        },
+        {
+          "name": "Tyler Goodson",
+          "team": "DAL",
+          "position": "RB",
+          "projection": 2.23,
+          "actual_points": 1.9
+        },
+        {
+          "name": "Luke Schoonmaker",
+          "team": "DAL",
+          "position": "TE",
+          "projection": 1.73,
+          "actual_points": 0.0
+        },
+        {
+          "name": "J. Michael Sturdivant",
+          "team": "GB",
+          "position": "WR",
+          "projection": 1.63,
+          "actual_points": 0.0
+        },
+        {
+          "name": "Jonathan Mingo",
+          "team": "DAL",
+          "position": "WR",
+          "projection": 1.94,
+          "actual_points": 0.0
+        },
+        {
+          "name": "Brevyn Spann-Ford",
+          "team": "DAL",
+          "position": "TE",
+          "projection": 0.94,
+          "actual_points": 7.5
+        },
+        {
+          "name": "Hunter Luepke",
+          "team": "DAL",
+          "position": "RB",
+          "projection": 0.7,
+          "actual_points": 3.9
+        },
+        {
+          "name": "Chris Brooks",
+          "team": "GB",
+          "position": "RB",
+          "projection": 3.39,
+          "actual_points": 0.0
+        },
+        {
+          "name": "Emari Demercado",
+          "team": "DAL",
+          "position": "RB",
+          "projection": 0.86,
+          "actual_points": 0.0
+        },
+        {
+          "name": "Jayden Reed",
+          "team": "GB",
+          "position": "WR",
+          "projection": 3.34,
+          "actual_points": 0.0
+        }
+      ],
       "mean_absolute_player_error": 4.268,
       "mean_signed_player_error": 1.508,
       "evaluated_lineups": [
@@ -392,6 +1014,211 @@
       "lineup_count": 10,
       "status": "evaluated",
       "matched_player_count": 29,
+      "matched_players": [
+        {
+          "name": "CeeDee Lamb",
+          "team": "DAL",
+          "position": "WR",
+          "projection": 21.46,
+          "actual_points": 16.0
+        },
+        {
+          "name": "Dak Prescott",
+          "team": "DAL",
+          "position": "QB",
+          "projection": 15.33,
+          "actual_points": 13.02
+        },
+        {
+          "name": "Javonte Williams",
+          "team": "DAL",
+          "position": "RB",
+          "projection": 23.39,
+          "actual_points": 13.0
+        },
+        {
+          "name": "Jordan Love",
+          "team": "GB",
+          "position": "QB",
+          "projection": 20.83,
+          "actual_points": 21.24
+        },
+        {
+          "name": "Christian Watson",
+          "team": "GB",
+          "position": "WR",
+          "projection": 22.19,
+          "actual_points": 9.4
+        },
+        {
+          "name": "George Pickens",
+          "team": "DAL",
+          "position": "WR",
+          "projection": 15.56,
+          "actual_points": 13.3
+        },
+        {
+          "name": "Matthew Golden",
+          "team": "GB",
+          "position": "WR",
+          "projection": 17.59,
+          "actual_points": 25.4
+        },
+        {
+          "name": "MarShawn Lloyd",
+          "team": "GB",
+          "position": "RB",
+          "projection": 10.25,
+          "actual_points": 1.0
+        },
+        {
+          "name": "Tucker Kraft",
+          "team": "GB",
+          "position": "TE",
+          "projection": 10.73,
+          "actual_points": 8.7
+        },
+        {
+          "name": "Jake Ferguson",
+          "team": "DAL",
+          "position": "TE",
+          "projection": 6.02,
+          "actual_points": 3.3
+        },
+        {
+          "name": "Brandon Aubrey",
+          "team": "DAL",
+          "position": "K",
+          "projection": 9.28,
+          "actual_points": 1.0
+        },
+        {
+          "name": "Trey Smack",
+          "team": "GB",
+          "position": "K",
+          "projection": 5.6,
+          "actual_points": 12.0
+        },
+        {
+          "name": "Ryan Flournoy",
+          "team": "DAL",
+          "position": "WR",
+          "projection": 7.4,
+          "actual_points": 17.0
+        },
+        {
+          "name": "Packers",
+          "team": "GB",
+          "position": "DST",
+          "projection": 7.2,
+          "actual_points": 9.0
+        },
+        {
+          "name": "Cowboys",
+          "team": "DAL",
+          "position": "DST",
+          "projection": 0.76,
+          "actual_points": 5.0
+        },
+        {
+          "name": "Kaleb Johnson",
+          "team": "GB",
+          "position": "RB",
+          "projection": 2.52,
+          "actual_points": -0.2
+        },
+        {
+          "name": "Bo Melton",
+          "team": "GB",
+          "position": "WR",
+          "projection": 1.63,
+          "actual_points": 0.0
+        },
+        {
+          "name": "Skyy Moore",
+          "team": "GB",
+          "position": "WR",
+          "projection": 2.52,
+          "actual_points": 0.0
+        },
+        {
+          "name": "KaVontae Turpin",
+          "team": "DAL",
+          "position": "WR",
+          "projection": 3.68,
+          "actual_points": 0.0
+        },
+        {
+          "name": "Jonnu Smith",
+          "team": "GB",
+          "position": "TE",
+          "projection": 4.49,
+          "actual_points": 0.0
+        },
+        {
+          "name": "Tyler Goodson",
+          "team": "DAL",
+          "position": "RB",
+          "projection": 2.23,
+          "actual_points": 1.9
+        },
+        {
+          "name": "Luke Schoonmaker",
+          "team": "DAL",
+          "position": "TE",
+          "projection": 1.73,
+          "actual_points": 0.0
+        },
+        {
+          "name": "J. Michael Sturdivant",
+          "team": "GB",
+          "position": "WR",
+          "projection": 1.63,
+          "actual_points": 0.0
+        },
+        {
+          "name": "Jonathan Mingo",
+          "team": "DAL",
+          "position": "WR",
+          "projection": 1.94,
+          "actual_points": 0.0
+        },
+        {
+          "name": "Brevyn Spann-Ford",
+          "team": "DAL",
+          "position": "TE",
+          "projection": 0.94,
+          "actual_points": 7.5
+        },
+        {
+          "name": "Hunter Luepke",
+          "team": "DAL",
+          "position": "RB",
+          "projection": 0.7,
+          "actual_points": 3.9
+        },
+        {
+          "name": "Chris Brooks",
+          "team": "GB",
+          "position": "RB",
+          "projection": 3.39,
+          "actual_points": 0.0
+        },
+        {
+          "name": "Emari Demercado",
+          "team": "DAL",
+          "position": "RB",
+          "projection": 0.86,
+          "actual_points": 0.0
+        },
+        {
+          "name": "Jayden Reed",
+          "team": "GB",
+          "position": "WR",
+          "projection": 3.34,
+          "actual_points": 0.0
+        }
+      ],
       "mean_absolute_player_error": 4.268,
       "mean_signed_player_error": 1.508,
       "evaluated_lineups": [
@@ -506,6 +1333,50 @@
       "lineup_count": 1,
       "status": "evaluated",
       "matched_player_count": 6,
+      "matched_players": [
+        {
+          "name": "Drake Maye",
+          "team": "NE",
+          "position": "UNKNOWN",
+          "projection": 23.25,
+          "actual_points": 31.44
+        },
+        {
+          "name": "Caleb Williams",
+          "team": "CHI",
+          "position": "UNKNOWN",
+          "projection": 18.92,
+          "actual_points": 25.12
+        },
+        {
+          "name": "D'Andre Swift",
+          "team": "CHI",
+          "position": "UNKNOWN",
+          "projection": 16.56,
+          "actual_points": 19.0
+        },
+        {
+          "name": "Luther Burden III",
+          "team": "CHI",
+          "position": "UNKNOWN",
+          "projection": 12.27,
+          "actual_points": 26.7
+        },
+        {
+          "name": "Kalif Raymond",
+          "team": "CHI",
+          "position": "UNKNOWN",
+          "projection": 7.12,
+          "actual_points": 0.0
+        },
+        {
+          "name": "Kyle Williams",
+          "team": "NE",
+          "position": "UNKNOWN",
+          "projection": 5.3,
+          "actual_points": 0.0
+        }
+      ],
       "mean_absolute_player_error": 7.28,
       "mean_signed_player_error": -3.14,
       "evaluated_lineups": [
@@ -530,6 +1401,85 @@
       "lineup_count": 5,
       "status": "evaluated",
       "matched_player_count": 11,
+      "matched_players": [
+        {
+          "name": "Christian McCaffrey",
+          "team": "SF",
+          "position": "UNKNOWN",
+          "projection": 23.07,
+          "actual_points": 22.0
+        },
+        {
+          "name": "Brock Purdy",
+          "team": "SF",
+          "position": "UNKNOWN",
+          "projection": 22.61,
+          "actual_points": 14.02
+        },
+        {
+          "name": "Drake London",
+          "team": "ATL",
+          "position": "UNKNOWN",
+          "projection": 16.07,
+          "actual_points": 19.6
+        },
+        {
+          "name": "Jahan Dotson",
+          "team": "ATL",
+          "position": "UNKNOWN",
+          "projection": 10.07,
+          "actual_points": 1.6
+        },
+        {
+          "name": "Nick Folk",
+          "team": "ATL",
+          "position": "UNKNOWN",
+          "projection": 7.11,
+          "actual_points": 11.0
+        },
+        {
+          "name": "Austin Hooper",
+          "team": "ATL",
+          "position": "UNKNOWN",
+          "projection": 3.61,
+          "actual_points": 4.1
+        },
+        {
+          "name": "George Kittle",
+          "team": "SF",
+          "position": "UNKNOWN",
+          "projection": 16.55,
+          "actual_points": 15.8
+        },
+        {
+          "name": "Jordan Watkins",
+          "team": "SF",
+          "position": "UNKNOWN",
+          "projection": 6.18,
+          "actual_points": 8.6
+        },
+        {
+          "name": "Zachariah Branch",
+          "team": "ATL",
+          "position": "UNKNOWN",
+          "projection": 3.46,
+          "actual_points": 2.7
+        },
+        {
+          "name": "Eddy Pineiro",
+          "team": "SF",
+          "position": "UNKNOWN",
+          "projection": 5.89,
+          "actual_points": 2.0
+        },
+        {
+          "name": "49ers",
+          "team": "SF",
+          "position": "UNKNOWN",
+          "projection": 4.62,
+          "actual_points": -1.0
+        }
+      ],
       "mean_absolute_player_error": 3.589,
       "mean_signed_player_error": 1.711,
       "evaluated_lineups": [
@@ -582,6 +1532,47 @@
       "gpp_candidate_count": 5
     }
   ],
+  "projection_diagnostics": {
+    "independent_games": 4,
+    "by_position": {
+      "DST": {
+        "samples": 6,
+        "mean_signed_error": -0.647,
+        "mean_absolute_error": 2.927
+      },
+      "K": {
+        "samples": 6,
+        "mean_signed_error": 0.027,
+        "mean_absolute_error": 5.667
+      },
+      "QB": {
+        "samples": 8,
+        "mean_signed_error": 2.72,
+        "mean_absolute_error": 5.562
+      },
+      "RB": {
+        "samples": 18,
+        "mean_signed_error": 2.308,
+        "mean_absolute_error": 5.679
+      },
+      "TE": {
+        "samples": 19,
+        "mean_signed_error": -0.642,
+        "mean_absolute_error": 4.302
+      },
+      "UNKNOWN": {
+        "samples": 11,
+        "mean_signed_error": 1.711,
+        "mean_absolute_error": 3.589
+      },
+      "WR": {
+        "samples": 31,
+        "mean_signed_error": 0.543,
+        "mean_absolute_error": 4.583
+      }
+    },
+    "note": "Descriptive error audit; no correction automatically applied. Four games cannot establish reliable positional corrections."
+  },
   "calibration": {
     "schema_version": 1,
     "enabled": false,
