@@ -141,25 +141,69 @@ function lineupKey(l){return l.map(x=>x.slot+':'+x.p.name+'|'+x.p.team).sort().j
 // Deterministic bounded search over top candidates by modeled ceiling/point-per-dollar,
 // with all viable Captain choices. For larger slates, a deterministic bounded search.
 function generateShowdown(eligible,found){
+ // Beam search replaces the old 12,000-leaf DFS, which systematically visited
+ // early-listed cheap FLEX combinations and missed stronger combinations.
  const byScore=[...eligible].sort((a,b)=>(b.ceiling/Math.sqrt(b.salary))-(a.ceiling/Math.sqrt(a.salary)));
  const byProj=[...eligible].sort((a,b)=>b.projection-a.projection);
- const candidateMap=new Map([...byScore.slice(0,32),...byProj.slice(0,20)].map(p=>[p.name+'|'+p.team,p]));
- const a=[...candidateMap.values()];let examined=0;const perCaptainLimit=12000;
- function save(l){if(!valid(l,'showdown'))return;const key=lineupKey(l);if(found.has(key))return;
-  const own=ownership(l);const leverage=own===null?0:l.reduce((sum,x)=>sum+Math.log(101/(Math.max(0,x.p.ownership)+1))*(x.slot==='CPT'?1.5:1),0);
-  found.set(key,{l,proj:points(l,'projection'),ceil:points(l,'ceiling'),own,leverage});}
- for(const cpt of a){let captainExamined=0;const rest=a.filter(p=>p!==cpt);
-  const choose=(start,picked,cost,otherTeam)=>{
-   if(captainExamined>=perCaptainLimit)return;
-   if(picked.length===5){examined++;captainExamined++;if(otherTeam)save([{slot:'CPT',p:cpt},...picked.map(p=>({slot:'FLEX',p}))]);return;}
-   if(cost>50000)return;
-   for(let i=start;i<rest.length&&captainExamined<perCaptainLimit;i++){
-    const p=rest[i],next=cost+p.salary;if(next>50000)continue;
-    choose(i+1,[...picked,p],next,otherTeam||p.team!==cpt.team);
+ const candidates=[...new Map([...byScore.slice(0,40),...byProj.slice(0,32)].map(p=>[p.name+'|'+p.team,p])).values()];
+ let examined=0;
+ const WIDTH=1800;
+ function save(l){
+  if(!valid(l,'showdown'))return;
+  const key=lineupKey(l);if(found.has(key))return;
+  const own=ownership(l);
+  const leverage=own===null?0:l.reduce((sum,x)=>sum+Math.log(101/(Math.max(0,x.p.ownership)+1))*(x.slot==='CPT'?1.5:1),0);
+  found.set(key,{l,proj:points(l,'projection'),ceil:points(l,'ceiling'),own,leverage});
+ }
+ // Search the entire FLEX pool for every Captain, with deterministic beam pruning
+ // after each depth. Retain multiple objectives to avoid a projection-only search.
+ for(const cpt of candidates){
+  if(cpt.salary*1.5>50000)continue;
+  const rest=candidates.filter(p=>p!==cpt).sort((a,b)=>a.name.localeCompare(b.name));
+  let beam=[{picked:[],last:-1,cost:cpt.salary*1.5,proj:cpt.projection*1.5,ceil:cpt.ceiling*1.5,teams:0}];
+  for(let depth=0;depth<5;depth++){
+   const next=[];
+   for(const state of beam){
+    for(let i=state.last+1;i<rest.length;i++){
+     const p=rest[i],cost=state.cost+p.salary;
+     if(cost>50000)continue;
+     const remaining=4-depth;
+     if(rest.length-i-1<remaining)continue;
+     const minCost=rest.slice(i+1).map(x=>x.salary).sort((a,b)=>a-b).slice(0,remaining).reduce((a,b)=>a+b,0);
+     if(cost+minCost>50000)continue;
+     next.push({picked:[...state.picked,p],last:i,cost,
+       proj:state.proj+p.projection,ceil:state.ceil+p.ceiling,
+       teams:state.teams+(p.team!==cpt.team?1:0)});
+    }
    }
-  };
-  choose(0,[],cpt.salary*1.5,false);
-  // Apply the same bounded search budget to every Captain to avoid early-Captain bias.
+   if(!next.length){beam=[];break}
+   if(depth===4){
+    for(const state of next){
+     examined++;
+     if(state.teams>0)save([{slot:'CPT',p:cpt},...state.picked.map(p=>({slot:'FLEX',p}))]);
+    }
+   }else{
+    const keys=new Set(),keep=[];
+    // Mix high-projection, high-ceiling, and value-adjusted paths.
+    const orderings=[
+      x=>x.proj,
+      x=>x.ceil,
+      x=>.45*x.proj+.55*x.ceil,
+      x=>x.ceil+(50000-x.cost)*.0006
+    ];
+    for(const score of orderings){
+     const quota=Math.ceil(WIDTH/orderings.length);
+     let added=0;
+     for(const state of [...next].sort((a,b)=>score(b)-score(a))){
+      const key=state.picked.map(p=>p.name+'|'+p.team).join(';');
+      if(keys.has(key))continue;
+      keys.add(key);keep.push(state);added++;
+      if(added>=quota)break;
+     }
+    }
+    beam=keep;
+   }
+  }
  }
  return examined;
 }
