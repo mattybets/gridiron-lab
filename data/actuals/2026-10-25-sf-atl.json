@@ -1,0 +1,52 @@
+{
+  "matchup": "SF @ ATL · Oct 25 at 12:00 PM",
+  "source": "DraftKings contest standings 196972425; FLEX FPTS",
+  "winning_score": 105.82,
+  "players": [
+    {
+      "name": "Christian McCaffrey",
+      "team": "SF",
+      "actual_points": 22
+    },
+    {
+      "name": "Brock Purdy",
+      "team": "SF",
+      "actual_points": 14.02
+    },
+    {
+      "name": "Drake London",
+      "team": "ATL",
+      "actual_points": 19.6
+    },
+    {
+      "name": "Jahan Dotson",
+      "team": "ATL",
+      "actual_points": 1.6
+    },
+    {
+      "name": "Nick Folk",
+      "team": "ATL",
+      "actual_points": 11
+    },
+    {
+      "name": "Austin Hooper",
+      "team": "ATL",
+      "actual_points": 4.1
+    },
+    {
+      "name": "Bijan Robinson",
+      "team": "ATL",
+      "actual_points": 17.2
+    },
+    {
+      "name": "Michael Penix Jr.",
+      "team": "ATL",
+      "actual_points": 20.42
+    },
+    {
+      "name": "Falcons",
+      "team": "ATL",
+      "actual_points": 11
+    }
+  ]
+}
