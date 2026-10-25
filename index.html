@@ -209,7 +209,25 @@ function generateShowdown(eligible,found){
 }
 function optimize(){
  const format=$('mode').value;mode=format;
- const available=pool.filter(p=>p.active&&!['out','inactive','ir','doubtful'].includes(String(p.status||'unknown').toLowerCase())&&p.roleReview!=='not_playing'&&Number(p.opportunity??100)>0&&p.salary>0&&p.modeled&&Number.isFinite(p.projection)&&Number.isFinite(p.ceiling));
+ // The imported DraftKings salary sheet determines the QB depth chart:
+ // highest FLEX-salary QB on each team is the presumed starter.
+ // A backup is excluded while that starter remains eligible. If the starter
+ // is explicitly OUT/INACTIVE/IR/DOUBTFUL, the next eligible QB is allowed.
+ // This is a salary-based inference, not an official depth-chart confirmation.
+ const unavailable=p=>!p.active||['out','inactive','ir','doubtful'].includes(String(p.status||'unknown').toLowerCase())||p.roleReview==='not_playing';
+ const qbsByTeam=new Map();
+ for(const p of pool.filter(p=>p.position==='QB')){
+  if(!qbsByTeam.has(p.team))qbsByTeam.set(p.team,[]);
+  qbsByTeam.get(p.team).push(p);
+ }
+ const allowedQB=new Set();
+ for(const players of qbsByTeam.values()){
+  const ordered=[...players].sort((a,b)=>b.salary-a.salary);
+  const starter=ordered[0];
+  const selected=starter&&!unavailable(starter)?starter:ordered.find(p=>!unavailable(p));
+  if(selected)allowedQB.add(selected.name+'|'+selected.team);
+ }
+ const available=pool.filter(p=>!unavailable(p)&&(p.position!=='QB'||allowedQB.has(p.name+'|'+p.team))&&Number(p.opportunity??100)>0&&p.salary>0&&p.modeled&&Number.isFinite(p.projection)&&Number.isFinite(p.ceiling));
  if(!available.length){$('status').textContent='No eligible projected players. Import the DraftKings salary CSV and apply current-season estimates; explicit Out/Inactive/IR/Doubtful players remain excluded.';return}
  const unreviewed=available.filter(p=>p.status!=='available'||!['starter','rotation'].includes(p.roleReview));
  const lowSample=available.filter(p=>Number(p.modelGames||0)<4);
@@ -217,7 +235,7 @@ function optimize(){
  const lowOpportunity=available.filter(p=>Number(p.opportunity??100)<50);
 
  const gate=$('qualitygate');
- gate.textContent=`${available.length} eligible players from imported sheet · ${unreviewed.length} statuses/roles not independently confirmed · ${lowSample.length} small-sample or fallback projections · ${missingOwn.length} without ownership. Imported sheet controls eligibility; explicit out/inactive/IR/doubtful excluded. Salary fallback projections are uncalibrated.`;
+ gate.textContent=`${available.length} eligible players from imported sheet · ${unreviewed.length} statuses/roles not independently confirmed · ${lowSample.length} small-sample or fallback projections · ${missingOwn.length} without ownership. Imported sheet controls eligibility; explicit out/inactive/IR/doubtful excluded. Only the presumed starting QB per team is eligible, based on salary rank; backup QBs are unlocked only if that starter is explicitly unavailable. Salary fallback projections are uncalibrated.`;
  gate.style.color='#65d7ae';
 
  const eligible=available.map(p=>{
