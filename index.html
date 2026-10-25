@@ -103,7 +103,26 @@ function selectDistinctGpp(candidates,n,cap,format){
  const maxCpt=Math.max(1,Math.floor(n*Number($('captainexposure').value||40)/100));
  const maxOwn=Math.max(1,Math.min(n-1,cap,Math.floor(n*.8)));
  const keyOf=p=>p.name+'|'+p.team;
- const entries=candidates.slice(0,Math.min(candidates.length,900)).map((x,i)=>({
+ // Sample across Captains and the full ranking instead of only the top 900,
+ // which often contain nearly identical players and cannot form a portfolio.
+ const sampled=[],captainBuckets=new Map();
+ for(const x of candidates){
+  const cp=x.l.find(v=>v.slot==='CPT')?.p;
+  const k=cp?keyOf(cp):'other';
+  if(!captainBuckets.has(k))captainBuckets.set(k,[]);
+  captainBuckets.get(k).push(x);
+ }
+ const groups=[...captainBuckets.values()];
+ let round=0;
+ while(sampled.length<Math.min(1800,candidates.length)){
+  let progress=false;
+  for(const group of groups){
+   if(group[round]){sampled.push(group[round]);progress=true;if(sampled.length>=1800)break}
+  }
+  if(!progress)break;
+  round++;
+ }
+ const entries=sampled.map((x,i)=>({
   x,i,keys:x.l.map(v=>keyOf(v.p)),cpt:keyOf(x.l.find(v=>v.slot==='CPT')?.p||x.l[0].p),
   score:Number.isFinite(x.gppScore)?x.gppScore:0
  }));
@@ -142,6 +161,9 @@ function selectDistinctGpp(candidates,n,cap,format){
   states=kept;
  }
  const selected=(states.find(s=>s.picks.length===n)||best).picks.map(e=>e.x);
+ // When no feasible multi-entry portfolio is found, still provide one valid
+ // single-entry recommendation instead of displaying an empty GPP section.
+ if(selected.length<n)return candidates.length?[candidates[0]]:[];
  // Enforce exposure relative to the actual portfolio size, not the request.
  const actualLimit=Math.max(1,Math.floor(selected.length*Number($('exposure').value||60)/100));
  if(selected.some(x=>x.l.some(v=>selected.filter(y=>y.l.some(z=>keyOf(z.p)===keyOf(v.p))).length>actualLimit))){
