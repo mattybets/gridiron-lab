@@ -46,7 +46,7 @@ function validateGenerated(groups,format){
 }
 function rnd(){return Math.random()}function normal(){return Math.sqrt(-2*Math.log(Math.max(1e-12,rnd())))*Math.cos(2*Math.PI*rnd())}function choice(a){return a[Math.floor(rnd()*a.length)]}
 function salary(l){return Math.round(l.reduce((s,x)=>s+x.p.salary*(x.slot==='CPT'?1.5:1),0))}function points(l,k){return l.reduce((s,x)=>s+x.p[k]*(x.slot==='CPT'?1.5:1),0)}function ownership(l){return l.every(x=>Number.isFinite(x.p.ownership))?l.reduce((s,x)=>s+x.p.ownership,0):null}
-function valid(l,format){if(l.length!==(format==='showdown'?6:9)||new Set(l.map(x=>x.p.name+'|'+x.p.team)).size!==l.length||salary(l)>50000||(ownership(l)!==null&&ownership(l)>Number($('maxown').value)))return false;if(format==='showdown'){let teams=new Set(l.map(x=>x.p.team));if(l.filter(x=>['K','DST'].includes(x.p.position)).length>2)return false;if(l.some(x=>x.slot==='CPT'&&['K','DST'].includes(x.p.position)))return false;if($('qbrestrict').value==='same'){const qb=l.filter(x=>x.p.position==='QB');if(new Set(qb.map(x=>x.p.team)).size!==qb.length)return false;}return l.filter(x=>x.slot==='CPT').length===1&&teams.size>=2}let need={QB:1,RB:2,WR:3,TE:1,DST:1,FLEX:1};for(let [slot,n]of Object.entries(need))if(l.filter(x=>x.slot===slot).length!==n)return false;return l.filter(x=>x.slot==='FLEX').every(x=>['RB','WR','TE'].includes(x.p.position))}
+function valid(l,format){if(l.length!==(format==='showdown'?6:9)||new Set(l.map(x=>x.p.name+'|'+x.p.team)).size!==l.length||salary(l)>50000||(ownership(l)!==null&&ownership(l)>Number($('maxown').value)))return false;if(format==='showdown'){let teams=new Set(l.map(x=>x.p.team));if(l.filter(x=>['K','DST'].includes(x.p.position)).length>2)return false;if(l.filter(x=>['RB','WR','TE'].includes(x.p.position)&&Number.isFinite(x.p.dkAvg)&&x.p.dkAvg<5).length>1)return false;if(l.some(x=>x.slot==='CPT'&&['K','DST'].includes(x.p.position)))return false;if($('qbrestrict').value==='same'){const qb=l.filter(x=>x.p.position==='QB');if(new Set(qb.map(x=>x.p.team)).size!==qb.length)return false;}return l.filter(x=>x.slot==='CPT').length===1&&teams.size>=2}let need={QB:1,RB:2,WR:3,TE:1,DST:1,FLEX:1};for(let [slot,n]of Object.entries(need))if(l.filter(x=>x.slot===slot).length!==n)return false;return l.filter(x=>x.slot==='FLEX').every(x=>['RB','WR','TE'].includes(x.p.position))}
 function build(format,eligible){let selected=[],used=new Set();function add(slot,choices){let arr=choices.filter(p=>!used.has(p.name+'|'+p.team));if(!arr.length)return false;let rank=arr.map(p=>({p,w:Math.max(.01,(p.projection+0.2*(p.ceiling-p.projection)) / Math.sqrt(p.salary/1000))*(0.6+rnd()*1.5)})).sort((a,b)=>b.w-a.w);let p=rank[Math.floor(Math.pow(rnd(),2.8)*Math.min(rank.length,Math.max(4,Math.ceil(rank.length*.65))))].p;selected.push({slot,p});used.add(p.name+'|'+p.team);return true}
 if(format==='showdown'){let teams=[...new Set(eligible.map(p=>p.team))];if(teams.length<2)return null;let cpt=eligible.filter(p=>p.position!=='DST');if(!add('CPT',cpt))return null;let remaining=eligible.filter(p=>p.team!==selected[0].p.team);if(!add('FLEX',remaining))return null;while(selected.length<6)if(!add('FLEX',eligible))return null}else{for(let slot of ['QB','RB','RB','WR','WR','WR','TE','DST','FLEX']){let elig=slot==='FLEX'?['RB','WR','TE']:[slot];if(!add(slot,eligible.filter(p=>elig.includes(p.position))))return null}}return selected}
 // Correlated game outcomes: one game pace factor, opposing team production factors,
@@ -124,7 +124,7 @@ function selectDistinctGpp(candidates,n,cap,format){
   if(cp){const key=cp.name+'|'+cp.team;captains.set(key,(captains.get(key)||0)+1)}
  }
  // Preserve top-ranked lineup. Prefer 2-player changes; relax only when necessary.
- for(const strictExposure of [true,false]){
+ for(const strictExposure of [true]){
   for(const maxOverlap of [4,5,6]){
    for(const x of candidates){
     if(chosen.length>=n)break;
@@ -161,7 +161,7 @@ function generateShowdown(eligible,found){
   if(cpt.salary*1.5>50000||['K','DST'].includes(cpt.position))continue;
   // Require meaningful demonstrated scoring for a tournament Captain.
   // Prevent speculative salary-fallback backups from leading the lineup.
-  if(Number.isFinite(cpt.dkAvg)&&cpt.dkAvg<12&&['RB','WR','TE'].includes(cpt.position))continue;
+  if(Number.isFinite(cpt.dkAvg)&&cpt.dkAvg<15&&['RB','WR','TE'].includes(cpt.position))continue;
   if(String(cpt.projectionSource||'').includes('SALARY FALLBACK')&&cpt.position!=='QB'&&(!Number.isFinite(cpt.dkAvg)||cpt.dkAvg<15))continue;
   const rest=candidates.filter(p=>p!==cpt).sort((a,b)=>a.name.localeCompare(b.name));
   let beam=[{picked:[],last:-1,cost:cpt.salary*1.5,proj:cpt.projection*1.5,ceil:cpt.ceiling*1.5,teams:0}];
@@ -244,7 +244,7 @@ function optimize(){
 
  const gate=$('qualitygate');
  gate.textContent=`${available.length} eligible players from imported sheet · ${unreviewed.length} statuses/roles not independently confirmed · ${lowSample.length} small-sample or fallback projections · ${missingOwn.length} without ownership. Imported sheet controls eligibility; explicit out/inactive/IR/doubtful excluded. Only the presumed starting QB per team is eligible, based on salary rank; backup QBs are unlocked only if that starter is explicitly unavailable. Salary fallback projections are uncalibrated.`;
- gate.textContent+=' '+ "The model excludes kicker/defense Captains and limits combined K/DST exposure to two per lineup. This is a conservative tournament heuristic, not validated win-probability modeling.";
+ gate.textContent+=' '+ "The model excludes kicker/defense Captains, limits combined K/DST exposure to two, permits at most one low-history offensive player per lineup, and enforces portfolio exposure limits without relaxing them. These are conservative heuristics, not validated win-probability modeling.";
  gate.style.color='#65d7ae';
 
  const eligible=available.map(p=>{
