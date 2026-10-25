@@ -47,6 +47,31 @@
       "name": "Falcons",
       "team": "ATL",
       "actual_points": 11
+    },
+    {
+      "name": "George Kittle",
+      "team": "SF",
+      "actual_points": 15.8
+    },
+    {
+      "name": "Jordan Watkins",
+      "team": "SF",
+      "actual_points": 8.6
+    },
+    {
+      "name": "Zachariah Branch",
+      "team": "ATL",
+      "actual_points": 2.7
+    },
+    {
+      "name": "Eddy Pineiro",
+      "team": "SF",
+      "actual_points": 2
+    },
+    {
+      "name": "49ers",
+      "team": "SF",
+      "actual_points": -1
     }
   ]
 }
