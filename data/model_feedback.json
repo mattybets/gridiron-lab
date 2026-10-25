@@ -1,14 +1,14 @@
 {
   "schema_version": 1,
-  "generated_utc": "2026-10-25T20:28:42.130078+00:00",
+  "generated_utc": "2026-10-25T20:29:31.051311+00:00",
   "contest_count": 5,
   "known_winner_count": 4,
   "mean_lineup_points": 111.55,
   "mean_gap_to_winner": 30.66,
   "roi_complete_records": 2,
   "roi_percent_complete_records": 66.67,
-  "pregame_snapshot_count": 5,
-  "saved_snapshot_file_count": 6,
+  "pregame_snapshot_count": 6,
+  "saved_snapshot_file_count": 7,
   "full_field_count": 1,
   "records": [
     {
@@ -520,6 +520,30 @@
         }
       ],
       "gpp_candidate_count": 1
+    },
+    {
+      "snapshot": "2026-10-25-sf-atl.json",
+      "matchup": "SF @ ATL \u00b7 Oct 25 at 12:00 PM",
+      "retrospective_only": false,
+      "saved_at_utc": "2026-10-25T16:21:47.237Z",
+      "player_count": 11,
+      "lineup_count": 5,
+      "status": "evaluated",
+      "matched_player_count": 6,
+      "mean_absolute_player_error": 4.34,
+      "mean_signed_player_error": 1.703,
+      "evaluated_lineups": [
+        {
+          "strategy": "gpp",
+          "index": 2,
+          "projected": 98.5925,
+          "modeled_p90": 125.5138,
+          "modeled_mean": 98.5925,
+          "modeled_ceiling": 143.60999999999999,
+          "actual_points": 83.32
+        }
+      ],
+      "gpp_candidate_count": 5
     }
   ],
   "calibration": {
