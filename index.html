@@ -97,46 +97,58 @@ function selectRanked(candidates,n,cap,diversifyCaptain=false){
  return chosen;
 }
 function selectDistinctGpp(candidates,n,cap,format){
- // Enforce the Captain limit across every selection pass, including diversity fallbacks.
- const chosen=[],counts=new Map(),captains=new Map();
+ // Build the portfolio jointly, not greedily. A top lineup that consumes all
+ // scarce exposure slots may prevent the requested five-lineup portfolio.
  const showdown=format==='showdown';
  const maxCpt=Math.max(1,Math.floor(n*Number($('captainexposure').value||40)/100));
- // A 100% user setting must never silently disable GPP diversification.
- const maxOwn=Math.max(1,Math.min(n-1,cap,Math.floor(n*0.8)));
- const overlap=(a,b)=>{
-  const ids=new Set(a.l.map(v=>v.p.name+'|'+v.p.team));
-  return b.l.filter(v=>ids.has(v.p.name+'|'+v.p.team)).length;
- };
- function fits(x,strictExposure){
-  if(chosen.includes(x)||chosen.some(y=>lineupKey(y.l)===lineupKey(x.l)))return false;
-  if(showdown){
-   const cp=x.l.find(v=>v.slot==='CPT')?.p;
-   if(!cp)return false;
-   const key=cp.name+'|'+cp.team;
-   if((captains.get(key)||0)>=maxCpt)return false;
-  }
-  if(strictExposure&&x.l.some(v=>(counts.get(v.p.name+'|'+v.p.team)||0)>=maxOwn))return false;
-  return true;
- }
- function add(x){
-  chosen.push(x);
-  for(const v of x.l){const key=v.p.name+'|'+v.p.team;counts.set(key,(counts.get(key)||0)+1)}
-  const cp=x.l.find(v=>v.slot==='CPT')?.p;
-  if(cp){const key=cp.name+'|'+cp.team;captains.set(key,(captains.get(key)||0)+1)}
- }
- // Preserve top-ranked lineup. Prefer 2-player changes; relax only when necessary.
- for(const strictExposure of [true]){
-  for(const maxOverlap of [4,5,6]){
-   for(const x of candidates){
-    if(chosen.length>=n)break;
-    if(!fits(x,strictExposure)||chosen.some(y=>overlap(x,y)>maxOverlap))continue;
-    add(x);
+ const maxOwn=Math.max(1,Math.min(n-1,cap,Math.floor(n*.8)));
+ const keyOf=p=>p.name+'|'+p.team;
+ const entries=candidates.slice(0,Math.min(candidates.length,900)).map((x,i)=>({
+  x,i,keys:x.l.map(v=>keyOf(v.p)),cpt:keyOf(x.l.find(v=>v.slot==='CPT')?.p||x.l[0].p),
+  score:x.gppScore
+ }));
+ // Beam search retains competing portfolios so early selections cannot lock
+ // out later viable lineups. All final constraints are checked on actual output.
+ const WIDTH=90,EXPAND=90;
+ let states=[{picks:[],counts:new Map(),captains:new Map(),score:0,last:-1}];
+ let best=states[0];
+ for(let depth=0;depth<n;depth++){
+  const next=[];
+  for(const s of states){
+   let added=0;
+   for(let j=s.last+1;j<entries.length;j++){
+    const e=entries[j];
+    if(showdown&&(s.captains.get(e.cpt)||0)>=maxCpt)continue;
+    if(e.keys.some(k=>(s.counts.get(k)||0)>=maxOwn))continue;
+    const counts=new Map(s.counts),captains=new Map(s.captains);
+    for(const k of e.keys)counts.set(k,(counts.get(k)||0)+1);
+    captains.set(e.cpt,(captains.get(e.cpt)||0)+1);
+    const candidate={picks:[...s.picks,e],counts,captains,score:s.score+e.score,last:j};
+    next.push(candidate);
+    if(candidate.picks.length>best.picks.length||(candidate.picks.length===best.picks.length&&candidate.score>best.score))best=candidate;
+    if(++added>=EXPAND)break;
    }
-   if(chosen.length>=n)break;
   }
-  if(chosen.length>=n)break;
+  if(!next.length)break;
+  // Preserve both high-scoring and more diverse partial portfolios.
+  next.sort((a,b)=>b.score-a.score);
+  const kept=[],seen=new Set();
+  for(const s of next){
+   const signature=s.picks.map(p=>p.i).join(',');
+   if(seen.has(signature))continue;
+   seen.add(signature);kept.push(s);
+   if(kept.length>=WIDTH)break;
+  }
+  states=kept;
  }
- return chosen;
+ const selected=(states.find(s=>s.picks.length===n)||best).picks.map(e=>e.x);
+ // Enforce exposure relative to the actual portfolio size, not the request.
+ const actualLimit=Math.max(1,Math.floor(selected.length*Number($('exposure').value||60)/100));
+ if(selected.some(x=>x.l.some(v=>selected.filter(y=>y.l.some(z=>keyOf(z.p)===keyOf(v.p))).length>actualLimit))){
+  // Return no misleading portfolio when the final count cannot satisfy limits.
+  return [];
+ }
+ return selected;
 }
 function lineupKey(l){return l.map(x=>x.slot+':'+x.p.name+'|'+x.p.team).sort().join(';')}
 // Deterministic bounded search over top candidates by modeled ceiling/point-per-dollar,
