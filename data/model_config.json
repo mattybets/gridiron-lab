@@ -12,5 +12,44 @@
   "reason": "Held-out performance did not justify changing default weights",
   "heldout_mean_improvement": 0.0,
   "heldout_wins": 0,
-  "heldout_losses": 0
+  "heldout_losses": 0,
+  "position_calibration": {
+    "enabled": false,
+    "method": "leave-one-game-out positional bias shrinkage",
+    "validated_games": 4,
+    "adjustments": {},
+    "reason": "No positional correction demonstrated sufficient held-out benefit",
+    "heldout_by_position": {
+      "DST": {
+        "samples": 6,
+        "heldout_mae_improvement": 0.0,
+        "proposed_delta": -0.0
+      },
+      "K": {
+        "samples": 6,
+        "heldout_mae_improvement": 0.0,
+        "proposed_delta": -0.0
+      },
+      "QB": {
+        "samples": 8,
+        "heldout_mae_improvement": 0.0,
+        "proposed_delta": -0.777
+      },
+      "RB": {
+        "samples": 18,
+        "heldout_mae_improvement": 0.175,
+        "proposed_delta": -1.093
+      },
+      "TE": {
+        "samples": 19,
+        "heldout_mae_improvement": -0.182,
+        "proposed_delta": 0.313
+      },
+      "WR": {
+        "samples": 31,
+        "heldout_mae_improvement": 0.049,
+        "proposed_delta": -0.33
+      }
+    }
+  }
 }
