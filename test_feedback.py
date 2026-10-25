@@ -67,6 +67,25 @@ class FeedbackTests(unittest.TestCase):
         self.assertEqual(out['by_position']['QB']['mean_signed_error'],8)
         self.assertEqual(out['by_position']['RB']['mean_signed_error'],-4)
 
+    def test_position_adjustments_do_not_fit_on_same_game(self):
+        row={'matchup':'ONE','saved_at_utc':'2026-10-18T18:00:00Z',
+             'status':'evaluated','matched_players':[
+                 {'name':'QB','team':'A','position':'QB','projection':20,'actual_points':5}]}
+        result=ec.fit_position_adjustments([row,row,row,row])
+        self.assertFalse(result['enabled'])
+        self.assertEqual(result['validated_games'],1)
+
+    def test_position_adjustments_require_out_of_sample_improvement(self):
+        games=[]
+        for i in range(4):
+            games.append({'matchup':str(i),'saved_at_utc':f'2026-10-1{i}T18:00:00Z',
+                          'status':'evaluated','matched_players':[
+                              {'name':str(k),'team':'A','position':'QB','projection':20,'actual_points':10}
+                              for k in range(10)]})
+        result=ec.fit_position_adjustments(games)
+        self.assertTrue(result['enabled'])
+        self.assertLess(result['adjustments']['QB'],0)
+
     def test_real_snapshots_are_readable(self):
         rows=ec.evaluate_snapshots()
         self.assertGreaterEqual(len(rows),4)
