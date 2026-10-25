@@ -40,6 +40,10 @@ def evaluate_snapshots():
                          for p in snapshot.get('players',[])
                          if (p['name'].strip().casefold(),p['team'].strip().upper()) in lookup]
                 row['matched_player_count']=len(matched)
+                row['matched_players']=[{'name':p['name'],'team':p['team'],
+                    'position':p.get('position','UNKNOWN'),
+                    'projection':float(p['projection']),'actual_points':score}
+                    for p,score in matched]
                 if matched:
                     errors=[p['projection']-score for p,score in matched]
                     row['mean_absolute_player_error']=round(sum(abs(x) for x in errors)/len(errors),3)
@@ -66,6 +70,27 @@ def evaluate_snapshots():
                 row['status']='evaluated' if lineups else 'partial_actuals'
         out.append(row)
     return out
+
+def projection_diagnostics(snapshot_rows):
+    """Historical, deduplicated player error audit; descriptive, never in-sample training."""
+    by_matchup={}
+    for row in snapshot_rows:
+        if row.get('status')!='evaluated' or row.get('retrospective_only'): continue
+        if not row.get('matched_players'): continue
+        key=row.get('matchup')
+        if key not in by_matchup or str(row.get('saved_at_utc',''))>str(by_matchup[key].get('saved_at_utc','')):
+            by_matchup[key]=row
+    positions=defaultdict(list)
+    for row in by_matchup.values():
+        for p in row['matched_players']:
+            positions[p['position']].append(p['projection']-p['actual_points'])
+    result={}
+    for pos,errors in sorted(positions.items()):
+        n=len(errors)
+        result[pos]={'samples':n,'mean_signed_error':round(sum(errors)/n,3),
+                     'mean_absolute_error':round(sum(abs(e) for e in errors)/n,3)}
+    return {'independent_games':len(by_matchup),'by_position':result,
+            'note':'Descriptive error audit; no correction automatically applied. Four games cannot establish reliable positional corrections.'}
 
 def fit_ranking(snapshot_rows):
     """Leave-one-game-out evaluation, not an in-sample claim of improvement.
@@ -152,6 +177,7 @@ def evaluate(data):
         'full_field_count':sum(o['has_verified_full_field'] for o in observations),
         'records':observations,
         'snapshot_evaluations':snapshots,
+        'projection_diagnostics':projection_diagnostics(snapshots),
         'calibration':calibration,
         'training_status':'validated' if calibration['enabled'] else 'insufficient_evidence',
         'ranking_parameters_updated':calibration['enabled'],
