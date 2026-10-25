@@ -105,11 +105,11 @@ function selectDistinctGpp(candidates,n,cap,format){
  const keyOf=p=>p.name+'|'+p.team;
  const entries=candidates.slice(0,Math.min(candidates.length,900)).map((x,i)=>({
   x,i,keys:x.l.map(v=>keyOf(v.p)),cpt:keyOf(x.l.find(v=>v.slot==='CPT')?.p||x.l[0].p),
-  score:x.gppScore
+  score:Number.isFinite(x.gppScore)?x.gppScore:0
  }));
  // Beam search retains competing portfolios so early selections cannot lock
  // out later viable lineups. All final constraints are checked on actual output.
- const WIDTH=90,EXPAND=90;
+ const WIDTH=300,EXPAND=450;
  let states=[{picks:[],counts:new Map(),captains:new Map(),score:0,last:-1}];
  let best=states[0];
  for(let depth=0;depth<n;depth++){
@@ -131,7 +131,7 @@ function selectDistinctGpp(candidates,n,cap,format){
   }
   if(!next.length)break;
   // Preserve both high-scoring and more diverse partial portfolios.
-  next.sort((a,b)=>b.score-a.score);
+  next.sort((a,b)=>(b.picks.length===n?100000:0)+b.score-((a.picks.length===n?100000:0)+a.score));
   const kept=[],seen=new Set();
   for(const s of next){
    const signature=s.picks.map(p=>p.i).join(',');
