@@ -97,80 +97,55 @@ function selectRanked(candidates,n,cap,diversifyCaptain=false){
  return chosen;
 }
 function selectDistinctGpp(candidates,n,cap,format){
- // Build the portfolio jointly, not greedily. A top lineup that consumes all
- // scarce exposure slots may prevent the requested five-lineup portfolio.
- const showdown=format==='showdown';
- const maxCpt=Math.max(1,Math.floor(n*Number($('captainexposure').value||40)/100));
- const maxOwn=Math.max(1,Math.min(n-1,cap,Math.floor(n*.8)));
+ // Multi-start portfolio construction with hard exposure constraints.
+ // Do not restrict candidate exploration to a score-ordered prefix.
  const keyOf=p=>p.name+'|'+p.team;
- // Sample across Captains and the full ranking instead of only the top 900,
- // which often contain nearly identical players and cannot form a portfolio.
- const sampled=[],captainBuckets=new Map();
+ const maxOwn=Math.max(1,Math.min(n-1,cap,Math.floor(n*.8)));
+ const maxCpt=Math.max(1,Math.floor(n*Number($('captainexposure').value||40)/100));
+ const groups=new Map();
  for(const x of candidates){
   const cp=x.l.find(v=>v.slot==='CPT')?.p;
   const k=cp?keyOf(cp):'other';
-  if(!captainBuckets.has(k))captainBuckets.set(k,[]);
-  captainBuckets.get(k).push(x);
+  if(!groups.has(k))groups.set(k,[]);
+  groups.get(k).push(x);
  }
- const groups=[...captainBuckets.values()];
- let round=0;
- while(sampled.length<Math.min(1800,candidates.length)){
-  let progress=false;
-  for(const group of groups){
-   if(group[round]){sampled.push(group[round]);progress=true;if(sampled.length>=1800)break}
-  }
-  if(!progress)break;
-  round++;
- }
- const entries=sampled.map((x,i)=>({
-  x,i,keys:x.l.map(v=>keyOf(v.p)),cpt:keyOf(x.l.find(v=>v.slot==='CPT')?.p||x.l[0].p),
-  score:Number.isFinite(x.gppScore)?x.gppScore:0
- }));
- // Beam search retains competing portfolios so early selections cannot lock
- // out later viable lineups. All final constraints are checked on actual output.
- const WIDTH=300,EXPAND=450;
- let states=[{picks:[],counts:new Map(),captains:new Map(),score:0,last:-1}];
- let best=states[0];
- for(let depth=0;depth<n;depth++){
-  const next=[];
-  for(const s of states){
-   let added=0;
-   for(let j=s.last+1;j<entries.length;j++){
-    const e=entries[j];
-    if(showdown&&(s.captains.get(e.cpt)||0)>=maxCpt)continue;
-    if(e.keys.some(k=>(s.counts.get(k)||0)>=maxOwn))continue;
-    const counts=new Map(s.counts),captains=new Map(s.captains);
-    for(const k of e.keys)counts.set(k,(counts.get(k)||0)+1);
-    captains.set(e.cpt,(captains.get(e.cpt)||0)+1);
-    const candidate={picks:[...s.picks,e],counts,captains,score:s.score+e.score,last:j};
-    next.push(candidate);
-    if(candidate.picks.length>best.picks.length||(candidate.picks.length===best.picks.length&&candidate.score>best.score))best=candidate;
-    if(++added>=EXPAND)break;
+ // Interleave Captain groups and score tiers so lower-ranked but useful
+ // complementary lineups remain reachable.
+ const buckets=[...groups.values()];
+ const entries=[];
+ for(let round=0;round<Math.max(...buckets.map(b=>b.length),0)&&entries.length<6000;round++)
+  for(const b of buckets)if(b[round]){entries.push(b[round]);if(entries.length>=6000)break}
+ const prepared=entries.map(x=>({x,keys:x.l.map(v=>keyOf(v.p)),cpt:keyOf(x.l.find(v=>v.slot==='CPT')?.p||x.l[0].p),score:Number(x.gppScore)||0}));
+ let best=[];
+ let bestScore=-Infinity;
+ // Each restart seeds a different lineup, then searches for complementary
+ // entries. The score penalty discourages concentration before caps bind.
+ for(let seed=0;seed<Math.min(100,prepared.length);seed++){
+  const chosen=[],counts=new Map(),captains=new Map(),used=new Set();
+  const add=(e)=>{chosen.push(e);used.add(e);for(const k of e.keys)counts.set(k,(counts.get(k)||0)+1);captains.set(e.cpt,(captains.get(e.cpt)||0)+1)};
+  const allowed=e=>!used.has(e)&&e.keys.every(k=>(counts.get(k)||0)<maxOwn)&&(format!=='showdown'||(captains.get(e.cpt)||0)<maxCpt);
+  add(prepared[seed]);
+  while(chosen.length<n){
+   let choice=null,choiceScore=-Infinity;
+   for(const e of prepared){
+    if(!allowed(e))continue;
+    const overlap=e.keys.reduce((s,k)=>s+(counts.get(k)||0),0);
+    const cptOverlap=captains.get(e.cpt)||0;
+    const score=e.score-overlap*5-cptOverlap*7;
+    if(score>choiceScore){choice=e;choiceScore=score}
    }
+   if(!choice)break;
+   add(choice);
   }
-  if(!next.length)break;
-  // Preserve both high-scoring and more diverse partial portfolios.
-  next.sort((a,b)=>(b.picks.length===n?100000:0)+b.score-((a.picks.length===n?100000:0)+a.score));
-  const kept=[],seen=new Set();
-  for(const s of next){
-   const signature=s.picks.map(p=>p.i).join(',');
-   if(seen.has(signature))continue;
-   seen.add(signature);kept.push(s);
-   if(kept.length>=WIDTH)break;
-  }
-  states=kept;
+  const total=chosen.reduce((s,e)=>s+e.score,0);
+  if(chosen.length>best.length||(chosen.length===best.length&&total>bestScore)){best=chosen;bestScore=total}
+  if(best.length===n&&seed>=20)break;
  }
- const selected=(states.find(s=>s.picks.length===n)||best).picks.map(e=>e.x);
- // When no feasible multi-entry portfolio is found, still provide one valid
- // single-entry recommendation instead of displaying an empty GPP section.
- if(selected.length<n)return candidates.length?[candidates[0]]:[];
- // Enforce exposure relative to the actual portfolio size, not the request.
- const actualLimit=Math.max(1,Math.floor(selected.length*Number($('exposure').value||60)/100));
- if(selected.some(x=>x.l.some(v=>selected.filter(y=>y.l.some(z=>keyOf(z.p)===keyOf(v.p))).length>actualLimit))){
-  // Return no misleading portfolio when the final count cannot satisfy limits.
-  return [];
+ if(best.length!==n){
+  // Never label an incomplete portfolio as exposure-compliant.
+  return candidates.length?[candidates[0]]:[];
  }
- return selected;
+ return best.map(e=>e.x).sort((a,b)=>b.gppScore-a.gppScore);
 }
 function lineupKey(l){return l.map(x=>x.slot+':'+x.p.name+'|'+x.p.team).sort().join(';')}
 // Deterministic bounded search over top candidates by modeled ceiling/point-per-dollar,
