@@ -7,57 +7,68 @@
     {
       "name": "Christian McCaffrey",
       "team": "SF",
-      "projection": 23.07
+      "projection": 23.07,
+      "ceiling": 31.62
     },
     {
       "name": "Brock Purdy",
       "team": "SF",
-      "projection": 22.61
+      "projection": 22.61,
+      "ceiling": 31.59
     },
     {
       "name": "Drake London",
       "team": "ATL",
-      "projection": 16.07
+      "projection": 16.07,
+      "ceiling": 26.44
     },
     {
       "name": "Jahan Dotson",
       "team": "ATL",
-      "projection": 10.07
+      "projection": 10.07,
+      "ceiling": 18.43
     },
     {
       "name": "Nick Folk",
       "team": "ATL",
-      "projection": 7.11
+      "projection": 7.11,
+      "ceiling": 12.3
     },
     {
       "name": "Austin Hooper",
       "team": "ATL",
-      "projection": 3.61
+      "projection": 3.61,
+      "ceiling": 7.42
     },
     {
       "name": "George Kittle",
       "team": "SF",
-      "projection": 16.55
+      "projection": 16.55,
+      "ceiling": 25.06
     },
     {
       "name": "Jordan Watkins",
       "team": "SF",
-      "projection": 6.18
+      "projection": 6.18,
+      "ceiling": 9.33
     },
     {
       "name": "Zachariah Branch",
       "team": "ATL",
-      "projection": 3.46
+      "projection": 3.46,
+      "ceiling": 4.93
     },
     {
       "name": "Eddy Pineiro",
       "team": "SF",
-      "projection": 5.89
+      "projection": 5.89,
+      "ceiling": 7.63
     },
     {
       "name": "49ers",
       "team": "SF",
-      "projection": 4.62
+      "projection": 4.62,
+      "ceiling": 8.3
     }
   ],
   "lineups": [
@@ -67,29 +78,39 @@
       "players": [
         {
           "slot": "CPT",
-          "name": "Christian McCaffrey"
+          "name": "Christian McCaffrey",
+          "team": "SF"
         },
         {
           "slot": "FLEX",
-          "name": "Brock Purdy"
+          "name": "Brock Purdy",
+          "team": "SF"
         },
         {
           "slot": "FLEX",
-          "name": "George Kittle"
+          "name": "George Kittle",
+          "team": "SF"
         },
         {
           "slot": "FLEX",
-          "name": "Jahan Dotson"
+          "name": "Jahan Dotson",
+          "team": "ATL"
         },
         {
           "slot": "FLEX",
-          "name": "Nick Folk"
+          "name": "Nick Folk",
+          "team": "ATL"
         },
         {
           "slot": "FLEX",
-          "name": "Jordan Watkins"
+          "name": "Jordan Watkins",
+          "team": "SF"
         }
-      ]
+      ],
+      "projected": 101.2122,
+      "modeled_p90": 126.8671,
+      "modeled_mean": 101.2122,
+      "modeled_ceiling": 144.14000000000001
     },
     {
       "strategy": "gpp",
@@ -97,29 +118,39 @@
       "players": [
         {
           "slot": "CPT",
-          "name": "Christian McCaffrey"
+          "name": "Christian McCaffrey",
+          "team": "SF"
         },
         {
           "slot": "FLEX",
-          "name": "Brock Purdy"
+          "name": "Brock Purdy",
+          "team": "SF"
         },
         {
           "slot": "FLEX",
-          "name": "Drake London"
+          "name": "Drake London",
+          "team": "ATL"
         },
         {
           "slot": "FLEX",
-          "name": "Jahan Dotson"
+          "name": "Jahan Dotson",
+          "team": "ATL"
         },
         {
           "slot": "FLEX",
-          "name": "Nick Folk"
+          "name": "Nick Folk",
+          "team": "ATL"
         },
         {
           "slot": "FLEX",
-          "name": "Austin Hooper"
+          "name": "Austin Hooper",
+          "team": "ATL"
         }
-      ]
+      ],
+      "projected": 98.5925,
+      "modeled_p90": 125.5138,
+      "modeled_mean": 98.5925,
+      "modeled_ceiling": 143.60999999999999
     },
     {
       "strategy": "gpp",
@@ -127,29 +158,39 @@
       "players": [
         {
           "slot": "CPT",
-          "name": "George Kittle"
+          "name": "George Kittle",
+          "team": "SF"
         },
         {
           "slot": "FLEX",
-          "name": "Christian McCaffrey"
+          "name": "Christian McCaffrey",
+          "team": "SF"
         },
         {
           "slot": "FLEX",
-          "name": "Brock Purdy"
+          "name": "Brock Purdy",
+          "team": "SF"
         },
         {
           "slot": "FLEX",
-          "name": "Drake London"
+          "name": "Drake London",
+          "team": "ATL"
         },
         {
           "slot": "FLEX",
-          "name": "Austin Hooper"
+          "name": "Austin Hooper",
+          "team": "ATL"
         },
         {
           "slot": "FLEX",
-          "name": "Zachariah Branch"
+          "name": "Zachariah Branch",
+          "team": "ATL"
         }
-      ]
+      ],
+      "projected": 97.9271,
+      "modeled_p90": 123.5192,
+      "modeled_mean": 97.9271,
+      "modeled_ceiling": 139.59
     },
     {
       "strategy": "gpp",
@@ -157,29 +198,39 @@
       "players": [
         {
           "slot": "CPT",
-          "name": "Brock Purdy"
+          "name": "Brock Purdy",
+          "team": "SF"
         },
         {
           "slot": "FLEX",
-          "name": "Christian McCaffrey"
+          "name": "Christian McCaffrey",
+          "team": "SF"
         },
         {
           "slot": "FLEX",
-          "name": "Drake London"
+          "name": "Drake London",
+          "team": "ATL"
         },
         {
           "slot": "FLEX",
-          "name": "Jahan Dotson"
+          "name": "Jahan Dotson",
+          "team": "ATL"
         },
         {
           "slot": "FLEX",
-          "name": "Jordan Watkins"
+          "name": "Jordan Watkins",
+          "team": "SF"
         },
         {
           "slot": "FLEX",
-          "name": "49ers"
+          "name": "49ers",
+          "team": "SF"
         }
-      ]
+      ],
+      "projected": 96.2668,
+      "modeled_p90": 121.7971,
+      "modeled_mean": 96.2668,
+      "modeled_ceiling": 141.50500000000002
     },
     {
       "strategy": "gpp",
@@ -187,29 +238,39 @@
       "players": [
         {
           "slot": "CPT",
-          "name": "Brock Purdy"
+          "name": "Brock Purdy",
+          "team": "SF"
         },
         {
           "slot": "FLEX",
-          "name": "Christian McCaffrey"
+          "name": "Christian McCaffrey",
+          "team": "SF"
         },
         {
           "slot": "FLEX",
-          "name": "George Kittle"
+          "name": "George Kittle",
+          "team": "SF"
         },
         {
           "slot": "FLEX",
-          "name": "Jahan Dotson"
+          "name": "Jahan Dotson",
+          "team": "ATL"
         },
         {
           "slot": "FLEX",
-          "name": "Austin Hooper"
+          "name": "Austin Hooper",
+          "team": "ATL"
         },
         {
           "slot": "FLEX",
-          "name": "Eddy Pineiro"
+          "name": "Eddy Pineiro",
+          "team": "SF"
         }
-      ]
+      ],
+      "projected": 95.9847,
+      "modeled_p90": 120.1517,
+      "modeled_mean": 95.9847,
+      "modeled_ceiling": 137.545
     }
   ]
 }
