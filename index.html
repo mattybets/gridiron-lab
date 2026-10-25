@@ -12,8 +12,9 @@ async function loadHistoricalFeedback(){
 }
 loadHistoricalFeedback();
 let calibratedWeights={p90:.45,mean:.25,projection:.20,ceiling:.10};
+let positionAdjustments={};
 let calibrationEnabled=false;
-fetch('./data/model_config.json?ts='+Date.now(),{cache:'no-store'}).then(r=>r.ok?r.json():null).then(c=>{if(c?.enabled&&c.validated_games>=4&&c.weights&&Math.abs(Object.values(c.weights).reduce((a,b)=>a+Number(b),0)-1)<.00001){calibratedWeights=c.weights;calibrationEnabled=true;}}).catch(()=>{});
+fetch('./data/model_config.json?ts='+Date.now(),{cache:'no-store'}).then(r=>r.ok?r.json():null).then(c=>{if(c?.enabled&&c.validated_games>=4&&c.weights&&Math.abs(Object.values(c.weights).reduce((a,b)=>a+Number(b),0)-1)<.00001){calibratedWeights=c.weights;calibrationEnabled=true;}if(c?.position_calibration?.enabled&&c.position_calibration.validated_games>=4){positionAdjustments=c.position_calibration.adjustments||{};}}).catch(()=>{});
 const $=id=>document.getElementById(id);let pool=[],lineups=[],rankedGroups={cash:[],gpp:[]};let mode=$('mode').value;
 function demo(){let teams=['ALP','BET'];let names=['Avery','Blake','Cameron','Drew','Emerson','Finley','Gray','Harper','Indigo','Jordan','Kai','Logan','Morgan','Noel','Oakley','Parker','Quinn','Reese','Sawyer','Taylor','Uma','Val','Winter','Zion'];let pos=['QB','RB','WR','WR','TE','K','DST','RB','WR','WR','TE','WR'];pool=names.map((n,i)=>({name:n+' (DEMO)',team:teams[Math.floor(i/12)],opponent:teams[1-Math.floor(i/12)],position:pos[i%12],salary:[10500,8400,7200,6100,4600,4200,3400,5300,3900,2900,2400,1800][i%12]+(i>=12?200:0),projection:[21,16,13,11,9,8,7,10,8,6,5,4][i%12]+(i>=12?1:0),ceiling:[37,31,28,25,21,15,16,24,20,17,13,12][i%12]+(i>=12?2:0),ownership:[68,52,43,36,27,22,18,30,25,17,13,9][i%12],active:true,game:'ALP@BET'}));render();$('status').textContent='Synthetic demo loaded. Not usable for real contests.'}
 function csvRows(t){const lines=t.replace(/^\uFEFF/,'').split(/\r?\n/);function parse(line){let a=[],v='',q=false;for(let i=0;i<line.length;i++){let c=line[i];if(c==='"'){if(q&&line[i+1]==='"'){v+='"';i++}else q=!q}else if(c===','&&!q){a.push(v);v=''}else v+=c}a.push(v);return a}return lines.filter(x=>x.trim()).map(parse)}
@@ -197,7 +198,10 @@ function optimize(){
       multiplier=Math.min(1.25,multiplier*(1+Math.min(.08,rz/games*.025)));
   }
   const opportunity=Number(p.opportunity??100)/100;
-  return {...p,projection:p.projection*opportunity*multiplier,ceiling:p.ceiling*opportunity*multiplier,usageMultiplier:multiplier};
+  const delta=Number(positionAdjustments[p.position]||0);
+  const adjustedProjection=Math.max(0,p.projection+(Number.isFinite(delta)?delta:0));
+  const adjustedCeiling=Math.max(adjustedProjection,p.ceiling+(Number.isFinite(delta)?delta:0));
+  return {...p,projection:adjustedProjection*opportunity*multiplier,ceiling:adjustedCeiling*opportunity*multiplier,usageMultiplier:multiplier};
  });
  const n=Math.max(1,Math.min(20,Number($('count').value)||5)),iters=Math.max(100,Math.min(10000,Number($('iterations').value)||1200));
  const found=new Map();let examined=0;
