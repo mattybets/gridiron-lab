@@ -344,7 +344,13 @@ function optimize(){
   return {...x,sim,cashScore:adjustedCashScore,gppScore,uncertaintyPenalty};});
  const cap=Math.max(1,Math.ceil(n*Number($('exposure').value)/100));
  rankedGroups.cash=selectRanked([...scored].sort((a,b)=>b.cashScore-a.cashScore),n,cap);
- rankedGroups.gpp=selectDistinctGpp([...scored].sort((a,b)=>b.gppScore-a.gppScore),n,cap,format);
+ // Construct portfolios from the full salary-valid candidate pool, not only
+ // the ~3000 simulation shortlist; the latter can be too concentrated.
+ const scoredByKey=new Map(scored.map(x=>[lineupKey(x.l),x]));
+ const portfolioPool=format==='showdown'?all.map(x=>scoredByKey.get(lineupKey(x.l))||{...x,gppScore:.52*x.proj+.48*x.ceil+x.leverage*.8}):scored;
+ rankedGroups.gpp=selectDistinctGpp([...portfolioPool].sort((a,b)=>b.gppScore-a.gppScore),n,cap,format);
+ // Run Monte Carlo on portfolio picks that were outside the initial shortlist.
+ rankedGroups.gpp=rankedGroups.gpp.map(x=>{if(x.sim)return x;const sim=simulateDistribution(x.l,iters);return {...x,sim,gppScore:.52*x.proj+.48*x.ceil+x.leverage*.8}});
  if(format==='showdown'){
   const counts=new Map();for(const line of rankedGroups.gpp)for(const v of line.l){const k=v.p.name+'|'+v.p.team;counts.set(k,(counts.get(k)||0)+1)}
   const limit=Math.max(1,Math.min(n-1,cap,Math.floor(n*.8)));
