@@ -92,6 +92,49 @@ def projection_diagnostics(snapshot_rows):
     return {'independent_games':len(by_matchup),'by_position':result,
             'note':'Descriptive error audit; no correction automatically applied. Four games cannot establish reliable positional corrections.'}
 
+def fit_position_adjustments(snapshot_rows):
+    """Evaluate shrinkage corrections on untouched games; never fit and test on same slate."""
+    by_game={}
+    for row in snapshot_rows:
+        if row.get('status')!='evaluated' or row.get('retrospective_only') or not row.get('matched_players'): continue
+        key=row.get('matchup')
+        if key not in by_game or str(row.get('saved_at_utc',''))>str(by_game[key].get('saved_at_utc','')):
+            by_game[key]=row
+    games=list(by_game.values())
+    result={'enabled':False,'method':'leave-one-game-out positional bias shrinkage',
+            'validated_games':len(games),'adjustments':{},
+            'reason':'Insufficient independent games for safe position adjustments'}
+    if len(games)<4:return result
+    positions=sorted({p['position'] for g in games for p in g['matched_players'] if p.get('position') not in (None,'UNKNOWN')})
+    def fit(rows,position):
+        errors=[p['projection']-p['actual_points'] for g in rows for p in g['matched_players'] if p['position']==position]
+        if len(errors)<8:return 0.0
+        # Shrink by 20 virtual zero-bias observations, cap at 3 fantasy points.
+        return max(-3.,min(3.,sum(errors)/(len(errors)+20)))
+    outcomes={}
+    for pos in positions:
+        folds=[]
+        for holdout in games:
+            train=[g for g in games if g is not holdout]
+            adjustment=fit(train,pos)
+            for p in holdout['matched_players']:
+                if p['position']!=pos:continue
+                original=abs(p['projection']-p['actual_points'])
+                revised=abs(p['projection']-adjustment-p['actual_points'])
+                folds.append((original,revised))
+        if not folds:continue
+        improvement=sum(a-b for a,b in folds)/len(folds)
+        # Each position must show out-of-sample benefit; no corrections to sparse groups.
+        full=fit(games,pos)
+        if improvement>=0.20 and abs(full)>=0.25:
+            result['adjustments'][pos]=round(-full,3)
+        outcomes[pos]={'samples':len(folds),'heldout_mae_improvement':round(improvement,3),
+                       'proposed_delta':round(-full,3)}
+    result['heldout_by_position']=outcomes
+    result['enabled']=bool(result['adjustments'])
+    result['reason']='Only individually validated positional adjustments enabled' if result['enabled'] else 'No positional correction demonstrated sufficient held-out benefit'
+    return result
+
 def fit_ranking(snapshot_rows):
     """Leave-one-game-out evaluation, not an in-sample claim of improvement.
 
@@ -167,6 +210,8 @@ def evaluate(data):
     roi=round(100*(sum(c['payout_usd'] for c in payout)-total_cost)/total_cost,2) if total_cost>0 else None
     snapshots=evaluate_snapshots()
     calibration=fit_ranking(snapshots)
+    position_calibration=fit_position_adjustments(snapshots)
+    calibration['position_calibration']=position_calibration
     return {'schema_version':1,'generated_utc':datetime.now(timezone.utc).isoformat(),
         'contest_count':len(contests),'known_winner_count':len(known),
         'mean_lineup_points':round(sum(c['lineup_points'] for c in contests)/len(contests),2),
@@ -178,6 +223,7 @@ def evaluate(data):
         'records':observations,
         'snapshot_evaluations':snapshots,
         'projection_diagnostics':projection_diagnostics(snapshots),
+        'position_calibration':position_calibration,
         'calibration':calibration,
         'training_status':'validated' if calibration['enabled'] else 'insufficient_evidence',
         'ranking_parameters_updated':calibration['enabled'],
