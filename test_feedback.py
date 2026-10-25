@@ -56,6 +56,17 @@ class FeedbackTests(unittest.TestCase):
         self.assertEqual(result['validated_games'],0)
         self.assertFalse(result['enabled'])
 
+    def test_projection_diagnostics_deduplicates_games(self):
+        row={'matchup':'A @ B','saved_at_utc':'2026-10-25T12:00:00Z',
+             'status':'evaluated','matched_players':[
+                 {'name':'QB A','team':'A','position':'QB','projection':20,'actual_points':12},
+                 {'name':'RB B','team':'B','position':'RB','projection':10,'actual_points':14}]}
+        out=ec.projection_diagnostics([row,row])
+        self.assertEqual(out['independent_games'],1)
+        self.assertEqual(out['by_position']['QB']['samples'],1)
+        self.assertEqual(out['by_position']['QB']['mean_signed_error'],8)
+        self.assertEqual(out['by_position']['RB']['mean_signed_error'],-4)
+
     def test_real_snapshots_are_readable(self):
         rows=ec.evaluate_snapshots()
         self.assertGreaterEqual(len(rows),4)
