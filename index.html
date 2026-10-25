@@ -240,8 +240,15 @@ function optimize(){
   const opposingBringbacks=qb.reduce((sum,q)=>sum+passCatchers.filter(v=>v.p.team!==q.p.team).length,0);
   const stackBonus=Math.min(1.5,0.75*sameTeamPairs)+Math.min(0.5,0.25*opposingBringbacks);
   const w=calibratedWeights;
-  const gppScore=w.p90*sim.p90+w.mean*sim.avg+w.projection*x.proj+w.ceiling*x.ceil+0.8*x.leverage+stackBonus;
-  return {...x,sim,cashScore,gppScore};});
+  // Historical feedback: ranking-only calibration across four independent games
+  // did not improve held-out results. Do not invent calibrated win probabilities.
+  // Explicitly discount unsupported salary fallback projections, especially CPT.
+  const fallbackCount=x.l.filter(v=>String(v.p.projectionSource||'').includes('SALARY FALLBACK')).length;
+  const fallbackCaptain=x.l.some(v=>v.slot==='CPT'&&String(v.p.projectionSource||'').includes('SALARY FALLBACK'));
+  const uncertaintyPenalty=4*fallbackCount+(fallbackCaptain?5:0);
+  const adjustedCashScore=cashScore-uncertaintyPenalty;
+  const gppScore=w.p90*sim.p90+w.mean*sim.avg+w.projection*x.proj+w.ceiling*x.ceil+0.8*x.leverage+stackBonus-uncertaintyPenalty;
+  return {...x,sim,cashScore:adjustedCashScore,gppScore,uncertaintyPenalty};});
  const cap=Math.max(1,Math.ceil(n*Number($('exposure').value)/100));
  rankedGroups.cash=selectRanked([...scored].sort((a,b)=>b.cashScore-a.cashScore),n,cap);
  rankedGroups.gpp=selectDistinctGpp([...scored].sort((a,b)=>b.gppScore-a.gppScore),n,cap,format);
