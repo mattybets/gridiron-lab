@@ -7,7 +7,10 @@
     "projection": 0.2,
     "ceiling": 0.1
   },
-  "validated_games": 3,
+  "validated_games": 4,
   "method": "leave-one-game-out",
-  "reason": "At least four independent games with complete candidate scores are required"
+  "reason": "Held-out performance did not justify changing default weights",
+  "heldout_mean_improvement": 0.0,
+  "heldout_wins": 0,
+  "heldout_losses": 0
 }
