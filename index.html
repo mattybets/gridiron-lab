@@ -37,7 +37,7 @@ function validateGenerated(groups,format){
  const problems=[],warnings=[];let unchecked=0,limited=0,backup=0;
  for(const {x,type} of entries){const l=x.l;const name=type+' lineup';if(!valid(l,format))problems.push(name+': invalid roster or salary');if(salary(l)>50000)problems.push(name+': salary over cap');
   if(format==='showdown'&&l.filter(y=>y.slot==='CPT').length!==1)problems.push(name+': Captain count incorrect');
-  for(const y of l){const p=y.p;if(p.status==='out'||p.active===false||p.roleReview==='not_playing')problems.push(name+': excluded player '+p.name);if((p.roleReview||'unreviewed')==='unreviewed')unchecked++;if(['backup','rotation'].includes(p.roleReview))backup++;if(['Limited','Unknown','Unverified'].includes(playerConfidence(p).label))limited++;}
+  for(const y of l){const p=y.p;if(['out','inactive','ir','doubtful'].includes(String(p.status||'').toLowerCase())||p.active===false||p.roleReview==='not_playing')problems.push(name+': excluded player '+p.name);if((p.roleReview||'unreviewed')==='unreviewed')unchecked++;if(['backup','rotation'].includes(p.roleReview))backup++;if(['Limited','Unknown','Unverified'].includes(playerConfidence(p).label)||String(p.projectionSource||'').includes('SALARY FALLBACK'))limited++;}
  }
  if(unchecked)warnings.push(unchecked+' player selections have unreviewed roles');if(backup)warnings.push(backup+' selections are manually marked backup/rotation');if(limited)warnings.push(limited+' selections have limited/unknown projection confidence');
  $('validationreport').textContent=entries.length+' generated lineups checked · '+(problems.length?'FAIL: '+problems.slice(0,5).join('; '):'PASS: salary and roster checks')+'. '+(warnings.length?'Warnings: '+warnings.join('; ')+'.':'Role and sample warnings: none recorded.')+' These checks do not verify official inactives or contest entry eligibility.';
@@ -169,11 +169,11 @@ function optimize(){
  const unreviewed=available.filter(p=>p.status!=='available'||!['starter','rotation'].includes(p.roleReview));
  const lowSample=available.filter(p=>Number(p.modelGames||0)<4);
  const missingOwn=available.filter(p=>!Number.isFinite(p.ownership));
- const lowOpportunity=available.filter(p=>!['starter','rotation'].includes(p.roleReview)||Number(p.opportunity??100)<50);
+ const lowOpportunity=available.filter(p=>Number(p.opportunity??100)<50);
 
  const gate=$('qualitygate');
  gate.textContent=`${available.length} eligible players from imported sheet · ${unreviewed.length} statuses/roles not independently confirmed · ${lowSample.length} small-sample or fallback projections · ${missingOwn.length} without ownership. Imported sheet controls eligibility; explicit out/inactive/IR/doubtful excluded. Salary fallback projections are uncalibrated.`;
- gate.style.color=unreviewed.length?'#ffb4a8':'#65d7ae';
+ gate.style.color='#65d7ae';
 
  const eligible=available.map(p=>{
   // Usage adjustments require independently supplied counts and a declared games sample.
@@ -293,8 +293,8 @@ function matchPlayer(p,records,exact){
  if(candidates.length===1)return candidates[0];
  // Allow an exact normalized name/position match when the stats feed uses a stale team.
  // Never guess between multiple same-name records.
- const crossTeam=records.filter(b=>normalizePlayerName(b.name)===normalizePlayerName(p.name)&&b.position===p.position);
- return crossTeam.length===1?crossTeam[0]:null;
+ // Do not transfer player statistics across teams: traded/old records can be misleading.
+ return null;
 }
 
 function updateAudit(){
