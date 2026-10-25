@@ -120,7 +120,7 @@ function selectDistinctGpp(candidates,n,cap,format){
  let bestScore=-Infinity;
  // Each restart seeds a different lineup, then searches for complementary
  // entries. The score penalty discourages concentration before caps bind.
- for(let seed=0;seed<Math.min(100,prepared.length);seed++){
+ for(let seed=0;seed<Math.min(240,prepared.length);seed++){
   const chosen=[],counts=new Map(),captains=new Map(),used=new Set();
   const add=(e)=>{chosen.push(e);used.add(e);for(const k of e.keys)counts.set(k,(counts.get(k)||0)+1);captains.set(e.cpt,(captains.get(e.cpt)||0)+1)};
   const allowed=e=>!used.has(e)&&e.keys.every(k=>(counts.get(k)||0)<maxOwn)&&(format!=='showdown'||(captains.get(e.cpt)||0)<maxCpt);
@@ -139,7 +139,7 @@ function selectDistinctGpp(candidates,n,cap,format){
   }
   const total=chosen.reduce((s,e)=>s+e.score,0);
   if(chosen.length>best.length||(chosen.length===best.length&&total>bestScore)){best=chosen;bestScore=total}
-  if(best.length===n&&seed>=20)break;
+  if(best.length===n&&seed>=80)break;
  }
  if(best.length!==n){
   // Never label an incomplete portfolio as exposure-compliant.
@@ -155,9 +155,11 @@ function generateShowdown(eligible,found){
  // early-listed cheap FLEX combinations and missed stronger combinations.
  const byScore=[...eligible].sort((a,b)=>(b.ceiling/Math.sqrt(b.salary))-(a.ceiling/Math.sqrt(a.salary)));
  const byProj=[...eligible].sort((a,b)=>b.projection-a.projection);
- const candidates=[...new Map([...byScore.slice(0,40),...byProj.slice(0,32)].map(p=>[p.name+'|'+p.team,p])).values()];
+ // Include the full eligible DK pool, not just the top 40 by value.
+ // The old shortlist prevented exposure-diverse portfolios from existing.
+ const candidates=[...new Map([...byScore,...byProj].map(p=>[p.name+'|'+p.team,p])).values()];
  let examined=0;
- const WIDTH=1800;
+ const WIDTH=2400;
  function save(l){
   if(!valid(l,'showdown'))return;
   const key=lineupKey(l);if(found.has(key))return;
@@ -168,7 +170,7 @@ function generateShowdown(eligible,found){
  // Search the entire FLEX pool for every Captain, with deterministic beam pruning
  // after each depth. Retain multiple objectives to avoid a projection-only search.
  for(const cpt of candidates){
-  if(cpt.salary*1.5>50000||['K','DST'].includes(cpt.position))continue;
+  if(cpt.salary*1.5>50000||['K','DST'].includes(cpt.position)||cpt.projection<5)continue;
   // Require meaningful demonstrated scoring for a tournament Captain.
   // Prevent speculative salary-fallback backups from leading the lineup.
   if(Number.isFinite(cpt.dkAvg)&&cpt.dkAvg<15&&['RB','WR','TE'].includes(cpt.position))continue;
